@@ -4,9 +4,56 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hello, World!</title>
+    <title>Clew</title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="https://kit.fontawesome.com/338ea6a4d5.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700;900&display=swap" rel="stylesheet">
 </head>
-<body>
-    <p>Hello, World!</p>
+<body class="background">
+    <header class="home">
+        <h1 class="home"><a href="./index.html">Clew</a></h1>
+        <p>丸めた糸に沿って。</p>
+    </header>
+    <main>
+        <section>
+            <h2><a href="./works.html">Works</a></h2>
+            <div class="works-container works-container-index">
+                <div class="works-item works-item-index"><img src="./images/hello_mastodon_1080.jpg" alt=""></div>
+                <div class="works-item works-item-index"><img src="./images/eeyan_1080.jpg" alt=""></div>
+                <div class="works-item works-item-index"><img src="./images/megane_1080.jpg" alt=""></div>
+                <a href="./works.html"><div class="works-item works-item-more">more <i class="fa-solid fa-caret-right"></i></div></a>
+            </div>
+        </section>
+        <section>
+            <h2><a href="#">Notes</a></h2>
+            <ul class="notes-ul">
+                <li><a href="#">[2023-02-22] 書くことねぇー</a></li>
+                <li><a href="#">[2022-12-09] 好きなことでも書くか</a></li>
+                <li><a href="#">[2022-12-07] ホームページを公開しました！</a></li>
+                <li><a href="#">more <i class="fa-solid fa-caret-right"></i></a></li>
+            </ul>
+        </section>
+
+    </main>
+    <div id="sticky">
+        <div id="desc-crew">
+            <p>clew [名]</p>
+            <ol>
+                <li>〔縫い糸や毛糸などの〕糸玉</li>
+                <li>〔ギリシャ神話の〕アリアドネー［テセウス］の糸◆テセウスが迷宮を抜け出すのに使った糸。</li>
+            </ol>
+            <p><a href="https://eow.alc.co.jp/search?q=clew">英辞郎 on the WEB</a> より</p>
+        </div>
+        <footer>
+            <ul>
+                <li><a href="https://github.com/kenkenpa198"><i class="fa-brands fa-github"></i> GitHub</a></li>
+                <li><a href="https://www.pixiv.net/users/7791923"><i class="fa-solid fa-palette"></i> Pixiv</a></li>
+                <li><a href="https://twitter.com/KeM198_tw"><i class="fa-brands fa-twitter"></i> Twitter</a></li>
+                <li><a href="https://mstdn.jp/@KeM198"><i class="fa-brands fa-mastodon"></i> Mastodon</a></li>
+            </ul>
+            <p id="copy">&copy; KeM198 (kenkenpa198) 2022</p>
+        </footer>
+    </div>
 </body>
 </html>

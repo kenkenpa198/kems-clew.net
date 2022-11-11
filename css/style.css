@@ -1,0 +1,364 @@
+/* ==================================================
+ * Common
+ * ================================================== */
+:root {
+    --font-size-default: 17px;
+    --font-size-small: .86rem;
+    --main-color: #313539;
+    --text-color-black: #333;
+    --text-color-white: #fff;
+    --text-color-gray: #999;
+    --font-family-default: 'Noto Sans JP', sans-serif;
+    --font-weight-light: 300;
+    --font-weight-bold: 700;
+    --font-weight-black: 900;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    font-size: var(--font-size-default);
+    font-family: var(--font-family-default);
+    color: var(--main-color);
+}
+
+a:link {
+    color: var(--text-color-black);
+    text-decoration: underline;
+}
+
+a:hover {
+    opacity: 0.7;
+}
+
+a:visited {
+    color: var(--text-color-black);
+}
+
+ul, ol {
+    margin: 0.5rem 0.5rem 1.5rem;
+}
+
+li {
+    position: relative;
+    left: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+/* ==================================================
+ * Header
+ * ================================================== */
+header {
+    background-color: var(--main-color);
+    color: var(--text-color-white);
+    padding: 16px 0 16px 30px;
+    font-size: 1.2em;
+}
+
+header.home {
+    padding: 16px 0 20px 30px;
+}
+
+header p {
+    font-size: var(--font-size-small);
+    font-weight: var(--font-weight-light);
+}
+
+header a:link {
+    color: var(--text-color-white);
+    text-decoration: none;
+}
+
+header a:visited {
+    color: var(--text-color-white);
+}
+
+header > div#to-home {
+    padding: 0 30px 5px 0;
+    margin-bottom: 5px;
+    border-bottom: 1px solid var(--text-color-white) ;
+}
+
+h1 {
+    margin: 20px 0 60px;
+    text-align: center;
+    font-size: 3.5rem;
+    font-weight: var(--font-weight-black);
+}
+
+h1.home {
+    margin: 5px 0;
+    padding: 0 30px 5px 0;
+    border-bottom: 1px solid var(--text-color-white) ;
+    text-align: left;
+    font-size: 2.5rem;
+    font-weight: var(--font-weight-bold);
+}
+
+/* ==================================================
+ * パンくずリスト
+ * ================================================== */
+#breadcrumb {
+    margin: 16px 30px;
+    color: var(--text-color-gray);
+}
+
+#breadcrumb > ul {
+    margin-bottom: 0;
+    margin-left: 0;
+    font-size: 0; /* inline-block の余白を削除 */
+}
+
+#breadcrumb > ul > li {
+    display: inline-block;
+    left: 0;
+    font-size: var(--font-size-small);
+  }
+
+#breadcrumb > ul > li:after {
+    content: "/";
+    margin-right: 3px;
+    margin-left: 3px;
+}
+
+/* ==================================================
+ * Main Flex
+ * ================================================== */
+
+/* ビューポートが 900px 以上になったらレイアウトを2カラムへ組み換え */
+@media screen and (min-width: 900px) {
+    .main-container {
+        display: flex;
+        align-items: flex-start;
+        flex-direction: row-reverse;
+        justify-content: space-between;
+    }
+
+    .main-container > nav {
+        min-width: 300px
+    }
+
+    .main-container > main {
+        flex-basis: auto;
+    }
+}
+
+/* ==================================================
+ * Main
+ * ================================================== */
+main {
+    margin-right: 30px;
+    margin-left: 30px;
+}
+
+.background {
+    background-position: right bottom;
+    background-attachment: fixed;
+    background-size: contain;
+    background-image: linear-gradient(to left, transparent 0%, transparent 20%, #fff 100%), url(../images/bg.jpg);
+    background-repeat: no-repeat;
+}
+
+h2 {
+    display: inline-block;
+    position: relative;
+    left: -30px;
+    margin-top: 32px;
+    margin-bottom: 24px;
+    padding-left: 30px;
+    padding-bottom: 2px;
+    border-bottom: 1px solid var(--text-color-black);
+    font-size: 1.5rem;
+    font-weight: var(--font-weight-black);
+}
+
+h2 > a:link {
+    color: var(--text-color-black);
+    text-decoration: none;
+}
+
+h2 > a:visited {
+    color: var(--text-color-black);
+}
+
+.works-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    list-style: none;
+}
+
+/* ビューポートが 900px 以上になったら Flexbox のレイアウトを左揃えに変更 */
+@media screen and (min-width: 900px) {
+    .works-container {
+        justify-content:flex-start;
+    }
+}
+
+.works-container-index {
+    width: 60vw;
+    justify-content: flex-start;
+}
+
+.works-item {
+    width: 42%;
+    max-width: 200px;
+    height: 200px;
+    margin: 8px;
+    box-shadow: 0 10px 25px 0 rgba(85, 85, 85, 0.3);
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.works-item-index {
+    width: 200px;
+    height: 200px;
+    margin: 0 20px 20px 0;
+}
+
+.works-item img {
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.works-item-more {
+    margin: 0 20px 20px 0;
+    min-width: 200px;
+    min-height: 200px;
+    text-align: center;
+    line-height: 200px;
+    background: rgba(255, 255, 255, 0.7);
+}
+
+#sticky {
+    position: sticky;
+    top: 100vh;
+
+}
+
+/* ==================================================
+ * サイドメニュー
+ * ================================================== */
+ #side {
+    margin: 20px 30px;
+    box-shadow: 0 10px 25px 0 rgba(85, 85, 85, 0.3);
+    border-radius: 8px;
+    background-color: var(--text-color-white);
+}
+
+/* ビューポートが 900px 以上になったら 左側のマージンを削除 */
+@media screen and (min-width: 900px) {
+    #side {
+        margin-left: 0;
+    }
+}
+
+
+#side h2 {
+    display: block;
+    position: relative;
+    left: 0;
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding: 12px;
+    border-bottom: 1px solid var(--text-color-black);
+    border-radius: 8px 8px 0 0;
+    background: var(--main-color);
+    color: var(--text-color-white);
+    font-size: 1.5rem;
+    font-weight: var(--font-weight-bold);
+}
+
+#side > section > div {
+    margin: 20px;
+}
+
+#side h3 {
+    margin: 24px 0 16px;
+    font-size: 1.25rem;
+    font-weight: var(--font-weight-black);
+}
+
+#tags {
+    padding-bottom: 16px;
+    font-size: 0; /* inline-block の余白を削除 */
+}
+
+#category > li {
+    left: 0;
+  }
+
+#tags > li {
+    display: inline-block;
+    left: 0;
+    font-size: var(--font-size-small);
+    margin: 8px;
+  }
+
+#tags > li:before {
+    content: "#";
+}
+
+#tags > li:before:last-child {
+    margin-right: 0;
+}
+
+
+/* ==================================================
+ * crew の説明
+ * ================================================== */
+#desc-crew {
+    display: inline-block;
+    margin: 40px 20px 20px;
+    padding: 1.5rem;
+    border-left: 6px solid rgb(255, 234, 172);
+    background: rgba(255, 246, 218, 0.7);
+    text-align: left;
+    font-size: var(--font-size-small);
+}
+
+/* ==================================================
+ * Footer
+ * ================================================== */
+footer {
+    padding: 30px 0;
+    text-align: center;
+    background-color: var(--main-color);
+    color: var(--text-color-white);
+    font-size: var(--font-size-small);
+}
+
+footer a:link {
+    text-decoration: none;
+    color: var(--text-color-white);
+}
+
+footer a:visited {
+    color: var(--text-color-white);
+}
+
+footer p {
+    margin-bottom: 1rem;
+}
+
+footer > ul {
+    font-size: 0; /* inline-block の余白を削除 */
+}
+
+footer > ul > li {
+    display: inline-block;
+    left: 0;
+    margin: 0 8px;
+    font-size: var(--font-size-small);
+    font-weight: var(--font-weight-light);
+}
+
+footer > #copy {
+    margin: 20px 0 0;
+    font-weight: var(--font-weight-light);
+}
