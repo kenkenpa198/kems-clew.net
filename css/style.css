@@ -1,7 +1,7 @@
 /* ==================================================
  * Common
  * ================================================== */
-:root {
+ :root {
     --font-size-default: 17px;
     --font-size-small: .86rem;
     --main-color: #313539;
@@ -138,7 +138,9 @@ h1.home {
     }
 
     .main-container > nav {
-        min-width: 300px
+        /* width だと可変してしまうので min と max で指定 */
+        min-width: 350px;
+        max-width: 350px;
     }
 
     .main-container > main {
