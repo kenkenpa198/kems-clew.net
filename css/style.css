@@ -1,32 +1,80 @@
 /* ==================================================
  * Common
  * ================================================== */
- :root {
+:root {
+    /* wrapper */
+    --wrapper-width-default: 1000px;
+    --wrapper-width-small: 720px;
+
+    /* 色 */
+    --color-main: #313539;
+    --color-tag-active: #cfd;
+    --color-tag-deactive: #ddd;
+    --color-text-black: #333;
+    --color-text-white: #fff;
+    --color-text-gray: #777;
+    --color-text-thin: #bbb;
+
+    /* フォント */
+    --font-family-default: 'Noto Sans JP', sans-serif, "Font Awesome 6 Free","Font Awesome 6 Brands";
     --font-size-default: 17px;
-    --font-size-small: .86rem;
-    --main-color: #313539;
-    --text-color-black: #333;
-    --text-color-white: #fff;
-    --text-color-gray: #999;
-    --font-family-default: 'Noto Sans JP', sans-serif;
+    --font-size-small: 0.85rem;
+    --font-size-big: 1.2rem;
     --font-weight-light: 300;
+    --font-weight-default: 400;
     --font-weight-bold: 700;
     --font-weight-black: 900;
+
+    /* margin と padding */
+
+    /* あしらい */
+    --box-shadow-default: 0 10px 25px 0 rgba(85, 85, 85, 0.3);
+
 }
 
 html {
     height: 100%;
+    scroll-behavior: smooth;
 }
 
 body {
     height: 100%;
     font-size: var(--font-size-default);
+    font-weight: var(--font-weight-default);
     font-family: var(--font-family-default);
-    color: var(--main-color);
+    color: var(--color-text-black);
+}
+
+body#home {
+    background-position: right bottom;
+    background-attachment: fixed;
+    background-size: contain;
+    background-image: linear-gradient(to left, transparent 0%, transparent 20%, #fff 100%), url(../images/bg.jpg);
+    background-repeat: no-repeat;
+}
+
+@media screen and (max-width: 912px) {
+    body#home {
+        background-position: 70%;
+        background-attachment: scroll;
+        background-size: cover;
+    }
+}
+
+.wrapper {
+    max-width: var(--wrapper-width-default);
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+li {
+    margin-bottom: 0.5rem;
 }
 
 a:link {
-    color: var(--text-color-black);
+    color: var(--color-text-black);
     text-decoration: underline;
 }
 
@@ -35,332 +83,401 @@ a:hover {
 }
 
 a:visited {
-    color: var(--text-color-black);
-}
-
-ul, ol {
-    margin: 0.5rem 0.5rem 1.5rem;
-}
-
-li {
-    position: relative;
-    left: 1rem;
-    margin-bottom: 0.5rem;
+    color: var(--color-text-black);
 }
 
 /* ==================================================
  * Header
  * ================================================== */
 header {
-    background-color: var(--main-color);
-    color: var(--text-color-white);
-    padding: 16px 0 16px 30px;
+    background-color: var(--color-main);
+    color: var(--color-text-white);
     font-size: 1.2em;
+    padding: 16px 0 16px 16px;
 }
 
-header.home {
-    padding: 16px 0 20px 30px;
+header .wrapper {
+    display: contents;
 }
 
 header p {
+    margin: 0;
     font-size: var(--font-size-small);
     font-weight: var(--font-weight-light);
 }
 
 header a:link {
-    color: var(--text-color-white);
+    color: var(--color-text-white);
     text-decoration: none;
 }
 
+header a:hover {
+    opacity: 1;
+}
+
 header a:visited {
-    color: var(--text-color-white);
+    color: var(--color-text-white);
 }
 
-header > div#to-home {
-    padding: 0 30px 5px 0;
-    margin-bottom: 5px;
-    border-bottom: 1px solid var(--text-color-white) ;
-}
-
-h1 {
-    margin: 20px 0 60px;
-    text-align: center;
-    font-size: 3.5rem;
-    font-weight: var(--font-weight-black);
-}
-
-h1.home {
-    margin: 5px 0;
-    padding: 0 30px 5px 0;
-    border-bottom: 1px solid var(--text-color-white) ;
+header #title {
+    margin: 0;
     text-align: left;
+    line-height: 1;
     font-size: 2.5rem;
     font-weight: var(--font-weight-bold);
+}
+
+header hr {
+    border: 1px solid var(--color-text-white) ;
+    border-bottom: 0;
+    margin: 5px 0;
+
+}
+
+#content header #title {
+    font-size: 1rem;
+    font-weight: var(--font-weight-default);
+}
+
+#content header #catch {
+    display: none;
+}
+
+/* ==================================================
+ * スクロールボタン
+ * ================================================== */
+#home #scroll {
+    display: none;
+}
+
+/* ビューポートが 912px 以下になったらキービジュアル用の margin とスクロール表示を追加 */
+@media screen and (max-width: 912px) {
+    #home header {
+        margin-bottom: 100vh;
+        margin-bottom: 100svh;
+    }
+
+    #home #scroll {
+        display: inline-block;
+        position: absolute;
+        margin: 0 auto;
+        left: 0;
+        right: 0;
+        bottom: 2vh;
+        width: auto;
+        text-align: center;
+        font-size: var(--font-size-big);
+        font-weight: var(--font-weight-light);
+    }
+
+    #home #scroll p {
+        display: inline-block;
+        margin: 0;
+        padding: 10px 20px;
+    }
 }
 
 /* ==================================================
  * パンくずリスト
  * ================================================== */
-#breadcrumb {
-    margin: 16px 30px;
-    color: var(--text-color-gray);
+nav#breadcrumb {
+    margin: 16px 0;
+    color: var(--color-text-thin);
 }
 
-#breadcrumb > ul {
-    margin-bottom: 0;
-    margin-left: 0;
+nav#breadcrumb > ul {
+    padding-left: 0; /* デフォルトの padding を削除 */
     font-size: 0; /* inline-block の余白を削除 */
 }
 
-#breadcrumb > ul > li {
+nav#breadcrumb > ul > li {
     display: inline-block;
-    left: 0;
     font-size: var(--font-size-small);
   }
 
-#breadcrumb > ul > li:after {
+nav#breadcrumb > ul > li:after {
     content: "/";
     margin-right: 3px;
     margin-left: 3px;
 }
 
-/* ==================================================
- * Main Flex
- * ================================================== */
+nav#breadcrumb a {
+    color: var(--color-text-gray);
+    text-decoration: none;
+}
 
-/* ビューポートが 900px 以上になったらレイアウトを2カラムへ組み換え */
-@media screen and (min-width: 900px) {
+nav#breadcrumb a:hover {
+    color: var(--color-text-gray);
+    text-decoration: underline;
+    opacity: 1;
+}
+
+/* ==================================================
+ * コンテンツレイアウト
+ * ================================================== */
+.main-container {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    gap: 32px;
+}
+
+.main-container > nav#side {
+    /* width だと可変してしまう？ので min-width と max-width で指定 */
+    max-width: 350px;
+    min-width: 350px;
+}
+
+.main-container > main {
+    flex-basis: auto;
+}
+
+/* ビューポートが 912px 以下になったらレイアウトを1カラムへ組み換え */
+@media screen and (max-width: 912px) {
     .main-container {
-        display: flex;
+        display: block;
         align-items: flex-start;
         flex-direction: row-reverse;
         justify-content: space-between;
     }
 
-    .main-container > nav {
-        /* width だと可変してしまうので min と max で指定 */
-        min-width: 350px;
-        max-width: 350px;
+    .main-container > nav#side {
+        max-width: none;
+        min-width: auto;
     }
-
-    .main-container > main {
-        flex-basis: auto;
-    }
-}
-
-/* ==================================================
- * Main
- * ================================================== */
-main {
-    margin-right: 30px;
-    margin-left: 30px;
-}
-
-.background {
-    background-position: right bottom;
-    background-attachment: fixed;
-    background-size: contain;
-    background-image: linear-gradient(to left, transparent 0%, transparent 20%, #fff 100%), url(../images/bg.jpg);
-    background-repeat: no-repeat;
-}
-
-h2 {
-    display: inline-block;
-    position: relative;
-    left: -30px;
-    margin-top: 32px;
-    margin-bottom: 24px;
-    padding-left: 30px;
-    padding-bottom: 2px;
-    border-bottom: 1px solid var(--text-color-black);
-    font-size: 1.5rem;
-    font-weight: var(--font-weight-black);
-}
-
-h2 > a:link {
-    color: var(--text-color-black);
-    text-decoration: none;
-}
-
-h2 > a:visited {
-    color: var(--text-color-black);
-}
-
-.works-container {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    list-style: none;
-}
-
-/* ビューポートが 900px 以上になったら Flexbox のレイアウトを左揃えに変更 */
-@media screen and (min-width: 900px) {
-    .works-container {
-        justify-content:flex-start;
-    }
-}
-
-.works-container-index {
-    width: 60vw;
-    justify-content: flex-start;
-}
-
-.works-item {
-    width: 42%;
-    max-width: 200px;
-    height: 200px;
-    margin: 8px;
-    box-shadow: 0 10px 25px 0 rgba(85, 85, 85, 0.3);
-    border-radius: 8px;
-    cursor: pointer;
-}
-
-.works-item-index {
-    width: 200px;
-    height: 200px;
-    margin: 0 20px 20px 0;
-}
-
-.works-item img {
-    width: 100%;
-    height: 100%;
-    border-radius: 8px;
-    object-fit: cover;
-}
-
-.works-item-more {
-    margin: 0 20px 20px 0;
-    min-width: 200px;
-    min-height: 200px;
-    text-align: center;
-    line-height: 200px;
-    background: rgba(255, 255, 255, 0.7);
-}
-
-#sticky {
-    position: sticky;
-    top: 100vh;
 
 }
 
 /* ==================================================
  * サイドメニュー
  * ================================================== */
- #side {
-    margin: 20px 30px;
-    box-shadow: 0 10px 25px 0 rgba(85, 85, 85, 0.3);
+nav#side {
+    margin-top: 32px;
+    box-shadow: var(--box-shadow-default);
     border-radius: 8px;
-    background-color: var(--text-color-white);
+    background-color: var(--color-text-white);
 }
 
-/* ビューポートが 900px 以上になったら 左側のマージンを削除 */
-@media screen and (min-width: 900px) {
-    #side {
-        margin-left: 0;
-    }
-}
-
-
-#side h2 {
+nav#side h2 {
     display: block;
-    position: relative;
-    left: 0;
-    margin-top: 0;
-    margin-bottom: 24px;
+    margin: 0 0 24px;
     padding: 12px;
-    border-bottom: 1px solid var(--text-color-black);
     border-radius: 8px 8px 0 0;
-    background: var(--main-color);
-    color: var(--text-color-white);
-    font-size: 1.5rem;
+    background: var(--color-main);
+    color: var(--color-text-white);
+    font-size: 1.4rem;
     font-weight: var(--font-weight-bold);
 }
 
-#side > section > div {
-    margin: 20px;
+nav#side > section > div {
+    padding: 0 20px 20px;
 }
 
-#side h3 {
-    margin: 24px 0 16px;
-    font-size: 1.25rem;
+nav#side h3 {
+    /* margin: 24px 0 16px; */
+    font-size: 1.2rem;
     font-weight: var(--font-weight-black);
 }
 
-#tags {
-    padding-bottom: 16px;
+nav#side ul input, label {
+    user-select: none;
+    cursor: pointer;
+}
+
+ul#category {
+    padding-left: 20px;
+}
+
+ul#category > li {
+    margin-bottom: 5px;
+    list-style: none;
+}
+
+ul#tags {
+    padding-left: 12px; /* デフォルトの padding を削除 */
     font-size: 0; /* inline-block の余白を削除 */
 }
 
-#category > li {
-    left: 0;
-  }
-
-#tags > li {
+ul#tags > li {
     display: inline-block;
-    left: 0;
+    margin: 6px;
+    padding: 4px 10px;
+    border-radius: 20px;
+    background: var(--color-tag-deactive);
     font-size: var(--font-size-small);
-    margin: 8px;
   }
 
-#tags > li:before {
+ul#tags > li:before {
     content: "#";
 }
 
-#tags > li:before:last-child {
-    margin-right: 0;
+/* ==================================================
+ * Main
+ * ================================================== */
+
+h1 {
+    margin: 22px 0 60px;
+    text-align: center;
+    font-size: 3.5rem;
+    font-weight: var(--font-weight-black);
 }
 
+main h2 {
+    display: inline-block;
+    margin-top: 32px;
+    margin-bottom: 24px;
+    padding-right: 32px;
+    padding-bottom: 2px;
+    border-bottom: 1px solid var(--color-text-black);
+    font-size: 1.6rem;
+    font-weight: var(--font-weight-black);
+}
+
+main h2 > a:link {
+    color: var(--color-text-black);
+    text-decoration: none;
+}
+
+main h2 > a:visited {
+    color: var(--color-text-black);
+}
 
 /* ==================================================
- * crew の説明
+ * Main / Works Flexbox
  * ================================================== */
-#desc-crew {
+.works-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+}
+
+@media screen and (min-width: 912px) {
+    #home .works-container {
+        width: 55vw;
+    }
+}
+
+@media screen and (min-width: 912px) {
+    .works-container {
+        justify-content: flex-start;
+    }
+}
+
+div.works-item {
+    width: 30%;
+    max-width: 185px;
+    min-width: 150px;
+    height: 185px;
+    box-shadow: var(--box-shadow-default);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+div.works-item:hover {
+    transform: scale(1.05);
+}
+
+div.works-item img {
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+div.works-item p {
+    margin: 0;
+    width:100%;
+    height: 100%;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.7);
+    text-align: center;
+    line-height: 185px;
+    font-weight: var(--font-weight-light);
+}
+
+div.works-item a {
+    text-decoration: none;
+}
+
+/* ==================================================
+ * clew の説明
+ * ================================================== */
+div#desc-crew {
     display: inline-block;
-    margin: 40px 20px 20px;
-    padding: 1.5rem;
+    margin-top: 60px;
+    padding: 1rem;
     border-left: 6px solid rgb(255, 234, 172);
     background: rgba(255, 246, 218, 0.7);
     text-align: left;
     font-size: var(--font-size-small);
 }
 
+div#desc-crew li {
+    margin-bottom: 0.5rem;
+}
+
 /* ==================================================
  * Footer
  * ================================================== */
 footer {
+    position: sticky;
+    top: 100vh;
+    margin-top: 40px;
     padding: 30px 0;
     text-align: center;
-    background-color: var(--main-color);
-    color: var(--text-color-white);
+    background-color: var(--color-main);
+    color: var(--color-text-white);
     font-size: var(--font-size-small);
+    font-weight: var(--font-weight-light);
 }
 
-footer a:link {
-    text-decoration: none;
-    color: var(--text-color-white);
+#home footer {
+    margin-top: 16px;
 }
 
-footer a:visited {
-    color: var(--text-color-white);
+footer .wrapper {
+    display: contents;
 }
 
 footer p {
     margin-bottom: 1rem;
 }
 
-footer > ul {
+footer ul {
+    padding-left: 0; /* デフォルトの padding を削除 */
     font-size: 0; /* inline-block の余白を削除 */
 }
 
-footer > ul > li {
+footer ul > li {
     display: inline-block;
-    left: 0;
-    margin: 0 8px;
+    margin: 0 8px 10px;
     font-size: var(--font-size-small);
-    font-weight: var(--font-weight-light);
 }
 
-footer > #copy {
-    margin: 20px 0 0;
-    font-weight: var(--font-weight-light);
+footer p#copy {
+    margin: 8px 0 0;
+}
+
+footer #go-top {
+    margin-bottom: 0px;
+    text-align: right;
+    font-size: var(--font-size-big);
+}
+
+footer #go-top p {
+    display: inline-block;
+    margin: 0;
+    padding: 10px 32px 0;
+}
+
+footer a:link {
+    text-decoration: none;
+    color: var(--color-text-white);
+}
+
+footer a:visited {
+    color: var(--color-text-white);
 }
