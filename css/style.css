@@ -446,8 +446,14 @@ div#desc-crew {
     font-size: var(--font-size-small);
 }
 
-div#desc-crew li {
-    margin-bottom: 0.5rem;
+div#desc-crew p:first-child {
+    margin-top: 0;
+}
+
+div#desc-crew p:last-child {
+    margin-top: 2rem;
+    margin-bottom: 0;
+    text-align: right;
 }
 
 /* ==================================================
