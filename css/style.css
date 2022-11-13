@@ -53,7 +53,8 @@ body#home {
     background-repeat: no-repeat;
 }
 
-@media screen and (max-width: 912px) {
+@media screen and (max-width: 820px) {
+    /* Home の背景位置を調整してキービジュアルとして用いる */
     body#home {
         background-position: 70%;
         background-attachment: scroll;
@@ -147,37 +148,41 @@ header hr {
     display: none;
 }
 
-/* ==================================================
- * スクロールボタン
- * ================================================== */
-#home #scroll {
-    display: none;
-}
-
-/* ビューポートが 912px 以下になったらキービジュアル用の margin とスクロール表示を追加 */
-@media screen and (max-width: 912px) {
+@media screen and (max-width: 820px) {
+    /* Home へ1画面分の margin を設定しファーストビュー表示領域を作成する */
     #home header {
         margin-bottom: 100vh;
         margin-bottom: 100svh;
     }
+}
 
+/* ==================================================
+ * スクロールボタン
+ * ================================================== */
+
+ #home #scroll {
+    display: none;  /* メディアクエリが発動しない大きな画面の時は非表示 */
+    position: absolute;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    bottom: 2vh;
+    width: auto;
+    text-align: center;
+    font-size: var(--font-size-big);
+    font-weight: var(--font-weight-light);
+}
+
+#home #scroll p {
+    display: inline-block;
+    margin: 0;
+    padding: 10px 20px; /* スクロールボタンが押しやすいように padding などを設定 */
+}
+
+@media screen and (max-width: 820px) {
+    /* Home へ スクロールボタンを表示する */
     #home #scroll {
         display: inline-block;
-        position: absolute;
-        margin: 0 auto;
-        left: 0;
-        right: 0;
-        bottom: 2vh;
-        width: auto;
-        text-align: center;
-        font-size: var(--font-size-big);
-        font-weight: var(--font-weight-light);
-    }
-
-    #home #scroll p {
-        display: inline-block;
-        margin: 0;
-        padding: 10px 20px;
     }
 }
 
@@ -237,15 +242,13 @@ nav#breadcrumb a:hover {
     flex-basis: auto;
 }
 
-/* ビューポートが 912px 以下になったらレイアウトを1カラムへ組み換え */
-@media screen and (max-width: 912px) {
+@media screen and (max-width: 820px) {
+    /* Flexbox を解除しサイドメニューとメインコンテンツを1カラムで表示する */
     .main-container {
         display: block;
-        align-items: flex-start;
-        flex-direction: row-reverse;
-        justify-content: space-between;
     }
 
+    /* width の解除 */
     .main-container > nav#side {
         max-width: none;
         min-width: auto;
@@ -352,19 +355,24 @@ main h2 > a:visited {
 .works-container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: flex-start;
     gap: 16px;
 }
 
-@media screen and (min-width: 912px) {
-    #home .works-container {
-        width: 55vw;
-    }
+/* Home の背景に被らないようコンテナサイズを調整 */
+#home .works-container {
+    width: 55vw;
 }
 
-@media screen and (min-width: 912px) {
+@media screen and (max-width: 820px) {
+    /* アイテムの並び方を flex-start から center へ変更する */
     .works-container {
-        justify-content: flex-start;
+        justify-content: center;
+    }
+
+    /* Home のコンテナサイズを削除する */
+    #home .works-container {
+        width: auto;
     }
 }
 
@@ -377,10 +385,29 @@ div.works-item {
     border-radius: 8px;
     cursor: pointer;
     transition: 0.5s;
+    flex-grow: 1;
+}
+
+/* Home のアイテムは 185x185 で固定 */
+#home div.works-item {
+    min-width: 185px;
+}
+
+@media screen and (max-width: 820px) {
+    /* 185x185 の固定を解除 */
+    #home div.works-item {
+        min-width: 150px;
+        max-width: none;
+    }
+
+    /* 3カラムになる場合は more を3カラム分で表示する */
+    #home div.work-item:last-child {
+        flex-grow: 2;
+    }
 }
 
 div.works-item:hover {
-    transform: scale(1.05);
+    transform: scale(1.04);
 }
 
 div.works-item img {
