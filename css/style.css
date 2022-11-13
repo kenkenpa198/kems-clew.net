@@ -233,13 +233,11 @@ nav#breadcrumb a:hover {
 }
 
 .main-container > nav#side {
-    /* width だと可変してしまう？ので min-width と max-width で指定 */
     max-width: 350px;
-    min-width: 350px;
 }
 
 .main-container > main {
-    flex-basis: auto;
+    flex: 1;
 }
 
 @media screen and (max-width: 820px) {
