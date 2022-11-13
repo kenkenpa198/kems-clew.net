@@ -46,7 +46,7 @@ body {
 }
 
 body#home {
-    background-position: right bottom;
+    background-position: right;
     background-attachment: fixed;
     background-size: contain;
     background-image: linear-gradient(to left, transparent 0%, transparent 20%, #fff 100%), url(../images/bg.jpg);
@@ -69,8 +69,12 @@ body#home {
     padding-right: 16px;
 }
 
+p, li {
+    line-height: 1.4rem;
+}
+
 li {
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.25rem;
 }
 
 a:link {
@@ -102,6 +106,7 @@ header .wrapper {
 
 header p {
     margin: 0;
+    line-height: 1rem;
     font-size: var(--font-size-small);
     font-weight: var(--font-weight-light);
 }
@@ -131,11 +136,10 @@ header hr {
     border: 1px solid var(--color-text-white) ;
     border-bottom: 0;
     margin: 5px 0;
-
 }
 
 #content header #title {
-    font-size: 1rem;
+    font-size: var(--font-size-big);
     font-weight: var(--font-weight-default);
 }
 
@@ -281,7 +285,6 @@ nav#side h3 {
 }
 
 nav#side ul input, label {
-    user-select: none;
     cursor: pointer;
 }
 
@@ -290,7 +293,6 @@ ul#category {
 }
 
 ul#category > li {
-    margin-bottom: 5px;
     list-style: none;
 }
 
@@ -317,18 +319,19 @@ ul#tags > li:before {
  * ================================================== */
 
 h1 {
-    margin: 22px 0 60px;
+    margin: 16px 0 60px;
     text-align: center;
     font-size: 3.5rem;
     font-weight: var(--font-weight-black);
 }
 
 main h2 {
-    display: inline-block;
+    /* display: inline-block; */
     margin-top: 32px;
     margin-bottom: 24px;
     padding-right: 32px;
     padding-bottom: 2px;
+    width: fit-content;
     border-bottom: 1px solid var(--color-text-black);
     font-size: 1.6rem;
     font-weight: var(--font-weight-black);
@@ -400,15 +403,16 @@ div.works-item p {
 
 div.works-item a {
     text-decoration: none;
+    opacity: 1;
 }
 
 /* ==================================================
  * clew の説明
  * ================================================== */
 div#desc-crew {
-    display: inline-block;
     margin-top: 60px;
     padding: 1rem;
+    width: fit-content;
     border-left: 6px solid rgb(255, 234, 172);
     background: rgba(255, 246, 218, 0.7);
     text-align: left;
@@ -469,8 +473,8 @@ footer #go-top {
 
 footer #go-top p {
     display: inline-block;
-    margin: 0;
-    padding: 10px 32px 0;
+    margin-right: 16px;
+    margin-bottom: 0;
 }
 
 footer a:link {
