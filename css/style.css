@@ -222,7 +222,7 @@ nav#breadcrumb a:hover {
 }
 
 /* ==================================================
- * Flexbox レイアウト
+ * コンテンツページ Flexbox レイアウト
  * ================================================== */
 .main-container {
     display: flex;
@@ -241,7 +241,7 @@ nav#breadcrumb a:hover {
     flex: 1;
 }
 
-@media screen and (max-width: 820px) {
+@media screen and (max-width: 1035px) {
     /* Flexbox を解除しサイドメニューとメインコンテンツを1カラムで表示する */
     .main-container {
         flex-direction: column;
@@ -256,7 +256,7 @@ nav#breadcrumb a:hover {
 }
 
 /* ==================================================
- * サイドメニュー
+ * コンテンツページ サイドメニュー
  * ================================================== */
 nav#side {
     margin-top: 32px;
@@ -317,7 +317,7 @@ ul#tags > li:before {
 }
 
 /* ==================================================
- * Main
+ * コンテンツページ メインエリア
  * ================================================== */
 
 main {
@@ -355,6 +355,16 @@ main h2 > a:visited {
 /* ==================================================
  * Works Masonry レイアウト
  * ================================================== */
+
+#home .works-wrap {
+    width: 55vw; /* 背景に被らないように表示する */
+}
+
+#content .works-wrap {
+    max-width: 748px; /* 最大3列まで表示する */
+    margin: 0 auto;
+}
+
 .works {
     margin: 0 auto;
     padding: 0;
@@ -365,8 +375,16 @@ main h2 > a:visited {
 }
 
 @media screen and (max-width: 820px) {
+    #home .works-wrap {
+        width: 100%;
+    }
+
     #home .works {
         margin: 0 auto;
+    }
+
+    #content .works-wrap {
+        width: 100%;
     }
 }
 
@@ -380,8 +398,8 @@ main h2 > a:visited {
 }
 
 .works-item:hover {
-    transform: scale(1.04);
-    opacity: 0.7;
+    transform: scale(1.05);
+    opacity: 1;
 }
 
 /* 画像の読み込み中は非表示にする */
