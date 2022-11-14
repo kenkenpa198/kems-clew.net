@@ -3,7 +3,7 @@
  * ================================================== */
 :root {
     /* wrapper */
-    --wrapper-width-default: 1000px;
+    --wrapper-width-default: 1100px;
     --wrapper-width-small: 720px;
 
     /* 色 */
@@ -222,7 +222,7 @@ nav#breadcrumb a:hover {
 }
 
 /* ==================================================
- * コンテンツレイアウト
+ * Flexbox レイアウト
  * ================================================== */
 .main-container {
     display: flex;
@@ -233,7 +233,8 @@ nav#breadcrumb a:hover {
 }
 
 .main-container > nav#side {
-    max-width: 350px;
+    width: 320px;
+    min-width: 320px; /* Masonry の fitWidth で可変してしまわないように設定 */
 }
 
 .main-container > main {
@@ -243,13 +244,13 @@ nav#breadcrumb a:hover {
 @media screen and (max-width: 820px) {
     /* Flexbox を解除しサイドメニューとメインコンテンツを1カラムで表示する */
     .main-container {
-        display: block;
+        flex-direction: column;
+        justify-content: center;
     }
 
     /* width の解除 */
     .main-container > nav#side {
-        max-width: none;
-        min-width: auto;
+        width: auto;
     }
 
 }
@@ -319,6 +320,10 @@ ul#tags > li:before {
  * Main
  * ================================================== */
 
+main {
+    width: 100%;
+}
+
 h1 {
     margin: 16px 0 60px;
     text-align: center;
@@ -348,85 +353,53 @@ main h2 > a:visited {
 }
 
 /* ==================================================
- * Main / Works Flexbox
+ * Works Masonry レイアウト
  * ================================================== */
-.works-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    gap: 16px;
+.works {
+    margin: 0 auto;
+    padding: 0;
 }
 
-/* Home の背景に被らないようコンテナサイズを調整 */
-#home .works-container {
-    width: 55vw;
-}
-
-@media screen and (max-width: 820px) {
-    /* アイテムの並び方を flex-start から center へ変更する */
-    .works-container {
-        justify-content: center;
-    }
-
-    /* Home のコンテナサイズを削除する */
-    #home .works-container {
-        width: auto;
-    }
-}
-
-div.works-item {
-    width: 30%;
-    max-width: 185px;
-    min-width: 150px;
-    height: 185px;
-    box-shadow: var(--box-shadow-default);
-    border-radius: 8px;
-    cursor: pointer;
-    transition: 0.5s;
-    flex-grow: 1;
-}
-
-/* Home のアイテムは 185x185 で固定 */
-#home div.works-item {
-    min-width: 185px;
-}
-
-@media screen and (max-width: 820px) {
-    /* 185x185 の固定を解除 */
-    #home div.works-item {
-        min-width: 150px;
-        max-width: none;
-    }
-
-    /* 3カラムになる場合は more を3カラム分で表示する */
-    #home div.work-item:last-child {
-        flex-grow: 2;
-    }
-}
-
-div.works-item:hover {
-    transform: scale(1.04);
-}
-
-div.works-item img {
-    width: 100%;
-    height: 100%;
-    border-radius: 8px;
-    object-fit: cover;
-}
-
-div.works-item p {
+#home .works {
     margin: 0;
-    width:100%;
-    height: 100%;
-    border-radius: 8px;
-    background: rgba(255, 255, 255, 0.7);
-    text-align: center;
-    line-height: 185px;
-    font-weight: var(--font-weight-light);
 }
 
-div.works-item a {
+@media screen and (max-width: 820px) {
+    #home .works {
+        margin: 0 auto;
+    }
+}
+
+.works-item {
+    margin-top: 16px;
+    margin-bottom: 0;
+    width: 200px;
+    list-style: none;
+    border-radius: 8px;
+    transition: 0.5s;
+}
+
+.works-item:hover {
+    transform: scale(1.04);
+    opacity: 0.7;
+}
+
+/* 画像の読み込み中は非表示にする */
+/* 画像の読込完了後、JS 処理で .is-loading が削除され表示される */
+.works-item.is-loading {
+    opacity: 0;
+}
+
+.works-item img {
+    width: 100%;
+    border-radius: 8px;
+    vertical-align: top; /* a タグでできる隙間を消す */
+    filter: drop-shadow(0 10px 20px #bbb);
+    object-fit: cover;
+    /* drop-shadow: var(--box-shadow-default); */
+}
+
+.works-item a {
     text-decoration: none;
     opacity: 1;
 }

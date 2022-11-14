@@ -8,6 +8,10 @@
     <title>KeM's Clew | けんころの毛糸玉</title>
     <link rel="stylesheet" href="./css/normalize.css">
     <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/vender/jquery-3.6.1.min.js"></script>
+    <script src="./js/vender/imagesloaded.pkgd.min.js"></script>
+    <script src="./js/vender/masonry.pkgd.min.js"></script>
+    <script src="./js/main.js"></script>
 </head>
 <body id="home">
     <header id="top">
@@ -26,12 +30,9 @@
         <main>
             <section>
                 <h2 id="scroll-goal"><a href="./works.html">Works</a></h2>
-                <div class="works-container">
-                    <div class="works-item works-item-index"><img src="./images/hello_mastodon_1080.jpg" alt=""></div>
-                    <div class="works-item works-item-index"><img src="./images/eeyan_1080.jpg" alt=""></div>
-                    <div class="works-item works-item-index"><img src="./images/megane_1080.jpg" alt=""></div>
-                    <div class="works-item"><a href="./works.html"><p>more <i class="fa-solid fa-caret-right"></i></p></a></div>
-                </div>
+                <ul class="works" id="works">
+                    <!-- masonry でグリッドレイアウトを生成 -->
+                </ul>
             </section>
             <section>
                 <h2><a href="#">Notes</i></a></h2>

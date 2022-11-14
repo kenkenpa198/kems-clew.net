@@ -8,6 +8,10 @@
     <title>Works | KeM's Clew | けんころの毛糸玉</title>
     <link rel="stylesheet" href="./css/normalize.css">
     <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/vender/jquery-3.6.1.min.js"></script>
+    <script src="./js/vender/imagesloaded.pkgd.min.js"></script>
+    <script src="./js/vender/masonry.pkgd.min.js"></script>
+    <script src="./js/main.js"></script>
 </head>
 <body id="content">
     <header id="top">
@@ -62,25 +66,9 @@
             <main>
                 <section>
                     <h2>2022</h2>
-                    <div class="works-container">
-                        <div class="works-item"><img src="./images/hello_mastodon_1080.jpg" alt=""></div>
-                        <div class="works-item"><img src="./images/spinner_1080.jpg" alt=""></div>
-                        <div class="works-item"><img src="./images/eeyan_1080.jpg" alt=""></div>
-                        <div class="works-item"><img src="./images/megane_1080.jpg" alt=""></div>
-                        <div class="works-item"><img src="./images/hello_mastodon_1080.jpg" alt=""></div>
-                        <div class="works-item"><img src="./images/spinner_1080.jpg" alt=""></div>
-                        <div class="works-item"><img src="./images/eeyan_1080.jpg" alt=""></div>
-                    </div>
-                </section>
-                <section>
-                    <h2>2021</h2>
-                    <div class="works-container">
-                        <div class="works-item"><img src="./images/hello_mastodon_1080.jpg" alt=""></div>
-                        <div class="works-item"><img src="./images/spinner_1080.jpg" alt=""></div>
-                        <div class="works-item"><img src="./images/eeyan_1080.jpg" alt=""></div>
-                        <div class="works-item"><img src="./images/megane_1080.jpg" alt=""></div>
-                        <div class="works-item"><img src="./images/hello_mastodon_1080.jpg" alt=""></div>
-                    </div>
+                    <ul class="works" id="works">
+                        <!-- masonry でグリッドレイアウトを生成 -->
+                    </ul>
                 </section>
             </main>
         </div>
@@ -105,5 +93,6 @@
     <!-- 表示処理の後に読み込み -->
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700;900&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/338ea6a4d5.js" crossorigin="anonymous"></script>
+    <script></script>
 </body>
 </html>
