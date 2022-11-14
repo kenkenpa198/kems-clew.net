@@ -394,9 +394,9 @@ main h2 > a:visited {
     width: 100%;
     border-radius: 8px;
     vertical-align: top; /* a タグでできる隙間を消す */
-    filter: drop-shadow(0 10px 20px #bbb);
     object-fit: cover;
-    /* drop-shadow: var(--box-shadow-default); */
+    filter: drop-shadow(0 10px 20px #bbb);
+    transform: translateZ(0); /* iOS Safari へ GPU レイヤーの作成を促し drop-shadow の表示バグを起こさないようにする */
 }
 
 .works-item a {
