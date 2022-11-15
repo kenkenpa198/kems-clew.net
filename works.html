@@ -32,17 +32,19 @@
             <nav id="side">
                 <section>
                     <h2>Filter</h2>
-                    <div>
+                    <form class="filter-form" id="works-filter">
                         <section>
                             <h3>Category</h3>
                             <ul id="category">
-                                <li><input type="checkbox" id="illust"><label for="illust"> Illustrations</label></li>
-                                <li><input type="checkbox" id="dev"><label for="dev"> Developments</label></li>
-                                <li><input type="checkbox" id="others"><label for="others"> Others</label></li>
+                                <li class="form-item"><input type="radio" name="filter" id="filter-all" value="all" checked><label for="filter-all"> All</label></li>
+                                <li class="form-item"><input type="radio" name="filter" id="filter-developments" value="developments"><label for="filter-developments"> Developments</label></li>
+                                <li class="form-item"><input type="radio" name="filter" id="filter-illustrations" value="illustrations"><label for="filter-illustrations"> Illustrations</label></li>
+                                <li class="form-item"><input type="radio" name="filter" id="filter-others" value="others"><label for="filter-others"> Others</label></li>
                             </ul>
                         </section>
                         <section>
                             <h3>Tag</h3>
+                            <p>タグ機能は準備中です。</p>
                             <ul id="tags">
                                 <li>2019</li>
                                 <li>2020</li>
@@ -60,7 +62,7 @@
                                 <li>世界樹の迷宮</li>
                             </ul>
                         </section>
-                    </div>
+                    </form>
                 </section>
             </nav>
             <main>
@@ -70,6 +72,7 @@
                         <ul class="works" id="works">
                             <!-- masonry でグリッドレイアウトを生成 -->
                         </ul>
+                        <button class="load-more" id="load-more">more<br><i class="fa-solid fa-caret-down"></i></button>
                     </div>
                 </section>
             </main>

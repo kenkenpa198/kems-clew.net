@@ -91,6 +91,11 @@ a:visited {
     color: var(--color-text-black);
 }
 
+/* iOS でボタン類が青色になってしまう件を防ぐ */
+select, button {
+    color: var(--color-text-black);
+}
+
 /* ==================================================
  * Header
  * ================================================== */
@@ -276,18 +281,19 @@ nav#side h2 {
     font-weight: var(--font-weight-bold);
 }
 
-nav#side > section > div {
+nav#side .filter-form {
     padding: 0 20px 20px;
+}
+
+nav#side .filter-form label {
+    cursor: pointer;
+    user-select: none;
 }
 
 nav#side h3 {
     /* margin: 24px 0 16px; */
     font-size: 1.2rem;
     font-weight: var(--font-weight-black);
-}
-
-nav#side ul input, label {
-    cursor: pointer;
 }
 
 ul#category {
@@ -408,6 +414,10 @@ main h2 > a:visited {
     opacity: 0;
 }
 
+.works-item .caption {
+    display: none;
+}
+
 .works-item img {
     width: 100%;
     border-radius: 8px;
@@ -417,9 +427,54 @@ main h2 > a:visited {
     transform: translateZ(0); /* iOS Safari へ GPU レイヤーの作成を促し drop-shadow の表示バグを起こさないようにする */
 }
 
+/* Home の4枚目に配置する more  */
+.works-item .item-more {
+    margin: 0;
+    width:100%;
+    height: 100%;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.7);
+    text-align: center;
+    font-weight: var(--font-weight-light);
+    line-height: 200px;
+    filter: drop-shadow(0 10px 20px #bbb);
+    transform: translateZ(0); /* iOS Safari へ GPU レイヤーの作成を促し drop-shadow の表示バグを起こさないようにする */
+}
+
 .works-item a {
     text-decoration: none;
     opacity: 1;
+}
+
+
+/* 追加読み込みボタン */
+.load-more {
+    display: block;
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0.75em 0;
+    width: 70%;
+    border: none;
+    border-radius: 8px;
+    font-weight: var(--font-weight-light);
+    background: #fff;
+    filter: drop-shadow(0 10px 20px #bbb);
+    transform: translateZ(0); /* iOS Safari へ GPU レイヤーの作成を促し drop-shadow の表示バグを起こさないようにする */
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+
+.load-more a:link {
+    color: var(--color-text-black);
+    text-decoration: underline;
+}
+
+
+.load-more:hover {
+    transform: scale(1.05);
+    opacity: 0.7;
 }
 
 /* ==================================================

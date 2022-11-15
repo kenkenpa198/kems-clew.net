@@ -1,8 +1,19 @@
 $(function () {
     $('#works').each(function () {
 
-        // #works 要素がギャラリーのコンテナになる
-        var $container = $(this);
+        var $container = $(this),
+            $loadMoreButton = $('#load-more'), // 追加ボタン
+            $filter = $('#works-filter'),     // フィルタリングのフォーム
+            addItemCount = 16,                // 一度に表示するアイテム数
+            added = 0,                        // 表示済みのアイテム数
+            allData = [],                     // すべての JSON データ
+            filteredData = [];                // フィルタリングされた JSON データ
+
+
+        // Home の場合は3つのみを表示するため addItemCount へ3を再代入する
+        if ($('#home').length) {
+            var addItemCount = 3;
+        } 
 
         // オプションを設定して masonry を準備
         $container.masonry({
@@ -13,44 +24,119 @@ $(function () {
             transitionDuration: 'none'   // デフォルトの transition を削除（CSS と競合するため）
         });
 
-        // JSON ファイルをリクエストして成功したら関数を実行
-        $.getJSON('./data/content.json', function (data) {
+        // JSON を取得し initWorks 関数を実行
+        $.getJSON('./data/content.json', initWorks);
 
-            // ループで生成した DOM 要素を一時的に保存する配列
-            var elements = [];
+        // Works ギャラリーを初期化する関数
+        function initWorks (data) {
 
-            // JSON の配列（data）の要素（item）ごとにループ処理
-            $.each(data, function (i, item) {
+            // 取得した JSON データを格納
+            allData = data;
 
-                // 配列の要素から HTML 文字列を生成する
+            // 新しい順（降順）で表示するため配列を逆順にする
+            allData.reverse();
+
+            // 最初の状態ではフィルタリングせずそのまま全データを渡す
+            filteredData = allData;
+
+            // 最初のアイテム群を表示
+            addItems();
+
+            // 追加ボタンがクリックされたら追加で表示
+            $loadMoreButton.on('click', addItems);
+
+            // フィルターのラジオボタンが変更されたらフィルタリングを実行
+            $filter.on('change', 'input[type="radio"]', filterItems);
+        }
+
+        // アイテムを生成しドキュメントに挿入する関数
+        function addItems (filter) {
+            var elements = [],
+                // 追加するデータの配列
+                slicedData = filteredData.slice(added, added + addItemCount);
+
+            // slicedData の要素ごとに DOM 要素を生成
+            $.each(slicedData, function (i, item) {
                 var itemHTML =
                     '<li class="works-item is-loading">' +
                         '<a href="' + item.images.large + '">' +
                             '<img src="' + item.images.thumb + '" alt="' + item.title + '">' +
+                            '<span class="caption">' +
+                                '<span class="inner">' +
+                                    '<b class="title">' + item.title + '</b>' +
+                                    '<time class="date" datatime="' + item.date + '">' +
+                                        item.date.replace(/-0?/g, '/') + // 正規表現で -0 または - を / へ置換 
+                                    '</time>' +
+                                '</span>' +
+                            '</span>' +
                         '</a>' +
                     '</li>';
-
-                // HTML 文字列を DOM 要素化し、配列へ追加
                 elements.push($(itemHTML).get(0));
             });
 
-            // 降順で表示するため配列を逆順にする
-            var elementsReverse = elements.reverse()
-
-            // Home の場合は3つのみを表示する
+            // Home の場合は配列の最後に more ボタン を挿入する
             if ($('#home').length) {
-                elementsReverse = elementsReverse.slice(0, 3)
+                var itemMore =
+                    '<div class="works-item">' +
+                        '<a href="./works.html">' +
+                            '<p class="item-more">more <i class="fa-solid fa-caret-right"></i></p>' +
+                        '</a>' +
+                    '</div>';
+                elements.push($(itemMore).get(0));
             } 
 
-            // DOM を挿入
-            $container.append(elementsReverse);
+            // DOM 要素の配列をコンテナに挿入し Masonry レイアウトを実行
+            $container
+                .append(elements)
+                .imagesLoaded(function () {
+                    $(elements).removeClass('is-loading');
+                    $container.masonry('appended', elements);
 
-            // 画像の読み込みが完了したら Masonry レイアウトを実行する
-            $container.imagesLoaded(function () {
-                $(elements).removeClass('is-loading');
-                $container.masonry('appended', elements);
-            });
+                    // フィルタリング時は再配置
+                    if (filter) {
+                        $container.masonry();
+                    }
+                });
 
-        });
+            // 追加済みアイテム数の更新
+            added += slicedData.length;
+
+            // JSON データがすべて追加し終わっていたら追加ボタンを消す
+            if (added < filteredData.length) {
+                $loadMoreButton.show();
+            } else {
+                $loadMoreButton.hide();
+            }
+        }
+
+        // アイテムをフィルタリングする関数
+        function filterItems () {
+            var key = $(this).val(), // チェックされたラジオボタンの value
+
+                // 追加済みの Masonry アイテム
+                masonryItems = $container.masonry('getItemElements');
+
+            // Masonry アイテムを削除
+            $container.masonry('remove', masonryItems);
+
+            // フィルタリング済みアイテムのデータと追加済みアイテム数をリセット
+            filteredData = [];
+            added = 0;
+
+            if (key === 'all') {
+                // all がチェックされた場合、すべての JSON データを格納
+                filteredData = allData;
+            } else {
+                // all 以外の場合、キーと一致するデータを抽出
+                filteredData = $.grep(allData, function (item) {
+                    return item.category === key;
+                });
+            }
+
+            // アイテムを追加
+            addItems(true);
+        }
+
     });
+
 });
