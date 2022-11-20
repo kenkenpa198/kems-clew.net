@@ -247,17 +247,34 @@ ___
 
 ### 11.1. コードブロック
 
-通常
+無指定（`plaintext`）
 
 ```
-#include <stdio.h>
-
-int main(void) {
-    printf("Hello, World!\n");
-}
+abcdefABCDEF
+0123456789
+あいうえおアイウエオ
+漢字漢字漢字
 ```
 
-シンタックスハイライト
+`text`
+
+```text
+abcdefABCDEF
+0123456789
+あいうえおアイウエオ
+漢字漢字漢字
+```
+
+`shell`
+
+```shell
+# shell
+$ cd
+$ git clone https://github.com/kenkenpa198/dotfiles.git
+$ source ~/dotfiles/.setup/Linux/setup.sh
+```
+
+`c`
 
 ```c
 // C
@@ -268,12 +285,7 @@ int main(void) {
 }
 ```
 
-```shell
-# shell
-$ cd
-$ git clone https://github.com/kenkenpa198/dotfiles.git
-$ source ~/dotfiles/.setup/Linux/setup.sh
-```
+`sql`
 
 ```sql
 -- SQL
