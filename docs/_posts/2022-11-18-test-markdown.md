@@ -3,7 +3,7 @@ title: マークダウンのテスト用ページ
 layout: post
 page-category: note
 created: 2022-11-18
-updated: 2022-11-20
+updated: 2022-11-21
 ---
 
 マークダウン記法の表示をテストしたり、CSS の実装内容を確認するページです。  
@@ -26,6 +26,7 @@ updated: 2022-11-20
     - [6.1. 相対パス指定（マークダウンから見たパス）](#61-相対パス指定マークダウンから見たパス)
     - [6.2. 相対パス指定（Jekyll の記法）](#62-相対パス指定jekyll-の記法)
     - [6.3. 絶対パス指定](#63-絶対パス指定)
+    - [6.4. 大きい画像](#64-大きい画像)
 - [7. テーブル](#7-テーブル)
 - [8. 水平線](#8-水平線)
 - [9. 引用](#9-引用)
@@ -101,25 +102,29 @@ __ボールド（アンダースコア2個）__
 
 ### 6.1. 相対パス指定（マークダウンから見たパス）
 
-`./../images/20221108_hello_mastodon.jpg`  
-![代替テキスト](./../images/20221108_hello_mastodon.jpg)
+`./../images/works-thumb/20221108_hello_mastodon.jpg`  
+![代替テキスト](./../images/works-thumb/20221108_hello_mastodon.jpg)
 
 ### 6.2. 相対パス指定（Jekyll の記法）
 
 記述したパス（ `{ {` `} }` のスペースは除く）:  
-`{ { "./../images/20221108_hello_mastodon.jpg" | relative_url } }`  
+`{ { "./../images/works-thumb/20221108_hello_mastodon.jpg" | relative_url } }`  
 
 変換されたパス:  
-`{{ "./../images/20221108_hello_mastodon.jpg" | relative_url }}`  
-![代替テキスト]({{ "./../images/20221108_hello_mastodon.jpg" | relative_url }})
+`{{ "./../images/works-thumb/20221108_hello_mastodon.jpg" | relative_url }}`  
+![代替テキスト]({{ "./../images/works-thumb/20221108_hello_mastodon.jpg" | relative_url }})
 
 ### 6.3. 絶対パス指定
 
-`/docs/images/20221108_hello_mastodon.jpg`  
-![代替テキスト](/docs/images/20221108_hello_mastodon.jpg)
+`/docs/images/works-thumb/20221108_hello_mastodon.jpg`  
+![代替テキスト](/docs/images/works-thumb/20221108_hello_mastodon.jpg)
 
-`/images/20221108_hello_mastodon.jpg`  
-![代替テキスト](/images/20221108_hello_mastodon.jpg)
+`/images/works-thumb/20221108_hello_mastodon.jpg`  
+![代替テキスト](/images/works-thumb/20221108_hello_mastodon.jpg)
+
+### 6.4. 大きい画像
+
+![代替テキスト]({{ "./../images/works-large/20221108_hello_mastodon.jpg" | relative_url }})
 
 ## 7. テーブル
 
