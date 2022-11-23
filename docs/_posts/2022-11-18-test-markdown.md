@@ -102,29 +102,32 @@ __ボールド（アンダースコア2個）__
 
 ### 6.1. 相対パス指定（マークダウンから見たパス）
 
-`./../images/works-thumb/20221108_hello_mastodon.jpg`  
-![代替テキスト](./../images/works-thumb/20221108_hello_mastodon.jpg)
+`./../assets/images/works-thumb/20221108_hello_mastodon.jpg`  
+![代替テキスト](./../assets/images/works-thumb/20221108_hello_mastodon.jpg) ※表示できない
 
 ### 6.2. 相対パス指定（Jekyll の記法）
 
 記述したパス（ `{ {` `} }` のスペースは除く）:  
-`{ { "./../images/works-thumb/20221108_hello_mastodon.jpg" | relative_url } }`  
+`{ { "./../assets/images/works-thumb/20221108_hello_mastodon.jpg" | relative_url } }`  
 
 変換されたパス:  
-`{{ "./../images/works-thumb/20221108_hello_mastodon.jpg" | relative_url }}`  
-![代替テキスト]({{ "./../images/works-thumb/20221108_hello_mastodon.jpg" | relative_url }})
+`{{ "./../assets/images/works-thumb/20221108_hello_mastodon.jpg" | relative_url }}`  
+![代替テキスト]({{ "./../assets/images/works-thumb/20221108_hello_mastodon.jpg" | relative_url }})
 
 ### 6.3. 絶対パス指定
 
-`/docs/images/works-thumb/20221108_hello_mastodon.jpg`  
-![代替テキスト](/docs/images/works-thumb/20221108_hello_mastodon.jpg)
+`/docs/assets/images/works-thumb/20221108_hello_mastodon.jpg`  
+![代替テキスト](/docs/assets/images/works-thumb/20221108_hello_mastodon.jpg) ※表示できない
 
-`/images/works-thumb/20221108_hello_mastodon.jpg`  
-![代替テキスト](/images/works-thumb/20221108_hello_mastodon.jpg)
+`/assets/images/works-thumb/20221108_hello_mastodon.jpg`  
+![代替テキスト](/assets/images/works-thumb/20221108_hello_mastodon.jpg)
 
 ### 6.4. 大きい画像
 
-![代替テキスト]({{ "./../images/works-large/20221108_hello_mastodon.jpg" | relative_url }})
+こちらは `#note main { max-width: 824px;}` 指定よりも大きい画像だった場合の表示確認用です。
+
+`20221108_hello_mastodon.jpg` サイズ: 1080x1080  
+![代替テキスト]({{ "./../assets/images/works-large/20221108_hello_mastodon.jpg" | relative_url }})
 
 ## 7. テーブル
 
