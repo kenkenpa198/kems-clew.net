@@ -134,7 +134,7 @@ SELECT name FROM sysobjects WHERE xtype = 'U';
 ### 3.2. テーブルの定義を表示する
 
 すべての情報を出力する。  
-[5.2. カラムの情報を見やすい形式で表示する](#52-カラムの情報を見やすい形式で表示する) も参考に。
+[自作 SQL 集 > 2. カラムの情報を見やすい形式で表示する](/2022/11/24/sql-made-by-me.html#2-カラムの情報を見やすい形式で表示する) も参考に。
 
 ```sql
 SELECT * FROM sys.columns WHERE object_id = object_id('Members');
@@ -557,7 +557,7 @@ Tシャツ    | 衣服          |         1000 |        3
 
 ### 7.7. GROUPING
 
-comming soon...（いつまでコレやねん）
+coming soon...（いつまでコレやねん）
 
 ## 8. 参考文献
 
