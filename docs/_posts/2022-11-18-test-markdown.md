@@ -2,6 +2,8 @@
 title: マークダウンのテスト用ページ
 layout: post
 page-category: note
+category: 開発
+tags: Markdown
 created: 2022-11-18
 updated: 2022-11-21
 ---

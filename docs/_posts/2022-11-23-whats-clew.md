@@ -2,9 +2,13 @@
 title: 「Clew」ってなーに？
 layout: post
 page-category: note
+category: その他
+tags:
 created: 2022-11-23
-updated: 2022-11-23
+updated: 2022-11-26
 ---
+
+<!--more-->
 
 > clew [名]
 >

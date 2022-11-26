@@ -2,6 +2,8 @@
 title: 標準 SQL 集
 layout: post
 page-category: note
+category: 開発
+tags: SQL SQL-Server
 created: 2022-11-24
 updated: 2022-11-24
 ---

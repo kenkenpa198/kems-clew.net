@@ -2,6 +2,8 @@
 title: ホームページを公開しました！
 layout: post
 page-category: note
+category: 日記
+tags:
 created: 2022-11-24
 updated: 2022-11-24
 ---
