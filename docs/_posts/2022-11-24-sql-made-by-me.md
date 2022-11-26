@@ -10,13 +10,13 @@ updated: 2022-11-26
 
 自作の SQL や便利な構文をまとめているページ。SQL Server 向け。
 
-[標準 SQL 集](/2022/11/24/sql-standard.html) と同じく [kenkenpa198/mssql-with-docker](https://github.com/kenkenpa198/mssql-with-docker) からの引っ越しページ。
+[標準 SQL 集]({% post_url 2022-11-24-sql-standard %}) と同じく [kenkenpa198/mssql-with-docker](https://github.com/kenkenpa198/mssql-with-docker) からの引っ越しページ。
 
 <!-- omit in toc -->
 ## リンク
 
-- [標準 SQL 集](/開発/2022/11/24/sql-standard.html)
-- [自作 SQL 集](/開発/2022/11/24/sql-made-by-me.html) ← イマココ！
+- [標準 SQL 集]({% post_url 2022-11-24-sql-standard %})
+- [自作 SQL 集]({% post_url 2022-11-24-sql-made-by-me %}) ← イマココ！
 
 <!-- omit in toc -->
 ## 目次
