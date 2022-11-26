@@ -2,6 +2,8 @@
 title: 標準 SQL 集
 layout: post
 page-category: note
+category: 開発
+tags: SQL
 created: 2022-11-24
 updated: 2022-11-24
 ---
@@ -14,8 +16,8 @@ SQL Server にて扱える標準 SQL を中心にまとめた自分用メモ。
 <!-- omit in toc -->
 ## リンク
 
-- [標準 SQL 集](/2022/11/24/sql-standard.html) ← イマココ！
-- [自作 SQL 集](/2022/11/24/sql-made-by-me.html)
+- [標準 SQL 集]({% post_url 2022-11-24-sql-standard %}) ← イマココ！
+- [自作 SQL 集]({% post_url 2022-11-24-sql-made-by-me %})
 
 <!-- omit in toc -->
 ## 目次
@@ -134,7 +136,7 @@ SELECT name FROM sysobjects WHERE xtype = 'U';
 ### 3.2. テーブルの定義を表示する
 
 すべての情報を出力する。  
-[自作 SQL 集 > 2. カラムの情報を見やすい形式で表示する](/2022/11/24/sql-made-by-me.html#2-カラムの情報を見やすい形式で表示する) も参考に。
+[自作 SQL 集 > 2. カラムの情報を見やすい形式で表示する]({% post_url 2022-11-24-sql-made-by-me %}#2-カラムの情報を見やすい形式で表示する) も参考に。
 
 ```sql
 SELECT * FROM sys.columns WHERE object_id = object_id('Members');

@@ -2,11 +2,11 @@
 title: Hello, World!
 layout: post
 page-category: note
+category: 日記
+tags: Jekyll GitHub
 created: 2022-11-18
 updated: 2022-11-18
 ---
-
-## ブログ機能を実装したよ
 
 [Jekyll](http://jekyllrb-ja.github.io/) × [GitHub Pages](https://docs.github.com/ja/pages) でブログ機能を仮実装しました！  
 けっこういい感じ。
