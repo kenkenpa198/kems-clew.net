@@ -3,7 +3,7 @@ title: Hello, World!
 layout: post
 page-category: note
 category: 日記
-tags:
+tags: Jekyll GitHub
 created: 2022-11-18
 updated: 2022-11-18
 ---
