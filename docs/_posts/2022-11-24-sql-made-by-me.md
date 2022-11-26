@@ -15,8 +15,8 @@ updated: 2022-11-26
 <!-- omit in toc -->
 ## リンク
 
-- [標準 SQL 集](/2022/11/24/sql-standard.html)
-- [自作 SQL 集](/2022/11/24/sql-made-by-me.html) ← イマココ！
+- [標準 SQL 集](/開発/2022/11/24/sql-standard.html)
+- [自作 SQL 集](/開発/2022/11/24/sql-made-by-me.html) ← イマココ！
 
 <!-- omit in toc -->
 ## 目次
