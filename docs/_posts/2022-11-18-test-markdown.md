@@ -27,8 +27,9 @@ updated: 2022-11-21
 - [6. 画像の埋め込み](#6-画像の埋め込み)
     - [6.1. 相対パス指定（マークダウンから見たパス）](#61-相対パス指定マークダウンから見たパス)
     - [6.2. 相対パス指定（Jekyll の記法）](#62-相対パス指定jekyll-の記法)
-    - [6.3. 絶対パス指定](#63-絶対パス指定)
-    - [6.4. 大きい画像](#64-大きい画像)
+    - [6.3. 絶対パス指定（リポジトリのルートディレクトリから）](#63-絶対パス指定リポジトリのルートディレクトリから)
+    - [6.4. 絶対パス指定（ビルドされたルートディレクトリから）](#64-絶対パス指定ビルドされたルートディレクトリから)
+    - [6.5. 大きい画像](#65-大きい画像)
 - [7. テーブル](#7-テーブル)
 - [8. 水平線](#8-水平線)
 - [9. 引用](#9-引用)
@@ -98,38 +99,40 @@ __ボールド（アンダースコア2個）__
 
 ## 5. リンク
 
-[KeM's Clew \| けんころの毛糸玉](https://kems-clew.net/)
+[KeM's Clew](https://kems-clew.net/)
 
 ## 6. 画像の埋め込み
 
 ### 6.1. 相対パス指定（マークダウンから見たパス）
 
-`./../assets/images/works-thumb/20221108_hello_mastodon.jpg`  
-![代替テキスト](./../assets/images/works-thumb/20221108_hello_mastodon.jpg) ※表示できない
+`./../assets/images/notes/2022-11-18-test-markdown/small.jpg`  
+![代替テキスト](./../assets/images/notes/2022-11-18-test-markdown/small.jpg) ※表示できない
 
 ### 6.2. 相対パス指定（Jekyll の記法）
 
 記述したパス（ `{ {` `} }` のスペースは除く）:  
-`{ { "./../assets/images/works-thumb/20221108_hello_mastodon.jpg" | relative_url } }`  
+`{ { "./../assets/images/notes/2022-11-18-test-markdown/small.jpg" | relative_url } }`  
 
 変換されたパス:  
-`{{ "./../assets/images/works-thumb/20221108_hello_mastodon.jpg" | relative_url }}`  
-![代替テキスト]({{ "./../assets/images/works-thumb/20221108_hello_mastodon.jpg" | relative_url }})
+`{{ "./../assets/images/notes/2022-11-18-test-markdown/small.jpg" | relative_url }}`  
+![代替テキスト]({{ "./../assets/images/notes/2022-11-18-test-markdown/small.jpg" | relative_url }})
 
-### 6.3. 絶対パス指定
+### 6.3. 絶対パス指定（リポジトリのルートディレクトリから）
 
-`/docs/assets/images/works-thumb/20221108_hello_mastodon.jpg`  
-![代替テキスト](/docs/assets/images/works-thumb/20221108_hello_mastodon.jpg) ※表示できない
+`/docs/assets/images/notes/2022-11-18-test-markdown/small.jpg`  
+![代替テキスト](/docs/assets/images/notes/2022-11-18-test-markdown/small.jpg) ※表示できない
 
-`/assets/images/works-thumb/20221108_hello_mastodon.jpg`  
-![代替テキスト](/assets/images/works-thumb/20221108_hello_mastodon.jpg)
+### 6.4. 絶対パス指定（ビルドされたルートディレクトリから）
 
-### 6.4. 大きい画像
+`/assets/images/notes/2022-11-18-test-markdown/small.jpg`  
+![代替テキスト](/assets/images/notes/2022-11-18-test-markdown/small.jpg)
 
-こちらは `#note main { max-width: 824px;}` 指定よりも大きい画像だった場合の表示確認用です。
+### 6.5. 大きい画像
 
-`20221108_hello_mastodon.jpg` サイズ: 1080x1080  
-![代替テキスト]({{ "./../assets/images/works-large/20221108_hello_mastodon.jpg" | relative_url }})
+`#note main { max-width: 824px;}` 指定よりも大きい画像だった場合の表示確認用。
+
+`/assets/images/notes/2022-11-18-test-markdown/large.jpg` サイズ: 1080x1080  
+![代替テキスト](/assets/images/notes/2022-11-18-test-markdown/large.jpg)
 
 ## 7. テーブル
 
