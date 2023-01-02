@@ -1,5 +1,7 @@
 ---
 title: Inbox Zero が良すぎるので設定をまとめていくノート
+description: 受信トレイを空にし続けるテクニック「Inbox Zero」の設定ノートです。
+preview: /assets/images/notes/2023-01-02-inbox-zero/inbox-zero-01.jpg
 layout: post
 page-category: note
 category: その他
