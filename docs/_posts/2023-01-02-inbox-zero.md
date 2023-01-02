@@ -1,5 +1,5 @@
 ---
-title: Inbox Zero が良すぎるので設定をまとめていくノート
+title: Inbox Zero が良すぎるので設定をまとめるぞ
 description: 受信トレイを空にし続けるテクニック「Inbox Zero」の設定ノートです。
 preview: https://kems-clew.net/assets/images/notes/2023-01-02-inbox-zero/inbox-zero-01.jpg
 layout: post
@@ -9,10 +9,11 @@ tags:
   - Gmail
   - 設定
 created: 2023-01-02
-updated: 2023-01-02
+updated: 2023-01-03
 ---
 
-Gmail の受信トレイを空にし続けるテクニック「Inbox Zero」の設定ノートです。  
+メールの受信トレイを空にし続けるテクニック「Inbox Zero」の設定ノートです。  
+Gmail に準拠しております。
 
 主な設定・運用方法は以下の記事を参考にさせていただきました。
 
