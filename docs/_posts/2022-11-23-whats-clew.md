@@ -4,8 +4,9 @@ layout: post
 page-category: note
 category: その他
 tags:
-created: 2022-11-23
-updated: 2022-11-26
+  - kems-clew
+date: 2022-11-23 09:00:00
+lastmod: 2023-01-06 22:44:06
 ---
 
 <!--more-->

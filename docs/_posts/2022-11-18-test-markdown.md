@@ -3,9 +3,12 @@ title: マークダウンのテスト用ページ
 layout: post
 page-category: note
 category: 開発
-tags: Markdown
-created: 2022-11-18
-updated: 2022-11-21
+tags:
+  - kems-clew
+  - markdown
+date: 2022-11-18 09:00:00
+lastmod: 2023-01-06 22:43:55
+description: マークダウンのテスト用ページです。
 ---
 
 マークダウン記法の表示をテストしたり、CSS の実装内容を確認するページです。  

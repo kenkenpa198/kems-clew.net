@@ -3,9 +3,10 @@ title: 自作 SQL 集
 layout: post
 page-category: note
 category: 開発
-tags: SQL
-created: 2022-11-24
-updated: 2022-11-26
+tags:
+  - sql
+date: 2022-11-24 09:00:00
+lastmod: 2023-01-06 22:44:10
 ---
 
 自作の SQL や便利な構文をまとめているページ。SQL Server 向け。
