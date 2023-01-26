@@ -6,8 +6,8 @@ description: ""
 preview: ""
 category: 日記
 tags: ""
-date: 2023-01-26 20:30
-lastmod: 2023-01-26 22:25
+date: 2023-01-26
+lastmod: 2023-01-26
 ---
 
 [俺たち何を目標にスマブラ続けてる？上位勢4人で本音トーク【スマブラSP】 - YouTube](https://www.youtube.com/watch?v=2CBiF1ivnVU)
