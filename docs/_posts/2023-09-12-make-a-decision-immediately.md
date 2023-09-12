@@ -6,8 +6,8 @@ description: ""
 preview: ""
 category: 日記
 tags: ""
-date: 2023-09-13
-lastmod: 2023-09-13
+date: 2023-09-12
+lastmod: 2023-09-12
 ---
 
 [仕様を変えること 【仕事の姿勢】 - YouTube](https://www.youtube.com/watch?v=e9zu3-L6Elc)
