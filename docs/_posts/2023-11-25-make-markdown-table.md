@@ -15,7 +15,7 @@ lastmod: 2023-11-25
 <!-- omit in toc -->
 ## 要約
 
-- Markdown はテーブルを記述するのがめんどうくさい。
+- Markdown 記法はテーブルを記述するのがめんどうくさい。
 - VS Code の拡張機能 [Markdown Table](https://marketplace.visualstudio.com/items?itemName=TakumiI.markdowntable) をインストールすると解決するぞ。
 - ショートカットキーの設定もすると便利だよ。
 
