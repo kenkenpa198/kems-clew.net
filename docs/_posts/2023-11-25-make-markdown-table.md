@@ -24,10 +24,11 @@ lastmod: 2023-11-25
 
 - [はじめに](#はじめに)
 - [検証環境](#検証環境)
-- [環境構築・実行](#環境構築実行)
-    - [1. 拡張機能をインストールする](#1-拡張機能をインストールする)
+- [利用手順](#利用手順)
+    - [1. 拡張機能のインストール](#1-拡張機能のインストール)
     - [2. テーブルを整形する](#2-テーブルを整形する)
-    - [3. 行・列を入れ替える](#3-行列を入れ替える)
+    - [3. 行を入れ替える](#3-行を入れ替える)
+    - [4. 列を入れ替える](#4-列を入れ替える)
 - [ショートカットキーまとめ](#ショートカットキーまとめ)
 - [おわりに](#おわりに)
 - [オマケ: Obsidian でも同様の操作を実現する](#オマケ-obsidian-でも同様の操作を実現する)
@@ -83,17 +84,17 @@ Markdown 記法に慣れるとドキュメントやメモをさくさく書け�
     - [Japanese Language Pack for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=MS-CEINTL.vscode-language-pack-ja)
     - [Markdown Table](https://marketplace.visualstudio.com/items?itemName=TakumiI.markdowntable) ※当記事でインストールします。
 
-## 環境構築・実行
+## 利用手順
 
-### 1. 拡張機能をインストールする
+### 1. 拡張機能のインストール
 
-まずは VS Code へ拡張機能 [Markdown Table](https://marketplace.visualstudio.com/items?itemName=TakumiI.markdowntable) をインストールします。ライセンスなどは適宜ご確認ください。
+拡張機能 [Markdown Table](https://marketplace.visualstudio.com/items?itemName=TakumiI.markdowntable) を VS Code へインストールします。ライセンスなどは適宜ご確認ください。
 
-なお同様の拡張機能が複数存在しますので注意しましょう。この拡張機能は日本語を含むマルチバイト文字列に対応していることが特徴です。
+同様の拡張機能は複数存在します。この拡張機能は日本語を含むマルチバイト文字列に対応していることが特徴です。
 
 ![policyf](/assets/images/notes/2023-11-03-make-markdown-table/policy.png)
 
-↑同拡張機能の概要ページより引用 (あまりにもありがたい) 。
+↑同拡張機能の概要ページより (あまりにもありがたい) 。
 
 ### 2. テーブルを整形する
 
@@ -110,29 +111,20 @@ Tab キーを押下すると……
 
 ![tab](/assets/images/notes/2023-11-03-make-markdown-table/tab.gif)
 
-↑うおおおおおお
+↑うおおお
 
-こんな感じで、次のフィールドへ進むついでに自動で半角スペースを挿入して整形してくれます。前のフィールドへ戻るには `Shift` + `Tab` を送信しましょう。
+こんな感じで、次のフィールドへ進むついでに半角スペースを挿入して整形してくれます。前のフィールドへ戻るには `Shift` + `Tab` を送信しましょう。
 
-これにて下記の課題は解決です。あまりにもあっさり……。
+### 3. 行を入れ替える
 
-> - パイプ記号 `|` とハイフン記号 `-` を組み合わせて記述する必要がある。
-> - 半角スペースで整形しておくとソースコードが読みやすいものの、記述の調整が大変。
-
-### 3. 行・列を入れ替える
-
-残りの課題である
-
-> - 行・列を入れ替える時はほぼほぼ書き直しになる。
-
-を解決しましょう。
-
-まず行の入れ替えは VS Code 標準のショートカットキーで対応できます。普段のコーディングの際にも便利。
+行の入れ替えは VS Code 標準のショートカットキーで対応できます。普段のコーディングの際にも便利。
 
 - `Alt` + `UpArrow (↑)` : 行を上へ移動
 - `Alt` + `DownArrow (↓)` : 行を下へ移動
 
 ![swap-ud](/assets/images/notes/2023-11-03-make-markdown-table/swap-ud.gif)
+
+### 4. 列を入れ替える
 
 列の入れ替えは右クリックから行えます。先ほどの拡張機能に付随している機能です。
 
@@ -141,7 +133,7 @@ Tab キーを押下すると……
 
 ![swap-lr01](/assets/images/notes/2023-11-03-make-markdown-table/swap-lr.gif)
 
-これだけでも十分便利ですが、VS Code のキーボード ショートカットへ登録すると便利です。
+ここまででも十分便利ですが、VS Code のキーボード ショートカットへ登録するとさらに捗ります。
 
 1. VS Code の `ファイル(F)` > `ユーザー設定` > `キーボード ショートカット` を実行する。
 2. `Markdown Table: Move to` で検索し、同機能のショートカット設定を表示する。
@@ -159,7 +151,7 @@ Tab キーを押下すると……
 
 ## ショートカットキーまとめ
 
-当ページで紹介・設定したショートカットキーをまとめると下表のとおりとなります。
+当ページで紹介・設定したショートカットキーをまとめると下表のとおりです。
 
 | ショートカットキー       | 説明                                      | 機能の提供元   |
 | ------------------------ | ----------------------------------------- | -------------- |
@@ -172,9 +164,9 @@ Tab キーを押下すると……
 
 ## おわりに
 
-ということで「VS Code で Markdown のテーブルを楽々記述するぞ」が実現できました！
+ということで「VS Code で Markdown のテーブルを楽々記述するぞ」が実現できました。
 
-拡張機能 [Markdown Table](https://marketplace.visualstudio.com/items?itemName=TakumiI.markdowntable) には、他にも各種機能が存在するようです。  
+拡張機能 [Markdown Table](https://marketplace.visualstudio.com/items?itemName=TakumiI.markdowntable) には、他にも各種機能が存在します。  
 詳細は同拡張機能の概要ページ > `2. Demo` `3. Extension Configurations` を参照しましょう。特に `Convert from TSV` がエクセルを併用している場合に便利です。
 
 ドキュメントは未来の自分への手紙！！よきドキュメントを残していきましょう～～。
