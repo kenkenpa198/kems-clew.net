@@ -73,7 +73,7 @@ Markdown 記法に慣れるとドキュメントやメモをサクサク書け�
 
 今回はそんな Markdown 記法のテーブルを、VS Code の拡張機能やショートカットを使用して楽々記述するぞ！という趣旨の記事になっております～。
 
-![all](/assets/images/notes/2023-11-03-make-markdown-table/all.gif)
+![all](/images/notes/2023-11-03-make-markdown-table/all.gif)
 
 ## 検証環境
 
@@ -94,7 +94,7 @@ Markdown 記法に慣れるとドキュメントやメモをサクサク書け�
 
 同様の拡張機能も複数存在しますが、この拡張機能は日本語を含むマルチバイト文字列に対応していることが特徴です。
 
-![policyf](/assets/images/notes/2023-11-03-make-markdown-table/policy.png)
+![policyf](/images/notes/2023-11-03-make-markdown-table/policy.png)
 
 ↑同拡張機能の概要ページより (あまりにもありがたい) 。
 
@@ -111,7 +111,7 @@ Markdown 記法に慣れるとドキュメントやメモをサクサク書け�
 
 Tab キーを押下すると……
 
-![tab](/assets/images/notes/2023-11-03-make-markdown-table/tab.gif)
+![tab](/images/notes/2023-11-03-make-markdown-table/tab.gif)
 
 ↑うおおお
 
@@ -124,7 +124,7 @@ Tab キーを押下すると……
 - `Alt` + `UpArrow (↑)` : 行を上へ移動
 - `Alt` + `DownArrow (↓)` : 行を下へ移動
 
-![swap-ud](/assets/images/notes/2023-11-03-make-markdown-table/swap-ud.gif)
+![swap-ud](/images/notes/2023-11-03-make-markdown-table/swap-ud.gif)
 
 ### 4. 列を入れ替える
 
@@ -133,7 +133,7 @@ Tab キーを押下すると……
 - `Markdown Table: Move to Left.` : 列を左へ移動
 - `Markdown Table: Move to Right.` : 列を右へ移動
 
-![swap-lr01](/assets/images/notes/2023-11-03-make-markdown-table/swap-lr.gif)
+![swap-lr01](/images/notes/2023-11-03-make-markdown-table/swap-lr.gif)
 
 ここまででも十分便利ですが、VS Code のキーボード ショートカットへ登録するとさらに捗ります。
 
@@ -143,11 +143,11 @@ Tab キーを押下すると……
     - `Markdown Table: Move to Left.` : `Alt` + `LeftArrow`
     - `Markdown Table: Move to Right.` : `Alt` + `RightArrow`
 
-    ![swap-keybindings](/assets/images/notes/2023-11-03-make-markdown-table/swap-keybindings.png)
+    ![swap-keybindings](/images/notes/2023-11-03-make-markdown-table/swap-keybindings.png)
 
     ※デフォルトで同じショートカットキーに標準機能がアサインされているので、適宜置き換えを行ってください。
 
-![all](/assets/images/notes/2023-11-03-make-markdown-table/all.gif)
+![all](/images/notes/2023-11-03-make-markdown-table/all.gif)
 
 ↑キーボードだけですべての操作が完結できました！
 
@@ -185,8 +185,8 @@ Tab キーを押下すると……
     - `Advanced Tables: Move column left` (Advanced Tables)
     - `Advanced Tables: Move column right` (Advanced Tables)
 
-![obsidian-swap-ud](/assets/images/notes/2023-11-03-make-markdown-table/obsidian-swap-ud.png)
+![obsidian-swap-ud](/images/notes/2023-11-03-make-markdown-table/obsidian-swap-ud.png)
 
-![obsidian-swap-lr](/assets/images/notes/2023-11-03-make-markdown-table/obsidian-swap-lr.png)
+![obsidian-swap-lr](/images/notes/2023-11-03-make-markdown-table/obsidian-swap-lr.png)
 
 Obsidian の記事も書きたいなあ……。
