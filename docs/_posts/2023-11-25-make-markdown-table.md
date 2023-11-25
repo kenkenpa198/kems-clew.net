@@ -12,13 +12,13 @@ date: 2023-11-25
 lastmod: 2023-11-25
 ---
 
-拡張機能 [Markdown Table](https://marketplace.visualstudio.com/items?itemName=TakumiI.markdowntable) を推し推ししていく記事です。
+VS Code の拡張機能 [Markdown Table](https://marketplace.visualstudio.com/items?itemName=TakumiI.markdowntable) を推し推ししていく記事です。
 
 <!-- omit in toc -->
 ## 要約
 
 - Markdown 記法はテーブルを記述するのがめんどうくさい。
-- VS Code の拡張機能 [Markdown Table](https://marketplace.visualstudio.com/items?itemName=TakumiI.markdowntable) をインストールすると解決するぞ。
+- 拡張機能 [Markdown Table](https://marketplace.visualstudio.com/items?itemName=TakumiI.markdowntable) を VS Code へインストールすると解決するぞ。
 - ショートカットキーの設定もすると便利だよ。
 
 <!-- omit in toc -->
