@@ -90,7 +90,7 @@ Markdown 記法に慣れるとドキュメントやメモをさくさく書け�
 
 拡張機能 [Markdown Table](https://marketplace.visualstudio.com/items?itemName=TakumiI.markdowntable) を VS Code へインストールします。ライセンスなどは適宜ご確認ください。
 
-同様の拡張機能は複数存在します。この拡張機能は日本語を含むマルチバイト文字列に対応していることが特徴です。
+同様の拡張機能も複数存在しますが、この拡張機能は日本語を含むマルチバイト文字列に対応していることが特徴です。
 
 ![policyf](/assets/images/notes/2023-11-03-make-markdown-table/policy.png)
 
