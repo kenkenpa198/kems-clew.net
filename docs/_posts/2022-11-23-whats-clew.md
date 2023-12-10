@@ -2,7 +2,7 @@
 title: 「Clew」ってなーに？
 layout: post
 page-category: note
-category: その他
+category: 未分類
 tags:
   - kems-clew
 date: 2022-11-23 09:00:00

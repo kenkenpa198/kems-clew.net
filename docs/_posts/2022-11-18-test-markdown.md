@@ -2,7 +2,7 @@
 title: マークダウンのテスト用ページ
 layout: post
 page-category: note
-category: 開発
+category: 技術
 tags:
   - kems-clew
   - markdown

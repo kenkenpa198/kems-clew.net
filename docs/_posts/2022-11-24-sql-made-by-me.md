@@ -2,7 +2,7 @@
 title: 自作 SQL 集
 layout: post
 page-category: note
-category: 開発
+category: 技術
 tags:
   - sql
 date: 2022-11-24

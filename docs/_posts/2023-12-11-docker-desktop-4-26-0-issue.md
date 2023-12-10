@@ -4,7 +4,7 @@ page-category: note
 title: docker コマンドを実行時に version `GLIBC_2.32' not found が出たのでなんとかした
 description: ""
 preview: ""
-category: 開発
+category: 技術
 tags: "docker"
 date: 2023-12-11
 lastmod: 2023-12-11
