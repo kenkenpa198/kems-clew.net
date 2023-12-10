@@ -40,7 +40,7 @@ $ docker
 
 ## 解決方法
 
-4.26.0 版を Windows 環境からアンインストールし、代わりに [4.25.2 版](https://docs.docker.com/desktop/release-notes/#4252) をインストールした。なおインストーラーは前述のリリースノートから入手できる。
+4.26.0 版を Windows 環境からアンインストールし、代わりに [4.25.2 版](https://docs.docker.com/desktop/release-notes/#4252) をインストールしたら解決した。
 
 ```shell
 # 4.25.2 版を再インストール後、WSL 環境にて docker コマンドを実行
@@ -54,6 +54,8 @@ Common Commands:
   run         Create and run a new container from an image
   ...
 ```
+
+なおインストーラーは前述のリリースノートから入手できる。
 
 ## 参考文献
 
