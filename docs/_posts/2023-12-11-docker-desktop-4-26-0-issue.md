@@ -1,11 +1,11 @@
 ---
 layout: post
 page-category: note
-title: Docker コマンド実行時に version `GLIBC_2.32' not found が出たのでなんとかした
+title: docker コマンドを実行時に version `GLIBC_2.32' not found が出たのでなんとかした
 description: ""
 preview: ""
 category: 開発
-tags: ""
+tags: "docker"
 date: 2023-12-11
 lastmod: 2023-12-11
 ---
