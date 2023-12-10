@@ -5,8 +5,8 @@ page-category: note
 category: 開発
 tags:
   - sql
-date: 2022-11-24 09:00:00
-lastmod: 2023-01-06 22:44:10
+date: 2022-11-24
+lastmod: 2023-12-10
 ---
 
 自作の SQL や便利な構文をまとめているページ。SQL Server 向け。
@@ -33,13 +33,13 @@ lastmod: 2023-01-06 22:44:10
 めちゃくちゃ使っている。  
 
 ```sql
-SELECT TOP 99999999
+SELECT
     t.column_A,
     t.column_B,
     CASE WHEN t.column_C IS NULL THEN 'NULL' ELSE 'NOT NULL' END AS column_C,
     COUNT(*) AS cnt
 FROM
-    [tb] t -- テーブル名を指定する
+    [tb] AS t -- テーブル名を指定する
 GROUP BY
     -- ROLLUP(()) で結果の先頭行へ総計を出力する（不要であれば外して OK）
     ROLLUP((
@@ -53,6 +53,10 @@ ORDER BY
     column_C
 ;
 ```
+
+実行結果イメージ:
+
+![result](/images/notes/2022-11-24-sql-made-by-me/select_multi_count_result.png)
 
 参考文献:
 
@@ -139,6 +143,10 @@ ORDER BY
 ;
 ```
 
+実行結果イメージ:
+
+![result](/images/notes/2022-11-24-sql-made-by-me/show_columns_info_result.png)
+
 参考文献:
 
 - [【SQL】テーブルからカラム情報を取得する”sys.columns”の上手な使い方を伝授！ \| ポテパンスタイル](https://style.potepan.com/articles/24713.html)
@@ -149,29 +157,29 @@ ORDER BY
 ## 3. グループ中で最大値を持つレコードを取得する
 
 `NOT` 演算子及び `EXISTS` 述語を活用した大変便利な構文。  
-比較対象のグループ中で、最大値を持つフィールドが存在するレコードを取得する。  
+比較対象のグループ中で、最大値を持つフィールドが存在するレコードを取得する。
 
 最大値と同じ行に存在する別カラムの値を **行の情報を崩さずに** そのまま取得・利用できるのがポイント。
 
-以下は「最大の `purchased_at`（最新の買上日時）」と同じ行に存在する `product_code`（商品コード）を取得したい場合の例。  
+下記は「『`member_id`（会員 ID）毎の最新 `order_at`（受注日時）』と同じ行に存在する `product_code`（商品コード）を取得する」場合の例。  
 
 ```sql
 SELECT
-    ph.member_id,
-    ph.purchased_at,
-    ph.product_code
+    hist.member_id,
+    hist.order_at,
+    hist.product_code
 FROM
-    PurchaseHistories ph
+    OrderHistories AS hist
 WHERE
     -- ここから……
     NOT EXISTS (
         SELECT
             1
         FROM
-            PurchaseHistories ph_sub -- 親の FROM 句に書いているテーブルと同じテーブルを指定
+            OrderHistories AS hist_sub -- 親の FROM 句に書いているテーブルと同じテーブルを指定
         WHERE
-            ph.member_id = ph_sub.member_id           -- グループの指定
-            AND ph.purchased_at < ph_sub.purchased_at -- 比較対象の列を指定
+            hist.member_id = hist_sub.member_id   -- グループの指定
+            AND hist.order_at < hist_sub.order_at -- 比較対象の列を指定
     )
     -- ここまで！
 ;
@@ -187,11 +195,12 @@ WHERE
     - このやり方でも取得には問題ないが、参考サイトによると `NOT EXISTS` の方が高速らしい。
     - `NOT EXISTS` の方はスニペット的にも使いまわしやすい。
 
-その他補足内容は以下のとおり。  
+その他補足内容は以下のとおり。
 
-- 「最大の `purchased_at` 」が複数行存在した場合、複数行分 `SELECT` される。
-    - 複数行 `SELECT` された場合でも行ごとの情報はしっかり残る。
-- `AND ph.purchased_at < ph_sub.purchased_at` の比較演算子 `<` を `>` にすると、最小値を持つ行を取ることができる。
+- 「最大の `order_at` 」が複数行存在した場合、複数行分 `SELECT` される。
+    - 複数行 `SELECT` された場合でも行ごとの情報は行ごとに保持される。
+    - このため、後続処理で重複排除が必要になる場合がある。主キー項目やレコードの単位に注意。
+- `AND hist.order_at < ph_sub.order_at` の比較演算子 `<` を `>` にすると、最小値を持つ行を取ることができる。
 - パッと見だと書いてある内容がわかりづらいのが難点。
     - とはいえ分解して読んでいくと「なるほどー」となる（その内解説記事を書いてみたいな？）。
 
