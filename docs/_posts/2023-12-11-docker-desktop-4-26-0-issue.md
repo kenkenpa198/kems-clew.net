@@ -23,7 +23,7 @@ $ docker
 
 - OS: Windows 11
     - Windows 環境へ Docker Desktop の最新版 (4.26.0) をインストールした。
-- WSL (Ubuntu 20.04.6 LTS)
+- 実行環境: WSL (Ubuntu 20.04.6 LTS)
     - 通常 Docker Desktop を立ち上げた状態であれば WSL 環境にて Docker CLI が使用できるはずだが、前述のエラーが出力される。
 
 ## 原因
