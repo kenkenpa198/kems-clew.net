@@ -7,7 +7,7 @@ preview: ""
 category: 技術
 tags: "docker"
 date: 2023-12-11
-lastmod: 2023-12-28
+lastmod: 2023-12-29
 ---
 
 新しい PC へ Docker Desktop をインストール・起動後、WSL で docker コマンドを実行すると下記のエラーが出力されて詰まった。
@@ -70,9 +70,9 @@ Common Commands:
 
 とりあえず 4.26.1 版を待ってます～。
 
----
+## (2023-12-28 追記) 修正版が配布された
 
-(2023-12-28 追記) 前述の問題が修正された 4.26.1 版が配布されていたのでインストールした。
+前述の問題が修正された 4.26.1 版が配布されていたのでインストールした。
 
 - [Docker Desktop release notes \| Docker Docs](https://docs.docker.com/desktop/release-notes/#4261)
 
@@ -84,4 +84,4 @@ Common Commands:
 
 ![docker-4261](/images/notes/2023-12-11-docker-desktop-4-26-0-issue/docker-4261.png)
 
-動いた～～。
+よかった～～。
