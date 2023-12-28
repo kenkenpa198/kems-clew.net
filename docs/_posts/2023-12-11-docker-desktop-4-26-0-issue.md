@@ -7,7 +7,7 @@ preview: ""
 category: 技術
 tags: "docker"
 date: 2023-12-11
-lastmod: 2023-12-11
+lastmod: 2023-12-28
 ---
 
 新しい PC へ Docker Desktop をインストール・起動後、WSL で docker コマンドを実行すると下記のエラーが出力されて詰まった。
@@ -28,7 +28,7 @@ $ docker
 
 ## 原因
 
-2023-12-04 にリリースされた最新バージョン 4.26.0 で不具合が存在するらしい。
+2023-12-04 にリリースされた最新バージョン 4.26.0 で、Linux ディストリビューションが古いバージョンだと不具合が存在するらしい。
 
 - [Docker Desktop release notes \| Docker Docs](https://docs.docker.com/desktop/release-notes/#known-issues)
 
@@ -69,3 +69,19 @@ Common Commands:
 以上。日本語でこの件について書かれた記事が無かったようなので放流してみた。
 
 とりあえず 4.26.1 版を待ってます～。
+
+---
+
+(2023-12-28 追記) 前述の問題が修正された 4.26.1 版が配布されていたのでインストールした。
+
+- [Docker Desktop release notes \| Docker Docs](https://docs.docker.com/desktop/release-notes/#4261)
+
+    > Bug fixes and enhancements
+    >
+    > For Windows
+    >
+    > - Switch the CLI binaries to a version compatible with older versions of glibc, such as used in Ubuntu 20.04 fixes [docker/for-win#13824](https://github.com/docker/for-win/issues/13824)
+
+![docker-4261](/images/notes/2023-12-11-docker-desktop-4-26-0-issue/docker-4261.png)
+
+動いた～～。
