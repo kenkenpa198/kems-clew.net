@@ -41,6 +41,8 @@ lastmod: 2024-01-13
   - [3.3. seq](#33-seq)
   - [3.4. ssh](#34-ssh)
 - [4. Git](#4-git)
+  - [4.1. Git の操作を取り消す](#41-git-の操作を取り消す)
+  - [4.2. コミットを統合する](#42-コミットを統合する)
 - [5. Excel](#5-excel)
   - [5.1. 書式設定](#51-書式設定)
   - [5.2. 関数](#52-関数)
@@ -121,40 +123,42 @@ lastmod: 2024-01-13
 
 ## 4. Git
 
-- Git の操作を取り消す
+### 4.1. Git の操作を取り消す
 
-  ```shell
-  # 1. git reflog で操作履歴を出力する
-  $ git reflog
-  02f11b7 HEAD@{0}: reset: moving to 02f11b7                               # 現在のコミット (HEAD)
-  0488e28 HEAD@{1}: merge develop: Merge made by the 'recursive' strategy. # 1 つ前のコミット
-  ...
+```shell
+# 1. git reflog で操作履歴を出力する
+$ git reflog
+02f11b7 HEAD@{0}: reset: moving to 02f11b7                               # 現在のコミット (HEAD)
+0488e28 HEAD@{1}: merge develop: Merge made by the 'recursive' strategy. # 1 つ前のコミット
+...
 
-  # 2. 戻りたいコミットを指定して git reset する
-  # 「1 つ前」に戻す場合は「HEAD@{n}」へ 1 を指定する
-  # ディレクトリの内容が書き換わるので注意
-  $ git reset --hard HEAD@{1}
+# 2. 戻りたいコミットを指定して git reset する
+# 「1 つ前」に戻す場合は「HEAD@{n}」へ 1 を指定する
+# ディレクトリの内容が書き換わるので注意
+$ git reset --hard HEAD@{1}
 
-  # コミットのハッシュを指定してもよい
-  $ git reset --hard 0488e28
+# コミットのハッシュを指定してもよい
+$ git reset --hard 0488e28
 
-  # ステージング状態へ戻す場合は --soft を指定する
-  $ git reset --soft HEAD@{1}
-  ```
+# ステージング状態へ戻す場合は --soft を指定する
+$ git reset --soft HEAD@{1}
+```
 
-  参考)
+参考)
 
-    - [Git - リセットコマンド詳説](https://git-scm.com/book/ja/v2/Git-%E3%81%AE%E3%81%95%E3%81%BE%E3%81%96%E3%81%BE%E3%81%AA%E3%83%84%E3%83%BC%E3%83%AB-%E3%83%AA%E3%82%BB%E3%83%83%E3%83%88%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89%E8%A9%B3%E8%AA%AC)
-    - [第6話 git reset 3種類をどこよりもわかりやすい図解で解説！【連載】マンガでわかるGit ～コマンド編～ - itstaffing エンジニアスタイル](https://www.r-staffing.co.jp/engineer/entry/20191129_1)
-    - [第7話 間違えて reset しちゃった？git reflogで元どおり【連載】マンガでわかるGit ～コマンド編～ - itstaffing エンジニアスタイル](https://www.r-staffing.co.jp/engineer/entry/20191227_1)
+  - [Git - リセットコマンド詳説](https://git-scm.com/book/ja/v2/Git-%E3%81%AE%E3%81%95%E3%81%BE%E3%81%96%E3%81%BE%E3%81%AA%E3%83%84%E3%83%BC%E3%83%AB-%E3%83%AA%E3%82%BB%E3%83%83%E3%83%88%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89%E8%A9%B3%E8%AA%AC)
+  - [第6話 git reset 3種類をどこよりもわかりやすい図解で解説！【連載】マンガでわかるGit ～コマンド編～ - itstaffing エンジニアスタイル](https://www.r-staffing.co.jp/engineer/entry/20191129_1)
+  - [第7話 間違えて reset しちゃった？git reflogで元どおり【連載】マンガでわかるGit ～コマンド編～ - itstaffing エンジニアスタイル](https://www.r-staffing.co.jp/engineer/entry/20191227_1)
 
-- コミットを統合する
+### 4.2. コミットを統合する
 
-  ```shell
-  $ gll
-  * dc80a8f 2024-01-13 11:33:09 (HEAD -> main) wip by"kenkenpa198"                   # このコミットを……
-  * 07e84cc 2024-01-13 11:27:11 [add]add note 2024-01-13-my-snippets by"kenkenpa198" # このコミットへ統合する場合
-  ```
+(1) のコミットを (2) へ統合する場合の対応手順。
+
+```shell
+$ gll
+* dc80a8f 2024-01-13 11:33:09 (HEAD -> main) wip by"kenkenpa198"                   # (1)
+* 07e84cc 2024-01-13 11:27:11 [add]add note 2024-01-13-my-snippets by"kenkenpa198" # (2)
+```
 
   ```shell
   # 1. リベースを開始する
@@ -162,7 +166,7 @@ lastmod: 2024-01-13
   ```
 
   ```shell
-  # 2. リベース指示書がエディタで開かれる
+  # 2. リベース指示書を編集する
   # 統合するコミットを f へ書き換えて保存する
   # f は統合を指示する指定
   pick 07e84cc [add]add note 2024-01-13-my-snippets
@@ -188,9 +192,9 @@ lastmod: 2024-01-13
   ...
   ```
 
-  参考) [5. rebase -i でコミットをまとめる｜サル先生のGit入門【プロジェクト管理ツールBacklog】](https://backlog.com/ja/git-tutorial/stepup/32/)
+参考) [5. rebase -i でコミットをまとめる｜サル先生のGit入門【プロジェクト管理ツールBacklog】](https://backlog.com/ja/git-tutorial/stepup/32/)
 
-  ※ 実行しているコマンド `$ gll` は [git log のエイリアス](https://github.com/kenkenpa198/dotfiles/blob/fe695c145ec1c6b35849622cc3b26703d0ef5700/zsh/rc/alias.zsh#L100) 。
+※ 実行しているコマンド `$ gll` は [git log のエイリアス](https://github.com/kenkenpa198/dotfiles/blob/fe695c145ec1c6b35849622cc3b26703d0ef5700/zsh/rc/alias.zsh#L100) 。
 
 ## 5. Excel
 
