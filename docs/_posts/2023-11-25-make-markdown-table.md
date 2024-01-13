@@ -4,7 +4,7 @@ page-category: note
 title: VS Code で Markdown のテーブルを楽々記述するぞ
 description: ""
 preview: ""
-category: 技術
+category: 情報技術
 tags:
     - markdown
     - vscode
