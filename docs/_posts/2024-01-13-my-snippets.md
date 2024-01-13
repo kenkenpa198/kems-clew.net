@@ -10,7 +10,6 @@ tags:
   - git
   - linux
   - regexp
-  - sql
   - tips
 date: 2024-01-13
 lastmod: 2024-01-13
