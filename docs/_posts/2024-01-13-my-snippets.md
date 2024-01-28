@@ -12,7 +12,7 @@ tags:
   - regexp
   - tips
 date: 2024-01-13
-lastmod: 2024-01-13
+lastmod: 2024-01-28
 ---
 
 自分用便利スニペット集。
@@ -37,9 +37,10 @@ lastmod: 2024-01-13
 - [2. 正規表現](#2-正規表現)
 - [3. Linux コマンド](#3-linux-コマンド)
   - [3.1. alias](#31-alias)
-  - [3.2. grep](#32-grep)
-  - [3.3. seq](#33-seq)
-  - [3.4. ssh](#34-ssh)
+  - [3.2. chown](#32-chown)
+  - [3.3. grep](#33-grep)
+  - [3.4. seq](#34-seq)
+  - [3.5. ssh](#35-ssh)
 - [4. Git](#4-git)
   - [4.1. Git の操作を取り消す](#41-git-の操作を取り消す)
   - [4.2. コミットを統合する](#42-コミットを統合する)
@@ -73,6 +74,23 @@ lastmod: 2024-01-13
    |　
   ```
 
+- URL
+
+  ```c
+  // 完全一致 (行頭 ～ 行末)
+  ^(http|https):\/\/[-\w\.]+(:\d+)?(\/[^\s]*)?$
+  ```
+
+  ```c
+  // 部分一致
+  (http|https):\/\/[-\w\.]+(:\d+)?(\/[^\s]*)?
+  ```
+
+  参考)
+
+  - [とほほの正規表現入門 - とほほのWWW入門](https://www.tohoho-web.com/ex/regexp.html)
+  - [正規表現 - とほほのWWW入門](https://www.tohoho-web.com/perl/regexp.htm)
+
 ## 3. Linux コマンド
 
 ### 3.1. alias
@@ -83,9 +101,23 @@ lastmod: 2024-01-13
   alias
   ```
 
-  - 設定: [kenkenpa198/dotfiles > alias.zsh](https://github.com/kenkenpa198/dotfiles/blob/main/zsh/rc/alias.zsh)
+  [kenkenpa198/dotfiles > alias.zsh](https://github.com/kenkenpa198/dotfiles/blob/main/zsh/rc/alias.zsh)
 
-### 3.2. grep
+### 3.2. chown
+
+- 配下のファイルとディレクトリの所有者とグループをホストのユーザーへ変更する
+
+  ```shell
+  sudo chown -R $USER:$USER .
+  ```
+
+  参考)
+
+  - [man chown (1): ファイルの所有者とグループを変更する](https://ja.manpages.org/chown)
+  - [WSL2でDockerを使用する際の権限問題を解決するシンプルな方法（docker-compose.yml使用） #Docker - Qiita](https://qiita.com/twu_go/items/a449e3006bd74fc7d10d)
+  - [Linuxのユーザーとグループって何だろう？：“応用力”をつけるためのLinux再入門（10）（1/2 ページ） - ＠IT](https://atmarkit.itmedia.co.jp/ait/articles/1706/02/news014.html)
+
+### 3.3. grep
 
 - 指定ファイル内を検索する (行番号付き)
 
@@ -99,7 +131,7 @@ lastmod: 2024-01-13
   grep -rl {キーワード} {起点となるディレクトリパス}
   ```
 
-### 3.3. seq
+### 3.4. seq
 
 - 指定範囲の数値をゼロ埋めで出力
 
@@ -113,7 +145,7 @@ lastmod: 2024-01-13
   seq -f %04g 30
   ```
 
-### 3.4. ssh
+### 3.5. ssh
 
 - SSH 接続
 
