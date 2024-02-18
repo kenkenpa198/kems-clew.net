@@ -50,8 +50,10 @@ lastmod: 2024-02-18
   - [4.1. Git の操作を取り消す](#41-git-の操作を取り消す)
   - [4.2. コミットを統合する](#42-コミットを統合する)
 - [5. Docker](#5-docker)
-  - [5.1. Compose](#51-compose)
-  - [5.2. Volume](#52-volume)
+  - [5.1. container](#51-container)
+  - [5.2. Image](#52-image)
+  - [5.3. Compose](#53-compose)
+  - [5.4. Volume](#54-volume)
 - [6. Laravel](#6-laravel)
   - [6.1. Composer](#61-composer)
   - [6.2. Artisan](#62-artisan)
@@ -253,19 +255,55 @@ Docker version 25.0.2, build 29cf629
   docker login
   ```
 
-- 起動しているコンテナ一覧を表示する
-
-  ```shell
-  docker ps
-  ```
-
 - 指定した Docker イメージをプルする
 
   ```shell
   docker pull [OPTIONS] NAME[:TAG|@DIGEST]
   ```
 
-### 5.1. Compose
+### 5.1. container
+
+- Docker コンテナを一覧表示する
+
+  ```shell
+  docker container ls
+  ```
+
+  ```shell
+  # ex.
+  # docker ps と同義
+  $ docker container ls
+  CONTAINER ID   IMAGE                COMMAND                  CREATED      STATUS       PORTS                              NAMES
+  4f869aa34b2e   docker-app           "docker-php-entrypoi…"   3 days ago   Up 2 hours   0.0.0.0:8000->8000/tcp, 9000/tcp   docker-app-1
+  cbcb7cd20a54   postgres:11-alpine   "docker-entrypoint.s…"   3 days ago   Up 3 hours   0.0.0.0:5432->5432/tcp             docker-database-1
+  ```
+
+### 5.2. Image
+
+- Docker イメージを一覧表示する
+
+  ```shell
+  docker image ls
+  ```
+
+  ```shell
+  # ex.
+  # docker images と同義
+  $ docker image ls
+  REPOSITORY   TAG         IMAGE ID       CREATED        SIZE
+  docker-app   latest      25102b30807f   3 weeks ago    496MB
+  postgres     11-alpine   10d7fb41183a   2 months ago   232MB
+  ```
+
+- `<none>` イメージを一括削除する
+
+  ```shell
+  docker image prune -f
+  ```
+
+  - [docker imagesに表示される＜none＞を消す。dangling \| codechord](https://codechord.com/2019/08/docker-images-none-dangling/)
+
+### 5.3. Compose
 
 - サービスをビルドする
 
@@ -418,7 +456,7 @@ Docker version 25.0.2, build 29cf629
   ✔ Image discordbot-mdn-main:latest  Removed        0.1s
   ```
 
-### 5.2. Volume
+### 5.4. Volume
 
 - ボリューム一覧を表示する
 
