@@ -50,20 +50,20 @@ lastmod: 2024-02-18
   - [4.1. Git の操作を取り消す](#41-git-の操作を取り消す)
   - [4.2. コミットを統合する](#42-コミットを統合する)
 - [5. Docker](#5-docker)
-  - [5.1. Container](#51-container)
-  - [5.2. Image](#52-image)
-  - [5.3. Compose](#53-compose)
+  - [5.1. Compose](#51-compose)
+  - [5.2. Container](#52-container)
+  - [5.3. Image](#53-image)
   - [5.4. Volume](#54-volume)
 - [6. Laravel](#6-laravel)
   - [6.1. Composer](#61-composer)
   - [6.2. Artisan](#62-artisan)
-    - [6.2.1. key](#621-key)
-    - [6.2.2. make](#622-make)
-    - [6.2.3. db](#623-db)
+    - [6.2.1. db](#621-db)
+    - [6.2.2. key](#622-key)
+    - [6.2.3. make](#623-make)
     - [6.2.4. migrate](#624-migrate)
-    - [6.2.5. tinker](#625-tinker)
-    - [6.2.6. route](#626-route)
-    - [6.2.7. serve](#627-serve)
+    - [6.2.5. route](#625-route)
+    - [6.2.6. serve](#626-serve)
+    - [6.2.7. tinker](#627-tinker)
 - [7. Excel](#7-excel)
   - [7.1. 書式設定](#71-書式設定)
   - [7.2. 関数](#72-関数)
@@ -261,49 +261,7 @@ Docker version 25.0.2, build 29cf629
   docker pull [OPTIONS] NAME[:TAG|@DIGEST]
   ```
 
-### 5.1. Container
-
-- Docker コンテナを一覧表示する
-
-  ```shell
-  docker container ls
-  ```
-
-  ```shell
-  # ex.
-  # docker ps と同義
-  $ docker container ls
-  CONTAINER ID   IMAGE                COMMAND                  CREATED      STATUS       PORTS                              NAMES
-  4f869aa34b2e   docker-app           "docker-php-entrypoi…"   3 days ago   Up 2 hours   0.0.0.0:8000->8000/tcp, 9000/tcp   docker-app-1
-  cbcb7cd20a54   postgres:11-alpine   "docker-entrypoint.s…"   3 days ago   Up 3 hours   0.0.0.0:5432->5432/tcp             docker-database-1
-  ```
-
-### 5.2. Image
-
-- Docker イメージを一覧表示する
-
-  ```shell
-  docker image ls
-  ```
-
-  ```shell
-  # ex.
-  # docker images と同義
-  $ docker image ls
-  REPOSITORY   TAG         IMAGE ID       CREATED        SIZE
-  docker-app   latest      25102b30807f   3 weeks ago    496MB
-  postgres     11-alpine   10d7fb41183a   2 months ago   232MB
-  ```
-
-- `<none>` イメージを一括削除する
-
-  ```shell
-  docker image prune -f
-  ```
-
-  - [docker imagesに表示される＜none＞を消す。dangling \| codechord](https://codechord.com/2019/08/docker-images-none-dangling/)
-
-### 5.3. Compose
+### 5.1. Compose
 
 - サービスをビルドする
 
@@ -456,6 +414,48 @@ Docker version 25.0.2, build 29cf629
   ✔ Image discordbot-mdn-main:latest  Removed        0.1s
   ```
 
+### 5.2. Container
+
+- Docker コンテナを一覧表示する
+
+  ```shell
+  docker container ls
+  ```
+
+  ```shell
+  # ex.
+  # docker ps と同義
+  $ docker container ls
+  CONTAINER ID   IMAGE                COMMAND                  CREATED      STATUS       PORTS                              NAMES
+  4f869aa34b2e   docker-app           "docker-php-entrypoi…"   3 days ago   Up 2 hours   0.0.0.0:8000->8000/tcp, 9000/tcp   docker-app-1
+  cbcb7cd20a54   postgres:11-alpine   "docker-entrypoint.s…"   3 days ago   Up 3 hours   0.0.0.0:5432->5432/tcp             docker-database-1
+  ```
+
+### 5.3. Image
+
+- Docker イメージを一覧表示する
+
+  ```shell
+  docker image ls
+  ```
+
+  ```shell
+  # ex.
+  # docker images と同義
+  $ docker image ls
+  REPOSITORY   TAG         IMAGE ID       CREATED        SIZE
+  docker-app   latest      25102b30807f   3 weeks ago    496MB
+  postgres     11-alpine   10d7fb41183a   2 months ago   232MB
+  ```
+
+- `<none>` イメージを一括削除する
+
+  ```shell
+  docker image prune -f
+  ```
+
+  - [docker imagesに表示される＜none＞を消す。dangling \| codechord](https://codechord.com/2019/08/docker-images-none-dangling/)
+
 ### 5.4. Volume
 
 - ボリューム一覧を表示する
@@ -518,7 +518,37 @@ Composer version 2.6.6 2023-12-08 18:32:26
 
 ### 6.2. Artisan
 
-#### 6.2.1. key
+#### 6.2.1. db
+
+- シーダーを実行する
+
+  ```shell
+  php artisan db:seed [options] [--] [<class>]
+  ```
+
+  ```shell
+  # ex.
+  $ composer dump-autoload
+  $ php artisan db:seed --class=FoldersTableSeeder
+  Database seeding completed successfully.
+
+  # Check Database
+  $ exit
+  $ docker compose exec database bash
+  37ccc2e57c0a:/# psql -U postgres
+  psql (11.22)
+  Type "help" for help.
+
+  postgres=# select * from folders;
+   id |    title     |     created_at      |     updated_at
+  ----+--------------+---------------------+---------------------
+    1 | プライベート | 2024-01-21 12:24:51 | 2024-01-21 12:24:51
+    2 | 仕事         | 2024-01-21 12:24:51 | 2024-01-21 12:24:51
+    3 | 旅行         | 2024-01-21 12:24:51 | 2024-01-21 12:24:51
+  (3 rows)
+  ```
+
+#### 6.2.2. key
 
 - アプリケーションの暗号化キーを設定する
 
@@ -528,7 +558,7 @@ Composer version 2.6.6 2023-12-08 18:32:26
 
   - [暗号化 10.x Laravel](https://readouble.com/laravel/10.x/ja/encryption.html)
 
-#### 6.2.2. make
+#### 6.2.3. make
 
 - コントローラークラスを作成する
 
@@ -630,36 +660,6 @@ Composer version 2.6.6 2023-12-08 18:32:26
   -rw-r--r-- 1 1000 1000 2509 Feb 14 13:38 TaskTest.php
   ```
 
-#### 6.2.3. db
-
-- シーダーを実行する
-
-  ```shell
-  php artisan db:seed [options] [--] [<class>]
-  ```
-
-  ```shell
-  # ex.
-  $ composer dump-autoload
-  $ php artisan db:seed --class=FoldersTableSeeder
-  Database seeding completed successfully.
-
-  # Check Database
-  $ exit
-  $ docker compose exec database bash
-  37ccc2e57c0a:/# psql -U postgres
-  psql (11.22)
-  Type "help" for help.
-
-  postgres=# select * from folders;
-   id |    title     |     created_at      |     updated_at
-  ----+--------------+---------------------+---------------------
-    1 | プライベート | 2024-01-21 12:24:51 | 2024-01-21 12:24:51
-    2 | 仕事         | 2024-01-21 12:24:51 | 2024-01-21 12:24:51
-    3 | 旅行         | 2024-01-21 12:24:51 | 2024-01-21 12:24:51
-  (3 rows)
-  ```
-
 #### 6.2.4. migrate
 
 - マイグレーションを実行する
@@ -694,36 +694,7 @@ Composer version 2.6.6 2023-12-08 18:32:26
   ...
   ```
 
-#### 6.2.5. tinker
-
-- メソッドを実行する
-
-  ```shell
-  tinker [options] [--] [<include>...]
-  ```
-
-  ```shell
-  # ex. メソッドを実行する
-  $ php artisan tinker
-  Psy Shell v0.11.22 (PHP 7.3.33 — cli) by Justin Hileman
-  > $folder = App\Models\Folder::find(1);
-  = App\Models\Folder {#6516
-      id: 1,
-      title: "プライベート",
-      created_at: "2024-01-22 10:39:42",
-      updated_at: "2024-01-22 10:39:42",
-    }
-  ```
-
-  ```shell
-  # ex. 実行される SQL を確認する
-  $ php artisan tinker
-  Psy Shell v0.11.22 (PHP 7.3.33 — cli) by Justin Hileman
-  > \App\Models\Task::where('folder_id', 1)->toSql();
-  = "select * from "tasks" where "folder_id" = ?"
-  ```
-
-#### 6.2.6. route
+#### 6.2.5. route
 
 - ルーティングの定義を一覧表示する
 
@@ -769,7 +740,7 @@ Composer version 2.6.6 2023-12-08 18:32:26
   +--------+----------+-----------------------------------+------------------+------------------------------------------------------------------------+---------------------------------------------+
   ```
 
-#### 6.2.7. serve
+#### 6.2.6. serve
 
 - Web サーバーを起動する
 
@@ -784,6 +755,35 @@ Composer version 2.6.6 2023-12-08 18:32:26
   Starting Laravel development server: http://0.0.0.0:8000
 
   # Access to http://localhost:8000
+  ```
+
+#### 6.2.7. tinker
+
+- メソッドを実行する
+
+  ```shell
+  tinker [options] [--] [<include>...]
+  ```
+
+  ```shell
+  # ex. メソッドを実行する
+  $ php artisan tinker
+  Psy Shell v0.11.22 (PHP 7.3.33 — cli) by Justin Hileman
+  > $folder = App\Models\Folder::find(1);
+  = App\Models\Folder {#6516
+      id: 1,
+      title: "プライベート",
+      created_at: "2024-01-22 10:39:42",
+      updated_at: "2024-01-22 10:39:42",
+    }
+  ```
+
+  ```shell
+  # ex. 実行される SQL を確認する
+  $ php artisan tinker
+  Psy Shell v0.11.22 (PHP 7.3.33 — cli) by Justin Hileman
+  > \App\Models\Task::where('folder_id', 1)->toSql();
+  = "select * from "tasks" where "folder_id" = ?"
   ```
 
 ## 7. Excel
