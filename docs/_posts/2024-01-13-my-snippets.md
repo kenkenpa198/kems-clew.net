@@ -50,7 +50,7 @@ lastmod: 2024-02-18
   - [4.1. Git の操作を取り消す](#41-git-の操作を取り消す)
   - [4.2. コミットを統合する](#42-コミットを統合する)
 - [5. Docker](#5-docker)
-  - [5.1. container](#51-container)
+  - [5.1. Container](#51-container)
   - [5.2. Image](#52-image)
   - [5.3. Compose](#53-compose)
   - [5.4. Volume](#54-volume)
@@ -261,7 +261,7 @@ Docker version 25.0.2, build 29cf629
   docker pull [OPTIONS] NAME[:TAG|@DIGEST]
   ```
 
-### 5.1. container
+### 5.1. Container
 
 - Docker コンテナを一覧表示する
 
