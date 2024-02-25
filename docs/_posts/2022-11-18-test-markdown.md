@@ -108,34 +108,34 @@ __ボールド（アンダースコア2個）__
 
 ### 6.1. 相対パス指定（マークダウンから見たパス）
 
-`./../images/notes/2022-11-18-test-markdown/small.jpg`  
-![代替テキスト](./../images/notes/2022-11-18-test-markdown/small.jpg) ※表示できない
+`./../assets/notes/2022-11-18-test-markdown/small.jpg`  
+![代替テキスト](./../assets/notes/2022-11-18-test-markdown/small.jpg) ※表示できない
 
 ### 6.2. 相対パス指定（Jekyll の記法）
 
 記述したパス（ `{ {` `} }` のスペースは除く）:  
-`{ { "./../images/notes/2022-11-18-test-markdown/small.jpg" | relative_url } }`  
+`{ { "./../assets/notes/2022-11-18-test-markdown/small.jpg" | relative_url } }`  
 
 変換されたパス:  
-`{{ "./../images/notes/2022-11-18-test-markdown/small.jpg" | relative_url }}`  
-![代替テキスト]({{ "./../images/notes/2022-11-18-test-markdown/small.jpg" | relative_url }})
+`{{ "./../assets/notes/2022-11-18-test-markdown/small.jpg" | relative_url }}`  
+![代替テキスト]({{ "./../assets/notes/2022-11-18-test-markdown/small.jpg" | relative_url }})
 
 ### 6.3. 絶対パス指定（リポジトリのルートディレクトリから）
 
-`/docs/images/notes/2022-11-18-test-markdown/small.jpg`  
-![代替テキスト](/docs/images/notes/2022-11-18-test-markdown/small.jpg) ※表示できない
+`/docs/assets/notes/2022-11-18-test-markdown/small.jpg`  
+![代替テキスト](/docs/assets/notes/2022-11-18-test-markdown/small.jpg) ※表示できない
 
 ### 6.4. 絶対パス指定（ビルドされたルートディレクトリから）
 
-`/images/notes/2022-11-18-test-markdown/small.jpg`  
-![代替テキスト](/images/notes/2022-11-18-test-markdown/small.jpg)
+`/assets/notes/2022-11-18-test-markdown/small.jpg`  
+![代替テキスト](/assets/notes/2022-11-18-test-markdown/small.jpg)
 
 ### 6.5. 大きい画像
 
 `#note main { max-width: 824px;}` 指定よりも大きい画像だった場合の表示確認用。
 
-`/images/notes/2022-11-18-test-markdown/large.jpg` サイズ: 1080x1080  
-![代替テキスト](/images/notes/2022-11-18-test-markdown/large.jpg)
+`/assets/notes/2022-11-18-test-markdown/large.jpg` サイズ: 1080x1080  
+![代替テキスト](/assets/notes/2022-11-18-test-markdown/large.jpg)
 
 ## 7. テーブル
 
