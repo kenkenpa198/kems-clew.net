@@ -15,7 +15,7 @@ tags:
   - regexp
   - tips
 date: 2024-01-13
-lastmod: 2024-02-18
+lastmod: 2024-02-26
 ---
 
 自分用便利スニペット集。
@@ -40,6 +40,10 @@ lastmod: 2024-02-18
 
 - [1. 記号](#1-記号)
 - [2. 正規表現](#2-正規表現)
+  - [2.1. 早見表](#21-早見表)
+  - [2.2. 記号・制御文字](#22-記号制御文字)
+  - [2.3. URL](#23-url)
+  - [2.4. その他](#24-その他)
 - [3. Linux コマンド](#3-linux-コマンド)
   - [3.1. alias](#31-alias)
   - [3.2. chown](#32-chown)
@@ -64,20 +68,20 @@ lastmod: 2024-02-18
     - [6.2.5. route](#625-route)
     - [6.2.6. serve](#626-serve)
     - [6.2.7. tinker](#627-tinker)
-- [7. Excel](#7-excel)
-  - [7.1. 書式設定](#71-書式設定)
-  - [7.2. 関数](#72-関数)
-- [8. SQL](#8-sql)
-- [9. Google 検索](#9-google-検索)
+- [7. SQL](#7-sql)
+- [8. Excel](#8-excel)
+  - [8.1. 書式設定](#81-書式設定)
+  - [8.2. 関数](#82-関数)
+- [9. その他](#9-その他)
+  - [9.1. example.com](#91-examplecom)
+  - [9.2. Google 検索](#92-google-検索)
 
 ## 1. 記号
-
-※ `[]` の中をコピペする。
 
 - 全角スペース
 
   ```c
-  [　]
+  　
   ```
 
 - タブ文字
@@ -86,28 +90,92 @@ lastmod: 2024-02-18
   [	]
   ```
 
+  ※ `[` `]` の中をコピーする。
+
 ## 2. 正規表現
+
+### 2.1. 早見表
+
+- [正規表現サンプル集](https://www.megasoft.co.jp/mifes/seiki/meta.html)
+- [正規表現：メタ文字（特殊文字）の一覧 \| WWWクリエイターズ](https://www-creators.com/archives/2612)
+- [正規表現構文早見表 - JavaScript \| MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Guide/Regular_expressions/Cheatsheet)
+
+### 2.2. 記号・制御文字
 
 - 半角スペース OR 全角スペース OR タブ文字
 
   ```c
-  ( |　|	)
+   |　|\t
   ```
 
-- URL
+- 改行コード (LF / CRLF / CR)
 
   ```c
-  // 完全一致 (行頭 ～ 行末)
+  \n|\r\n|\r
+  ```
+
+  - [正規表現：改行コードの表現方法。置換による削除 \| WWWクリエイターズ](https://www-creators.com/archives/2551)
+
+### 2.3. URL
+
+- 完全一致 (行頭 ～ 行末)
+
+  ```c
   ^(http|https):\/\/[-\w\.]+(:\d+)?(\/[^\s]*)?$
   ```
 
+- 部分一致
+
   ```c
-  // 部分一致
   (http|https):\/\/[-\w\.]+(:\d+)?(\/[^\s]*)?
   ```
 
   - [とほほの正規表現入門 - とほほのWWW入門](https://www.tohoho-web.com/ex/regexp.html)
   - [正規表現 - とほほのWWW入門](https://www.tohoho-web.com/perl/regexp.htm)
+
+### 2.4. その他
+
+- 先読みアサーション
+
+  ```c
+  X(?=Y)
+  ```
+
+  パターン X に対してパターン Y が続く場合のみ X がマッチする。
+
+  ```c
+  // 例えば次の場合……
+  .+(?=@)
+
+  // 'local' にのみマッチする ('@' にはマッチしない)
+  local@example.com
+  ^^^^^
+  ```
+
+  - [正規表現構文早見表 - JavaScript \| MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Guide/Regular_expressions/Cheatsheet#%E3%81%9D%E3%81%AE%E4%BB%96%E3%81%AE%E3%82%A2%E3%82%B5%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3)
+  - [正規表現のマッチングをどこからでも―「境界アサーション」と「ルックアラウンドアサーション」：ECMAScriptで学ぶ正規表現（7） - ＠IT](https://atmarkit.itmedia.co.jp/ait/articles/2207/15/news002.html)
+
+- 金額をカンマ区切りへ変換
+
+  ```c
+  (?<=\d)(?=(\d{3})+(?!\d)
+  ```
+
+  ```c
+  // マッチした箇所を ',' へ置換
+  1234567890
+  12345678901
+  123456789012
+  1234567890123
+
+  // 結果
+  1,234,567,890
+  12,345,678,901
+  123,456,789,012
+  1,234,567,890,123
+  ```
+
+  - [正規表現のマッチングをどこからでも―「境界アサーション」と「ルックアラウンドアサーション」：ECMAScriptで学ぶ正規表現（7） - ＠IT](https://atmarkit.itmedia.co.jp/ait/articles/2207/15/news002.html)
 
 ## 3. Linux コマンド
 
@@ -786,9 +854,14 @@ Composer version 2.6.6 2023-12-08 18:32:26
   = "select * from "tasks" where "folder_id" = ?"
   ```
 
-## 7. Excel
+## 7. SQL
 
-### 7.1. 書式設定
+- [標準 SQL 集]({% post_url 2022-11-24-sql-standard %})
+- [自作 SQL 集]({% post_url 2022-11-24-sql-made-by-me %})
+
+## 8. Excel
+
+### 8.1. 書式設定
 
 - YYYY-MM-DD hh:mm:ss 形式 (ゼロ埋め) で表示
 
@@ -796,7 +869,7 @@ Composer version 2.6.6 2023-12-08 18:32:26
   YYYY-MM-DD hh:mm:ss
   ```
 
-### 7.2. 関数
+### 8.2. 関数
 
 - 縦に連番を振る
 
@@ -812,12 +885,23 @@ Composer version 2.6.6 2023-12-08 18:32:26
 
   - [Excel ドキュメントを書く時の定石集 - Neo's World](https://neos21.net/tech/business-communication/excel-best-practices.html)
 
-## 8. SQL
+## 9. その他
 
-- [標準 SQL 集]({% post_url 2022-11-24-sql-standard %})
-- [自作 SQL 集]({% post_url 2022-11-24-sql-made-by-me %})
+### 9.1. example.com
 
-## 9. Google 検索
+- [example.com](https://example.com/)
+
+  ```c
+  example.com
+  ```
+
+  ```c
+  username@example.com
+  ```
+
+  - [example.com - Wikipedia](https://ja.wikipedia.org/wiki/Example.com)
+
+### 9.2. Google 検索
 
 - サイト内検索
 
