@@ -4,8 +4,7 @@ layout: post
 page-category: note
 category: 日記
 tags:
-  - jekyll
-  - github
+  - misc
 date: 2022-11-18 09:00:00
 lastmod: 2023-01-06 22:20:48
 type: post
