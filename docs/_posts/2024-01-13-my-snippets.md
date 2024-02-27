@@ -13,7 +13,7 @@ tags:
   - linux
   - regexp
 date: 2024-01-13
-lastmod: 2024-02-26
+lastmod: 2024-02-28
 ---
 
 自分用便利スニペット集。
@@ -49,8 +49,9 @@ lastmod: 2024-02-26
   - [3.4. seq](#34-seq)
   - [3.5. ssh](#35-ssh)
 - [4. Git](#4-git)
-  - [4.1. Git の操作を取り消す](#41-git-の操作を取り消す)
-  - [4.2. コミットを統合する](#42-コミットを統合する)
+  - [4.1. ⚠️Git の操作を取り消す](#41-️git-の操作を取り消す)
+  - [4.2. ⚠️コミットを統合する](#42-️コミットを統合する)
+  - [4.3. キャッシュを削除する](#43-キャッシュを削除する)
 - [5. Docker](#5-docker)
   - [5.1. Compose](#51-compose)
   - [5.2. Container](#52-container)
@@ -237,7 +238,10 @@ lastmod: 2024-02-26
 
 ## 4. Git
 
-### 4.1. Git の操作を取り消す
+- ⚠️: 対象コミットの歴史を改変する操作。
+  - **リモートブランチへプッシュ済みの場合、無断で行わないこと** 。
+
+### 4.1. ⚠️Git の操作を取り消す
 
 ```shell
 # 1. git reflog で操作履歴を出力する
@@ -258,11 +262,13 @@ $ git reset --hard 0488e28
 $ git reset --soft HEAD@{1}
 ```
 
-  - [Git - リセットコマンド詳説](https://git-scm.com/book/ja/v2/Git-%E3%81%AE%E3%81%95%E3%81%BE%E3%81%96%E3%81%BE%E3%81%AA%E3%83%84%E3%83%BC%E3%83%AB-%E3%83%AA%E3%82%BB%E3%83%83%E3%83%88%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89%E8%A9%B3%E8%AA%AC)
-  - [第6話 git reset 3種類をどこよりもわかりやすい図解で解説！【連載】マンガでわかるGit ～コマンド編～ - itstaffing エンジニアスタイル](https://www.r-staffing.co.jp/engineer/entry/20191129_1)
-  - [第7話 間違えて reset しちゃった？git reflogで元どおり【連載】マンガでわかるGit ～コマンド編～ - itstaffing エンジニアスタイル](https://www.r-staffing.co.jp/engineer/entry/20191227_1)
+参考文献:
 
-### 4.2. コミットを統合する
+- [Git - リセットコマンド詳説](https://git-scm.com/book/ja/v2/Git-%E3%81%AE%E3%81%95%E3%81%BE%E3%81%96%E3%81%BE%E3%81%AA%E3%83%84%E3%83%BC%E3%83%AB-%E3%83%AA%E3%82%BB%E3%83%83%E3%83%88%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89%E8%A9%B3%E8%AA%AC)
+- [第6話 git reset 3種類をどこよりもわかりやすい図解で解説！【連載】マンガでわかるGit ～コマンド編～ - itstaffing エンジニアスタイル](https://www.r-staffing.co.jp/engineer/entry/20191129_1)
+- [第7話 間違えて reset しちゃった？git reflogで元どおり【連載】マンガでわかるGit ～コマンド編～ - itstaffing エンジニアスタイル](https://www.r-staffing.co.jp/engineer/entry/20191227_1)
+
+### 4.2. ⚠️コミットを統合する
 
 (1) のコミットを (2) へ統合する場合の対応手順。
 
@@ -272,41 +278,78 @@ $ gll
 * 07e84cc 2024-01-13 11:27:11 [add]add note 2024-01-13-my-snippets by"kenkenpa198" # (2)
 ```
 
-  ```shell
-  # 1. リベースを開始する
-  $ git rebase -i HEAD~~
-  ```
+```shell
+# 1. リベースを開始する
+$ git rebase -i HEAD~~
+```
 
-  ```shell
-  # 2. リベース指示書を編集する
-  # 統合するコミットを f へ書き換えて保存する
-  # f は統合を指示する指定
-  pick 07e84cc [add]add note 2024-01-13-my-snippets
-  f dc80a8f wip                                     # pick から f へ変更
+```shell
+# 2. リベース指示書を編集する
+# 統合するコミットを f へ書き換えて保存する
+# f は統合を指示する指定
+pick 07e84cc [add]add note 2024-01-13-my-snippets
+f dc80a8f wip                                     # pick から f へ変更
 
-  # Rebase d3937fb..dc80a8f onto d3937fb (2 commands)
-  #
-  # Commands:
-  # p, pick <commit> = use commit
-  # ...
-  # f, fixup <commit> = like "squash", but discard this commit's log message
-  # ...
-  ```
+# Rebase d3937fb..dc80a8f onto d3937fb (2 commands)
+#
+# Commands:
+# p, pick <commit> = use commit
+# ...
+# f, fixup <commit> = like "squash", but discard this commit's log message
+# ...
+```
 
-  ```shell
-  # 3. ファイルを保存後、Successfully ... と表示されたことを確認する
-  $ git rebase -i HEAD~~                            # 1. で実行したコマンド
-  Successfully rebased and updated refs/heads/main. # 返った結果
+```shell
+# 3. ファイルを保存後、Successfully ... と表示されたことを確認する
+$ git rebase -i HEAD~~                            # 1. で実行したコマンド
+Successfully rebased and updated refs/heads/main. # 返った結果
 
-  # 4. コミットログとファイル内容を確認する
-  $ gll
-  * 8ed7b8a 2024-01-13 10:57:20 (HEAD -> main) [add]add note 2024-01-13-my-snippets by"kenkenpa198"
-  ...
-  ```
+# 4. コミットログとファイル内容を確認する
+$ gll
+* 8ed7b8a 2024-01-13 10:57:20 (HEAD -> main) [add]add note 2024-01-13-my-snippets by"kenkenpa198"
+...
+```
 
-  - [5. rebase -i でコミットをまとめる｜サル先生のGit入門【プロジェクト管理ツールBacklog】](https://backlog.com/ja/git-tutorial/stepup/32/)
+参考文献:
+
+- [5. rebase -i でコミットをまとめる｜サル先生のGit入門【プロジェクト管理ツールBacklog】](https://backlog.com/ja/git-tutorial/stepup/32/)
 
 ※ 実行しているコマンド `$ gll` は [git log のエイリアス](https://github.com/kenkenpa198/dotfiles/blob/fe695c145ec1c6b35849622cc3b26703d0ef5700/zsh/rc/alias.zsh#L100) 。
+
+### 4.3. キャッシュを削除する
+
+[kenkenpa198/dotfiles](https://github.com/kenkenpa198/dotfiles?tab=readme-ov-file#git-%E3%81%AE%E3%82%AD%E3%83%A3%E3%83%83%E3%82%B7%E3%83%A5%E5%89%8A%E9%99%A4%E6%89%8B%E9%A0%86) にも記載しているもの。
+
+- グローバルな除外設定 (`.gitignore_global` など) を設定する前にコミットをしてしまった。
+- 過去に追跡対象としてコミットしたファイルを `.gitignore` の追跡対象外へ追加する。
+- `.gitignore` を整理したので追跡対象の設定が問題ないか確認したい。
+
+これらに該当する場合は Git のキャッシュ削除が必要になる。
+
+```shell
+# 1. cd
+cd fuga
+
+# 2. Git のキャッシュをすべてのファイルから削除する
+git rm --cached -r .
+
+# 3. 全てのファイルをステージングする
+git add -vA
+
+# 4. コミット対象のファイルが変更を加えたファイルのみであるか確認する
+git status -s
+
+# 5. コミットする
+git commit -m 'commit comments'
+```
+
+参考文献:
+
+- [.gitignoreに記載したのに反映されない件 #Git - Qiita](https://qiita.com/fuwamaki/items/3ed021163e50beab7154)
+- [Git - git-rm Documentation](https://git-scm.com/docs/git-rm)
+  - [-r](https://git-scm.com/docs/git-rm#Documentation/git-rm.txt--r)
+  - [--cached](https://git-scm.com/docs/git-rm#Documentation/git-rm.txt---cached)
+- [git-rm – Git コマンドリファレンス（日本語版）](https://tracpath.com/docs/git-rm/)
 
 ## 5. Docker
 
