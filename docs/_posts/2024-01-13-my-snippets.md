@@ -185,13 +185,17 @@ lastmod: 2024-02-28
   # ex.
   $ pwd
   ... 略 .../kems-clew.net
-  $ grep -rlI キーワード ./
+  $ grep -rlI キーワード .
   ./docs/_posts/2023-01-02-inbox-zero.md
   ./docs/_posts/2024-01-13-my-snippets.md
   ... 略 ...
   ```
 
 - 指定ディレクトリ配下でヒットしたファイル名と行のリストを出力する
+
+  ```shell
+  grep -rnI [キーワード] [起点となるディレクトリパス + /*]
+  ```
 
   ```shell
   # ex.
