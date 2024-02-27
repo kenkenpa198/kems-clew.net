@@ -163,13 +163,42 @@ lastmod: 2024-02-28
 - 指定ファイル内を検索する (行番号付き)
 
   ```shell
-  grep -n {キーワード} {ファイル名}
+  grep -n [キーワード] [ファイル名]
+  ```
+
+  ```shell
+  # ex.
+  $ cd docs/_posts
+  $ grep -n キーワード ./2024-01-13-my-snippets.md
+  166:  grep -n [キーワード] [ファイル名]
+  171:  $ grep -n キーワード ./2024-01-13-my-snippets.md
+  ... 略 ...
   ```
 
 - 指定ディレクトリ配下でヒットしたファイル名のリストを出力する
 
   ```shell
-  grep -rl {キーワード} {起点となるディレクトリパス}
+  grep -rl [キーワード] [起点となるディレクトリパス]
+  ```
+
+  ```shell
+  # ex.
+  $ pwd
+  ... 略 .../kems-clew.net
+  $ grep -rlI キーワード ./
+  ./docs/_posts/2023-01-02-inbox-zero.md
+  ./docs/_posts/2024-01-13-my-snippets.md
+  ... 略 ...
+  ```
+
+- 指定ディレクトリ配下でヒットしたファイル名と行のリストを出力する
+
+  ```shell
+  # ex.
+  $ grep -rnI キーワード ./*
+  ./docs/_posts/2023-01-02-inbox-zero.md:58:    |               | 検索キーワード          | セクション名（省略可） |
+  ./docs/_posts/2023-01-02-inbox-zero.md:101:    - どうにもよくわからなかったので、自分の設定では検索キーワードとセクション名を設定するように しています。
+  ... 略 ...
   ```
 
 ### 3.4. seq
@@ -186,7 +215,16 @@ lastmod: 2024-02-28
   seq -f %04g 30
   ```
 
-### 3.5. ssh
+### 3.5. split
+
+  - CSV ファイルを 100 行単位で分割する
+
+    ```shell
+    mkdir -p split && \
+    split -l 100 -d --additional-suffix=.csv ./filename.csv split/filename
+    ```
+
+### 3.6. ssh
 
 - SSH 接続
 
@@ -858,9 +896,29 @@ Composer version 2.6.6 2023-12-08 18:32:26
 - [標準 SQL 集]({% post_url 2022-11-24-sql-standard %})
 - [自作 SQL 集]({% post_url 2022-11-24-sql-made-by-me %})
 
-## 8. Excel
+## 8. VS Code
 
-### 8.1. 書式設定
+### 8.1. 保存時の設定を無効化する
+
+```json
+{
+    "files.insertFinalNewline": false,
+    "files.trimFinalNewlines": false,
+    "files.trimTrailingWhitespace": false,
+}
+```
+
+これを `ワークスペース/.vscode/settings.json` へ記述すると、[ユーザー設定で行われている](https://github.com/kenkenpa198/dotfiles/blob/0defd6780a2505a590646184708781cf54fd9553/config/Code/User/settings.json#L22-L24) 下記の記述を無効化できる。
+
+- 保存時に新規行を挿入 (`files.insertFinalNewline`)
+- 保存時に不要行を除去 (`files.trimFinalNewlines`)
+- 保存時に行末のスペース記号を削除 (`files.trimTrailingWhitespace`)
+
+他者が作成したコードをそのまま保存したいときに配置する。
+
+## 9. Excel
+
+### 9.1. 書式設定
 
 - YYYY-MM-DD hh:mm:ss 形式 (ゼロ埋め) で表示
 
@@ -868,7 +926,7 @@ Composer version 2.6.6 2023-12-08 18:32:26
   YYYY-MM-DD hh:mm:ss
   ```
 
-### 8.2. 関数
+### 9.2. 関数
 
 - 縦に連番を振る
 
@@ -884,9 +942,9 @@ Composer version 2.6.6 2023-12-08 18:32:26
 
   - [Excel ドキュメントを書く時の定石集 - Neo's World](https://neos21.net/tech/business-communication/excel-best-practices.html)
 
-## 9. その他
+## 10. その他
 
-### 9.1. example.com
+### 10.1. example.com
 
 - [example.com](https://example.com/)
 
@@ -904,7 +962,7 @@ Composer version 2.6.6 2023-12-08 18:32:26
 
   - [example.com - Wikipedia](https://ja.wikipedia.org/wiki/Example.com)
 
-### 9.2. Google 検索
+### 10.2. Google 検索
 
 - サイト内検索
 
