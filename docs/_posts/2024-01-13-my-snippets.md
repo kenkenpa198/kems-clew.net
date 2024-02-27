@@ -889,11 +889,15 @@ Composer version 2.6.6 2023-12-08 18:32:26
 
 - [example.com](https://example.com/)
 
-  ```c
+  ```text
   example.com
   ```
 
-  ```c
+  ```text
+  https://example.com/
+  ```
+
+  ```text
   username@example.com
   ```
 
