@@ -138,13 +138,11 @@ lastmod: 2024-02-28
 
 ### 3.1. alias
 
-- alias 一覧
+- alias 一覧 ([kenkenpa198/dotfiles > alias.zsh](https://github.com/kenkenpa198/dotfiles/blob/main/zsh/rc/alias.zsh))
 
   ```shell
   alias
   ```
-
-  - [kenkenpa198/dotfiles > alias.zsh](https://github.com/kenkenpa198/dotfiles/blob/main/zsh/rc/alias.zsh)
 
 ### 3.2. chown
 
@@ -168,26 +166,26 @@ lastmod: 2024-02-28
 
   ```shell
   # ex.
-  $ cd docs/_posts
-  $ grep -n キーワード ./2024-01-13-my-snippets.md
+  $ pwd
+  ... 略 .../kems-clew.net
+  $ grep -n キーワード ./docs/_posts/2024-01-13-my-snippets.md
   166:  grep -n [キーワード] [ファイル名]
-  171:  $ grep -n キーワード ./2024-01-13-my-snippets.md
+  172:  $ grep -n キーワード ./2024-01-13-my-snippets.md
   ... 略 ...
   ```
 
 - 指定ディレクトリ配下でヒットしたファイル名のリストを出力する
 
   ```shell
-  grep -rl [キーワード] [起点となるディレクトリパス]
+  grep -rlI [キーワード] [起点となるディレクトリパス]
   ```
 
   ```shell
   # ex.
-  $ pwd
-  ... 略 .../kems-clew.net
-  $ grep -rlI キーワード .
+  $ grep -rlI キーワード ./docs/
   ./docs/_posts/2023-01-02-inbox-zero.md
   ./docs/_posts/2024-01-13-my-snippets.md
+  ./docs/_site/feed.xml
   ... 略 ...
   ```
 
@@ -199,11 +197,14 @@ lastmod: 2024-02-28
 
   ```shell
   # ex.
-  $ grep -rnI キーワード ./*
+  $ grep -rnI キーワード ./docs/
   ./docs/_posts/2023-01-02-inbox-zero.md:58:    |               | 検索キーワード          | セクション名（省略可） |
   ./docs/_posts/2023-01-02-inbox-zero.md:101:    - どうにもよくわからなかったので、自分の設定では検索キーワードとセクション名を設定するように しています。
+  ./docs/_posts/2024-01-13-my-snippets.md:166:  grep -n [キーワード] [ファイル名]
   ... 略 ...
   ```
+
+  - [man grep (1): パターンにマッチする行を表示する](https://ja.manpages.org/grep#)
 
 ### 3.4. seq
 
