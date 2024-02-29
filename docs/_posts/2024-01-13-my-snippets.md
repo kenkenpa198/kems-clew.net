@@ -12,6 +12,7 @@ tags:
   - laravel
   - linux
   - regexp
+  - vscode
 date: 2024-01-13
 lastmod: 2024-02-28
 ---
@@ -946,6 +947,13 @@ Composer version 2.6.6 2023-12-08 18:32:26
   ```
 
   - [Excel ドキュメントを書く時の定石集 - Neo's World](https://neos21.net/tech/business-communication/excel-best-practices.html)
+
+- ファイル名を表示する
+
+```c
+
+```
+
 
 ## 10. その他
 
