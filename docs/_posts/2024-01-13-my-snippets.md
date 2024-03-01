@@ -14,7 +14,7 @@ tags:
   - regexp
   - vscode
 date: 2024-01-13
-lastmod: 2024-02-28
+lastmod: 2024-03-02
 ---
 
 自分用便利スニペット集。
@@ -948,18 +948,19 @@ Composer version 2.6.6 2023-12-08 18:32:26
 
   - [Excel ドキュメントを書く時の定石集 - Neo's World](https://neos21.net/tech/business-communication/excel-best-practices.html)
 
-- ファイル名を表示する
+- シート名を表示する
 
-```c
+  ```c
+  =MID(CELL("filename",A1),FIND("]",CELL("filename",A1))+1,99)
+  ```
 
-```
-
+  - [Excelの表でシート名を利用するのに毎度手動でコピペする修行は不要！ 関数で取得する方法 - 残業を減らす！Officeテクニック - 窓の杜](https://forest.watch.impress.co.jp/docs/serial/offitech/1453353.html)
 
 ## 10. その他
 
 ### 10.1. example.com
 
-- [example.com](https://example.com/)
+- example.com
 
   ```text
   example.com
@@ -973,6 +974,7 @@ Composer version 2.6.6 2023-12-08 18:32:26
   username@example.com
   ```
 
+  - [example.com](https://example.com/)
   - [example.com - Wikipedia](https://ja.wikipedia.org/wiki/Example.com)
 
 ### 10.2. Google 検索
