@@ -1,6 +1,6 @@
 ---
 layout: post
-title: KeM's Clew をアップデートしました
+title: KeM's Clew をアップグレードしました
 description: ""
 preview: ""
 category: 情報技術
@@ -10,11 +10,11 @@ date: 2024-03-02
 lastmod: 2024-03-02
 ---
 
-表題のとおり。KeM's Clew v2.\*.\* としてリリースしております。
+表題のとおり、KeM's Clew v2.\*.\* としてアップグレードしました。
 
 - [Release v2.0.0 · kenkenpa198/kems-clew.net](https://github.com/kenkenpa198/kems-clew.net/releases/tag/v2.0.0)
 
-経緯とアップデート内容について紹介します！
+経緯と更新内容について紹介します！
 
 ## 改修に至った経緯
 
@@ -65,7 +65,7 @@ Jekyll の Liquid 構文や Sass など、改めて触れる機会になって�
 
 ![note-toc]({{ baseurl | append: "/assets/notes/2024-03-01-updated-kems-clew-v2/note-toc.gif" | relative_url }})
 
-特に目次の存在はページの横断が大変行いやすくなりました。中でも [便利スニペット集](https://kems-clew.net/notes/2024-01-13-my-snippets.html) のページはかなり効果が大きい……。
+特に目次の存在はページの横断が大変行いやすくなりました。中でも [便利スニペット集](https://kems-clew.net/notes/2024-01-13-my-snippets.html) のページはかなり効果が大きい！
 
 その他、ビューポートによってメニューボタンに変化するなどいろいろ工夫しています。使い勝手は……今後に期待ということで……。
 
@@ -124,7 +124,7 @@ Qiita などのサービスでよく見るアレ。KeM's Clew にも実装しま
   }
   ```
 
-初めて 2 種類のフォントを織り交ぜることに挑戦してみたけど……だいぶセンスよいのでは！！？
+初めて 2 種類のフォントを織り交ぜることに挑戦してみたけど……だいぶ垢抜けたのでは！！？
 
 サイト全体のデザイン・あしらいについては微調整を続けています。行間とか余白とかね～～どこまでこだわるか……。
 
