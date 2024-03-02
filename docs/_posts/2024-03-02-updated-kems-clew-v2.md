@@ -6,6 +6,8 @@ preview: ""
 category: 情報技術
 tags:
   - misc
+  - jekyll
+  - javascript
 date: 2024-03-02
 lastmod: 2024-03-02
 ---
@@ -145,7 +147,7 @@ Qiita などのサービスでよく見るアレ。KeM's Clew にも実装しま
 
 > あしらい用および等幅フォントとして Ubuntu, Ubuntu Mono を利用開始。
 
-今までのテキスト用フォントは [Noto Sans Japanese](https://fonts.google.com/noto/specimen/Noto+Sans+JP?query=noto+sans) のみでしたが、これに新しく下記 2 種を追加しました。
+今までのテキスト用フォントは [Noto Sans Japanese](https://fonts.google.com/noto/specimen/Noto+Sans+JP?query=noto+sans) のみでしたが、これに新しく Ubuntu 系のフォントを追加しました。
 
 - [Ubuntu - Google Fonts](https://fonts.google.com/specimen/Ubuntu)
 - [Ubuntu Mono - Google Fonts](https://fonts.google.com/specimen/Ubuntu+Mono?query=ubuntu+mono)
@@ -160,7 +162,10 @@ Qiita などのサービスでよく見るアレ。KeM's Clew にも実装しま
 
 - Ubuntu Mono: コードスパン / コードブロック 用
 
+  `Code span`
+
   ```c
+  // Code block
   #include <stdio.h>
 
   int main(void) {
@@ -168,7 +173,7 @@ Qiita などのサービスでよく見るアレ。KeM's Clew にも実装しま
   }
   ```
 
-初めて 2 種類のフォントを織り交ぜることに挑戦してみたけど……だいぶ垢抜けたのでは！！？
+初めて別種のフォントを織り交ぜることに挑戦してみたけど……だいぶ垢抜けたのでは！！？
 
 ## RSS を設置
 
