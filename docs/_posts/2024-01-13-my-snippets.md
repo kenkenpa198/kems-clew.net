@@ -197,7 +197,7 @@ lastmod: 2024-03-09
   alias
   ```
 
-### apt / apt-get
+### 3.3. apt / apt-get
 
 - 利用可能なパッケージ一覧を更新する
 
@@ -241,7 +241,7 @@ lastmod: 2024-03-09
 
   - [Ubuntu 20.04 LTS を 22.04 LTS にアップグレードする - Uzabase for Engineers](https://tech.uzabase.com/entry/2022/10/05/163458)
 
-### 3.3. chown
+### 3.4. chown
 
 - 配下のファイルとディレクトリの所有者とグループをホストのユーザーへ変更する
 
@@ -253,7 +253,7 @@ lastmod: 2024-03-09
   - [WSL2でDockerを使用する際の権限問題を解決するシンプルな方法（docker-compose.yml使用） #Docker - Qiita](https://qiita.com/twu_go/items/a449e3006bd74fc7d10d)
   - [Linuxのユーザーとグループって何だろう？：“応用力”をつけるためのLinux再入門（10）（1/2 ページ） - ＠IT](https://atmarkit.itmedia.co.jp/ait/articles/1706/02/news014.html)
 
-### 3.4. grep
+### 3.5. grep
 
 - 指定ファイル内を検索する (行番号付き)
 
@@ -303,7 +303,7 @@ lastmod: 2024-03-09
 
   - [man grep (1): パターンにマッチする行を表示する](https://ja.manpages.org/grep#)
 
-### 3.5. seq
+### 3.6. seq
 
 - 指定範囲の数値をゼロ埋めで出力
 
@@ -317,7 +317,7 @@ lastmod: 2024-03-09
   seq -f %04g 30
   ```
 
-### 3.6. split
+### 3.7. split
 
   - CSV ファイルを 100 行単位で分割する
 
@@ -326,7 +326,7 @@ lastmod: 2024-03-09
     split -l 100 -d --additional-suffix=.csv ./filename.csv split/filename
     ```
 
-### 3.7. ssh
+### 3.8. ssh
 
 - SSH 接続
 
