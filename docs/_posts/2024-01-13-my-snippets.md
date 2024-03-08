@@ -197,6 +197,50 @@ lastmod: 2024-03-09
   alias
   ```
 
+### apt / apt-get
+
+- 利用可能なパッケージ一覧を更新する
+
+  ```shell
+  sudo apt update
+  ```
+
+  ```shell
+  sudo apt-get update
+  ```
+
+- 環境のパッケージを更新する
+
+  ```shell
+  sudo apt upgrade -y
+  ```
+
+  ```shell
+  sudo apt-get upgrade -y
+  ```
+
+- 必要なくなったパッケージを削除する
+
+  ```shell
+  sudo apt autoremove -y
+  ```
+
+  ```shell
+  sudo apt-get autoremove -y
+  ```
+
+- 不要なキャッシュファイルを削除する
+
+  ```shell
+  sudo apt autoclean -y
+  ```
+
+  ```shell
+  sudo apt-get autoclean -y
+  ```
+
+  - [Ubuntu 20.04 LTS を 22.04 LTS にアップグレードする - Uzabase for Engineers](https://tech.uzabase.com/entry/2022/10/05/163458)
+
 ### 3.3. chown
 
 - 配下のファイルとディレクトリの所有者とグループをホストのユーザーへ変更する
