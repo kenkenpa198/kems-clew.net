@@ -14,7 +14,7 @@ tags:
   - regexp
   - vscode
 date: 2024-01-13
-lastmod: 2024-03-02
+lastmod: 2024-03-09
 ---
 
 自分用便利スニペット集。
@@ -135,9 +135,61 @@ lastmod: 2024-03-02
 
   - [正規表現のマッチングをどこからでも―「境界アサーション」と「ルックアラウンドアサーション」：ECMAScriptで学ぶ正規表現（7） - ＠IT](https://atmarkit.itmedia.co.jp/ait/articles/2207/15/news002.html)
 
-## 3. Linux コマンド
+## 3. Linux
 
-### 3.1. alias
+### 3.1. バージョンを確認する
+
+- `issue` で確認する
+
+  ```shell
+  cat /etc/issue
+  ```
+
+  ```shell
+  # ex.
+  $ cat /etc/issue
+  Ubuntu 20.04.6 LTS \n \l
+  ```
+
+- `os-release` で確認する
+
+  ```shell
+  cat /etc/os-release
+  ```
+
+  ```shell
+  # ex.
+  $ cat /etc/os-release
+  NAME="Ubuntu"
+  VERSION="20.04.6 LTS (Focal Fossa)"
+  ID=ubuntu
+  ID_LIKE=debian
+  PRETTY_NAME="Ubuntu 20.04.6 LTS"
+  VERSION_ID="20.04"
+  HOME_URL="https://www.ubuntu.com/"
+  SUPPORT_URL="https://help.ubuntu.com/"
+  BUG_REPORT_URL="https://bugs.launchpad.net/ubuntu/"
+  PRIVACY_POLICY_URL="https://www.ubuntu.com/legal/terms-and-policies/privacy-policy"
+  VERSION_CODENAME=focal
+  UBUNTU_CODENAME=focal
+  ```
+
+- neofetch コマンドで確認する
+
+  ```shell
+  neofetch
+  ```
+
+  ```shell
+  # ex.
+  $ sudo apt-get update
+  $ sudo apt-get install -y neofetch
+  $ neofetch
+  ```
+
+  ![neofetch]({{ baseurl | append: "/assets/notes/2024-01-13-my-snippets/neofetch.png" | relative_url }})
+
+### 3.2. alias
 
 - alias 一覧 ([kenkenpa198/dotfiles > alias.zsh](https://github.com/kenkenpa198/dotfiles/blob/main/zsh/rc/alias.zsh))
 
@@ -145,7 +197,7 @@ lastmod: 2024-03-02
   alias
   ```
 
-### 3.2. chown
+### 3.3. chown
 
 - 配下のファイルとディレクトリの所有者とグループをホストのユーザーへ変更する
 
@@ -157,7 +209,7 @@ lastmod: 2024-03-02
   - [WSL2でDockerを使用する際の権限問題を解決するシンプルな方法（docker-compose.yml使用） #Docker - Qiita](https://qiita.com/twu_go/items/a449e3006bd74fc7d10d)
   - [Linuxのユーザーとグループって何だろう？：“応用力”をつけるためのLinux再入門（10）（1/2 ページ） - ＠IT](https://atmarkit.itmedia.co.jp/ait/articles/1706/02/news014.html)
 
-### 3.3. grep
+### 3.4. grep
 
 - 指定ファイル内を検索する (行番号付き)
 
@@ -207,7 +259,7 @@ lastmod: 2024-03-02
 
   - [man grep (1): パターンにマッチする行を表示する](https://ja.manpages.org/grep#)
 
-### 3.4. seq
+### 3.5. seq
 
 - 指定範囲の数値をゼロ埋めで出力
 
@@ -221,7 +273,7 @@ lastmod: 2024-03-02
   seq -f %04g 30
   ```
 
-### 3.5. split
+### 3.6. split
 
   - CSV ファイルを 100 行単位で分割する
 
@@ -230,7 +282,7 @@ lastmod: 2024-03-02
     split -l 100 -d --additional-suffix=.csv ./filename.csv split/filename
     ```
 
-### 3.6. ssh
+### 3.7. ssh
 
 - SSH 接続
 
@@ -238,12 +290,71 @@ lastmod: 2024-03-02
   ssh {ユーザー名}@{接続先の IP アドレス} -p {ポート番号}
   ```
 
-## 4. Git
+## 4. Windows PowerShell
+
+### 4.1. OS 情報を表示する
+
+- Get-WmiObject コマンドで確認する
+
+  ```powershell
+  Get-WmiObject Win32_OperatingSystem
+  ```
+
+  ```powershell
+  # ex.
+  PS > Get-WmiObject Win32_OperatingSystem
+
+
+  SystemDirectory : C:\WINDOWS\system32
+  Organization    :
+  BuildNumber     : 22631
+  RegisteredUser  : kenkenpa198
+  SerialNumber    : *****-*****-*****-*****
+  Version         : 10.0.22631
+  ```
+
+### 4.2. WSL
+
+- WSL のバージョン情報を表示する
+
+  ```powershell
+  wsl --version
+  ```
+
+  ```powershell
+  # ex.
+  PS > wsl -v
+  WSL バージョン: 2.0.14.0
+  カーネル バージョン: 5.15.133.1-1
+  WSLg バージョン: 1.0.59
+  MSRDC バージョン: 1.2.4677
+  Direct3D バージョン: 1.611.1-81528511
+  DXCore バージョン: 10.0.25131.1002-220531-1700.rs-onecore-base2-hyp
+  Windows バージョン: 10.0.22631.3235
+  ```
+
+- ディストリビューション一覧と詳細情報を表示する
+
+  ```powershell
+  wsl -l -v
+  ```
+
+  ```powershell
+  # ex.
+  PS > wsl -l -v
+    NAME                   STATE           VERSION
+  * Ubuntu                 Running         2
+    Arch                   Running         2
+    docker-desktop         Stopped         2
+    docker-desktop-data    Stopped         2
+  ```
+
+## 5. Git
 
 - ⚠️: 対象コミットの歴史を改変する操作。
   - **リモートブランチへプッシュ済みの場合、無断で行わないこと** 。
 
-### 4.1. ⚠️Git の操作を取り消す
+### 5.1. ⚠️Git の操作を取り消す
 
 ```shell
 # 1. git reflog で操作履歴を出力する
@@ -270,7 +381,7 @@ $ git reset --soft HEAD@{1}
 - [第6話 git reset 3種類をどこよりもわかりやすい図解で解説！【連載】マンガでわかるGit ～コマンド編～ - itstaffing エンジニアスタイル](https://www.r-staffing.co.jp/engineer/entry/20191129_1)
 - [第7話 間違えて reset しちゃった？git reflogで元どおり【連載】マンガでわかるGit ～コマンド編～ - itstaffing エンジニアスタイル](https://www.r-staffing.co.jp/engineer/entry/20191227_1)
 
-### 4.2. ⚠️コミットを統合する
+### 5.2. ⚠️コミットを統合する
 
 (1) のコミットを (2) へ統合する場合の対応手順。
 
@@ -318,7 +429,7 @@ $ gll
 
 ※ 実行しているコマンド `$ gll` は [git log のエイリアス](https://github.com/kenkenpa198/dotfiles/blob/fe695c145ec1c6b35849622cc3b26703d0ef5700/zsh/rc/alias.zsh#L100) 。
 
-### 4.3. キャッシュを削除する
+### 5.3. キャッシュを削除する
 
 [kenkenpa198/dotfiles](https://github.com/kenkenpa198/dotfiles?tab=readme-ov-file#git-%E3%81%AE%E3%82%AD%E3%83%A3%E3%83%83%E3%82%B7%E3%83%A5%E5%89%8A%E9%99%A4%E6%89%8B%E9%A0%86) にも記載しているもの。
 
@@ -353,7 +464,7 @@ git commit -m 'commit comments'
   - [--cached](https://git-scm.com/docs/git-rm#Documentation/git-rm.txt---cached)
 - [git-rm – Git コマンドリファレンス（日本語版）](https://tracpath.com/docs/git-rm/)
 
-## 5. Docker
+## 6. Docker
 
 ```shell
 $ docker --version
@@ -372,7 +483,7 @@ Docker version 25.0.2, build 29cf629
   docker pull [OPTIONS] NAME[:TAG|@DIGEST]
   ```
 
-### 5.1. Compose
+### 6.1. Compose
 
 - サービスをビルドする
 
@@ -525,7 +636,7 @@ Docker version 25.0.2, build 29cf629
   ✔ Image discordbot-mdn-main:latest  Removed        0.1s
   ```
 
-### 5.2. Container
+### 6.2. Container
 
 - Docker コンテナを一覧表示する
 
@@ -542,7 +653,7 @@ Docker version 25.0.2, build 29cf629
   cbcb7cd20a54   postgres:11-alpine   "docker-entrypoint.s…"   3 days ago   Up 3 hours   0.0.0.0:5432->5432/tcp             docker-database-1
   ```
 
-### 5.3. Image
+### 6.3. Image
 
 - Docker イメージを一覧表示する
 
@@ -567,7 +678,7 @@ Docker version 25.0.2, build 29cf629
 
   - [docker imagesに表示される＜none＞を消す。dangling \| codechord](https://codechord.com/2019/08/docker-images-none-dangling/)
 
-### 5.4. Volume
+### 6.4. Volume
 
 - ボリューム一覧を表示する
 
@@ -596,7 +707,7 @@ Docker version 25.0.2, build 29cf629
   DRIVER    VOLUME NAME
   ```
 
-## 6. Laravel
+## 7. Laravel
 
 ```shell
 $ php --version
@@ -609,7 +720,7 @@ $ composer --version
 Composer version 2.6.6 2023-12-08 18:32:26
 ```
 
-### 6.1. Composer
+### 7.1. Composer
 
 - `composer.json` を使用してライブラリをインストールする
 
@@ -627,9 +738,9 @@ Composer version 2.6.6 2023-12-08 18:32:26
 
   - [Command-line interface / Commands - Composer](https://getcomposer.org/doc/03-cli.md#dump-autoload-dumpautoload)
 
-### 6.2. Artisan
+### 7.2. Artisan
 
-#### 6.2.1. db
+#### 7.2.1. db
 
 - シーダーを実行する
 
@@ -659,7 +770,7 @@ Composer version 2.6.6 2023-12-08 18:32:26
   (3 rows)
   ```
 
-#### 6.2.2. key
+#### 7.2.2. key
 
 - アプリケーションの暗号化キーを設定する
 
@@ -669,7 +780,7 @@ Composer version 2.6.6 2023-12-08 18:32:26
 
   - [暗号化 10.x Laravel](https://readouble.com/laravel/10.x/ja/encryption.html)
 
-#### 6.2.3. make
+#### 7.2.3. make
 
 - コントローラークラスを作成する
 
@@ -771,7 +882,7 @@ Composer version 2.6.6 2023-12-08 18:32:26
   -rw-r--r-- 1 1000 1000 2509 Feb 14 13:38 TaskTest.php
   ```
 
-#### 6.2.4. migrate
+#### 7.2.4. migrate
 
 - マイグレーションを実行する
 
@@ -805,7 +916,7 @@ Composer version 2.6.6 2023-12-08 18:32:26
   ...
   ```
 
-#### 6.2.5. route
+#### 7.2.5. route
 
 - ルーティングの定義を一覧表示する
 
@@ -851,7 +962,7 @@ Composer version 2.6.6 2023-12-08 18:32:26
   +--------+----------+-----------------------------------+------------------+------------------------------------------------------------------------+---------------------------------------------+
   ```
 
-#### 6.2.6. serve
+#### 7.2.6. serve
 
 - Web サーバーを起動する
 
@@ -868,7 +979,7 @@ Composer version 2.6.6 2023-12-08 18:32:26
   # Access to http://localhost:8000
   ```
 
-#### 6.2.7. tinker
+#### 7.2.7. tinker
 
 - メソッドを実行する
 
@@ -897,14 +1008,14 @@ Composer version 2.6.6 2023-12-08 18:32:26
   = "select * from "tasks" where "folder_id" = ?"
   ```
 
-## 7. SQL
+## 8. SQL
 
 - [標準 SQL 集]({% post_url 2022-11-24-sql-standard %})
 - [自作 SQL 集]({% post_url 2022-11-24-sql-made-by-me %})
 
-## 8. VS Code
+## 9. VS Code
 
-### 8.1. 保存時の設定を無効化する
+### 9.1. 保存時の設定を無効化する
 
 ```json
 {
@@ -922,9 +1033,9 @@ Composer version 2.6.6 2023-12-08 18:32:26
 
 他者が作成したコードをそのまま保存したいときに配置する。
 
-## 9. Excel
+## 10. Excel
 
-### 9.1. 書式設定
+### 10.1. 書式設定
 
 - YYYY-MM-DD hh:mm:ss 形式 (ゼロ埋め) で表示
 
@@ -932,7 +1043,7 @@ Composer version 2.6.6 2023-12-08 18:32:26
   YYYY-MM-DD hh:mm:ss
   ```
 
-### 9.2. 関数
+### 10.2. 関数
 
 - 縦に連番を振る
 
@@ -956,9 +1067,9 @@ Composer version 2.6.6 2023-12-08 18:32:26
 
   - [Excelの表でシート名を利用するのに毎度手動でコピペする修行は不要！ 関数で取得する方法 - 残業を減らす！Officeテクニック - 窓の杜](https://forest.watch.impress.co.jp/docs/serial/offitech/1453353.html)
 
-## 10. その他
+## 11. その他
 
-### 10.1. example.com
+### 11.1. example.com
 
 - example.com
 
@@ -977,7 +1088,7 @@ Composer version 2.6.6 2023-12-08 18:32:26
   - [example.com](https://example.com/)
   - [example.com - Wikipedia](https://ja.wikipedia.org/wiki/Example.com)
 
-### 10.2. Google 検索
+### 11.2. Google 検索
 
 - サイト内検索
 
