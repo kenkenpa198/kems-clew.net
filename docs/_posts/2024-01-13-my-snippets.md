@@ -12,6 +12,7 @@ tags:
   - laravel
   - linux
   - regexp
+  - windows
   - vscode
 date: 2024-01-13
 lastmod: 2024-03-09
