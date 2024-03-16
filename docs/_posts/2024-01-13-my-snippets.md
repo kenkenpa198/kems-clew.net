@@ -147,7 +147,7 @@ lastmod: 2024-03-09
   ```
 
   ```shell
-  # ex.
+  # e.g.
   $ cat /etc/issue
   Ubuntu 22.04.4 LTS \n \l
   ```
@@ -159,7 +159,7 @@ lastmod: 2024-03-09
   ```
 
   ```shell
-  # ex.
+  # e.g.
   $ cat /etc/os-release
   PRETTY_NAME="Ubuntu 22.04.4 LTS"
   NAME="Ubuntu"
@@ -182,7 +182,7 @@ lastmod: 2024-03-09
   ```
 
   ```shell
-  # ex.
+  # e.g.
   $ sudo apt-get update
   $ sudo apt-get install -y neofetch
   $ neofetch
@@ -263,7 +263,7 @@ lastmod: 2024-03-09
   ```
 
   ```shell
-  # ex.
+  # e.g.
   $ pwd
   ... 略 .../kems-clew.net
   $ grep -n キーワード ./docs/_posts/2024-01-13-my-snippets.md
@@ -279,7 +279,7 @@ lastmod: 2024-03-09
   ```
 
   ```shell
-  # ex.
+  # e.g.
   $ grep -rlI キーワード ./docs/
   ./docs/_posts/2023-01-02-inbox-zero.md
   ./docs/_posts/2024-01-13-my-snippets.md
@@ -294,7 +294,7 @@ lastmod: 2024-03-09
   ```
 
   ```shell
-  # ex.
+  # e.g.
   $ grep -rnI キーワード ./docs/
   ./docs/_posts/2023-01-02-inbox-zero.md:58:    |               | 検索キーワード          | セクション名（省略可） |
   ./docs/_posts/2023-01-02-inbox-zero.md:101:    - どうにもよくわからなかったので、自分の設定では検索キーワードとセクション名を設定するように しています。
@@ -346,7 +346,7 @@ lastmod: 2024-03-09
   ```
 
   ```powershell
-  # ex.
+  # e.g.
   PS > Get-WmiObject Win32_OperatingSystem
 
 
@@ -367,7 +367,7 @@ lastmod: 2024-03-09
   ```
 
   ```powershell
-  # ex.
+  # e.g.
   PS > wsl -v
   WSL バージョン: 2.0.14.0
   カーネル バージョン: 5.15.133.1-1
@@ -385,7 +385,7 @@ lastmod: 2024-03-09
   ```
 
   ```powershell
-  # ex.
+  # e.g.
   PS > wsl -l -v
     NAME                   STATE           VERSION
   * Ubuntu                 Running         2
@@ -564,7 +564,7 @@ Docker version 25.0.2, build 29cf629
   ```
 
   ```shell
-  # ex.
+  # e.g.
   # --no-cache: Do not use cache when building the image
   $ docker compose build --no-cache
   [+] Building 44.1s (6/9)
@@ -579,7 +579,7 @@ Docker version 25.0.2, build 29cf629
   ```
 
   ```shell
-  # ex.
+  # e.g.
   $ docker compose up
   [+] Running 9/9
   ...
@@ -591,7 +591,7 @@ Docker version 25.0.2, build 29cf629
   ```
 
   ```shell
-  # ex. バックグラウンドで起動する
+  # e.g. バックグラウンドで起動する
   # -d, --detach: Detached mode: Run containers in the background
   $ docker compose up -d
   [+] Running 2/2
@@ -600,7 +600,7 @@ Docker version 25.0.2, build 29cf629
   ```
 
   ```shell
-  # ex. イメージをビルドしてから起動する
+  # e.g. イメージをビルドしてから起動する
   # --build: Build images before starting containers.
   $ docker compose up -d
   $ docker compose up -d --build
@@ -618,7 +618,7 @@ Docker version 25.0.2, build 29cf629
   ```
 
   ```shell
-  # ex.
+  # e.g.
   $ docker compose stop
   [+] Stopping 2/2
   ✔ Container discordbot-mdn-main-1  Stopped        10.3s
@@ -632,7 +632,7 @@ Docker version 25.0.2, build 29cf629
   ```
 
   ```shell
-  # ex.
+  # e.g.
   # -f, --follow: Follow log output.
   $ docker compose logs -f
   main-1  | ====================================
@@ -649,7 +649,7 @@ Docker version 25.0.2, build 29cf629
   ```
 
   ```shell
-  # ex. アプリ内で Bash を実行する
+  # e.g. アプリ内で Bash を実行する
   # 1. Find SERVICE name
   $ cat docker-compose.yml
   version: "3.7"
@@ -665,7 +665,7 @@ Docker version 25.0.2, build 29cf629
   ```
 
   ```shell
-  # ex. Postgres DB へログインする
+  # e.g. Postgres DB へログインする
   # database   : Service name
   # -U         : Use username (postgres)
   $ docker compose exec database psql -U postgres
@@ -682,7 +682,7 @@ Docker version 25.0.2, build 29cf629
   ```
 
   ```shell
-  # ex.
+  # e.g.
   $ docker compose down
   [+] Running 3/3
   ✔ Container discordbot-mdn-db-1    Removed         0.3s
@@ -691,7 +691,7 @@ Docker version 25.0.2, build 29cf629
   ```
 
   ```shell
-  # ex. イメージもすべて削除する
+  # e.g. イメージもすべて削除する
   # --rmi string: Remove images used by services. "local" remove only images that don't have a custom tag ("local"|"all")
   $ docker-compose down --rmi all
   [+] Running 2/2
@@ -700,7 +700,7 @@ Docker version 25.0.2, build 29cf629
   ```
 
   ```shell
-  # ex. ボリュームも削除する
+  # e.g. ボリュームも削除する
   # -v, --volumes: Remove named volumes declared in the "volumes" section of the Compose file and anonymous volumes attached to containers.
   $ docker-compose down --rmi all --volumes
   [+] Running 2/2
@@ -717,7 +717,7 @@ Docker version 25.0.2, build 29cf629
   ```
 
   ```shell
-  # ex.
+  # e.g.
   # docker ps と同義
   $ docker container ls
   CONTAINER ID   IMAGE                COMMAND                  CREATED      STATUS       PORTS                              NAMES
@@ -734,7 +734,7 @@ Docker version 25.0.2, build 29cf629
   ```
 
   ```shell
-  # ex.
+  # e.g.
   # docker images と同義
   $ docker image ls
   REPOSITORY   TAG         IMAGE ID       CREATED        SIZE
@@ -759,7 +759,7 @@ Docker version 25.0.2, build 29cf629
   ```
 
   ```shell
-  # ex.
+  # e.g.
   $ docker volume ls
   DRIVER    VOLUME NAME
   local     discordbot-mdn_db-volume
@@ -821,7 +821,7 @@ Composer version 2.6.6 2023-12-08 18:32:26
   ```
 
   ```shell
-  # ex.
+  # e.g.
   $ composer dump-autoload
   $ php artisan db:seed --class=FoldersTableSeeder
   Database seeding completed successfully.
@@ -861,7 +861,7 @@ Composer version 2.6.6 2023-12-08 18:32:26
   ```
 
   ```shell
-  # ex.
+  # e.g.
   $ php artisan make:controller TaskController
   INFO  Controller [app/Http/Controllers/TaskController.php] created successfully.
   ```
@@ -873,7 +873,7 @@ Composer version 2.6.6 2023-12-08 18:32:26
   ```
 
   ```shell
-  # ex.
+  # e.g.
   $ php artisan make:migration create_folders_table --create=folders
   $ ls -la database/migrations/
   total 36
@@ -891,7 +891,7 @@ Composer version 2.6.6 2023-12-08 18:32:26
   ```
 
   ```shell
-  # ex.
+  # e.g.
   $ php artisan make:model Folder
 
   $ ls -la app/Models/
@@ -909,7 +909,7 @@ Composer version 2.6.6 2023-12-08 18:32:26
   ```
 
   ```shell
-  # ex.
+  # e.g.
   $ php artisan make:request CreateFolder
 
   $ ls -la app/Http/Requests/
@@ -926,7 +926,7 @@ Composer version 2.6.6 2023-12-08 18:32:26
   ```
 
   ```shell
-  # ex.
+  # e.g.
   $ php artisan make:seeder FoldersTableSeeder
 
   $ ls -la database/seeders
@@ -944,7 +944,7 @@ Composer version 2.6.6 2023-12-08 18:32:26
   ```
 
   ```shell
-  # ex.
+  # e.g.
   $ php artisan make:test TaskTest
   $ ls -la tests/Feature
   total 16
@@ -963,7 +963,7 @@ Composer version 2.6.6 2023-12-08 18:32:26
   ```
 
   ```shell
-  # ex.
+  # e.g.
   $ php artisan migrate
   Migration table created successfully.
   Migrating: 2014_10_12_000000_create_users_table
@@ -979,7 +979,7 @@ Composer version 2.6.6 2023-12-08 18:32:26
   ```
 
   ```shell
-  # ex.
+  # e.g.
   $ php artisan migrate:fresh
   Dropped all tables successfully.
   Migration table created successfully.
@@ -997,7 +997,7 @@ Composer version 2.6.6 2023-12-08 18:32:26
   ```
 
   ```shell
-  # ex.
+  # e.g.
   $ php artisan route:list
   +--------+----------+-----------------------------------+------------------+------------------------------------------------------------------------+---------------------------------------------+
   | Domain | Method   | URI                               | Name             | Action                                                                 | Middleware                                  |
@@ -1043,7 +1043,7 @@ Composer version 2.6.6 2023-12-08 18:32:26
   ```
 
   ```shell
-  # ex.
+  # e.g.
   # ローカルホストで起動する
   $ php artisan serve --host 0.0.0.0
   Starting Laravel development server: http://0.0.0.0:8000
@@ -1060,7 +1060,7 @@ Composer version 2.6.6 2023-12-08 18:32:26
   ```
 
   ```shell
-  # ex. メソッドを実行する
+  # e.g. メソッドを実行する
   $ php artisan tinker
   Psy Shell v0.11.22 (PHP 7.3.33 — cli) by Justin Hileman
   > $folder = App\Models\Folder::find(1);
@@ -1073,7 +1073,7 @@ Composer version 2.6.6 2023-12-08 18:32:26
   ```
 
   ```shell
-  # ex. 実行される SQL を確認する
+  # e.g. 実行される SQL を確認する
   $ php artisan tinker
   Psy Shell v0.11.22 (PHP 7.3.33 — cli) by Justin Hileman
   > \App\Models\Task::where('folder_id', 1)->toSql();
