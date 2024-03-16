@@ -399,7 +399,34 @@ lastmod: 2024-03-09
 - ⚠️: 対象コミットの歴史を改変する操作。
   - **リモートブランチへプッシュ済みの場合、無断で行わないこと** 。
 
-### 5.1. ⚠️Git の操作を取り消す
+### 5.1. remote
+
+- リモートリポジトリを登録する
+
+  ```shell
+  git remote add origin https://github.com/kenkenpa198/dotfiles
+  ```
+
+- リモートリポジトリの URL を変更する
+
+  ```shell
+  git remote set-url origin git@github.com:kenkenpa198/dotfiles.git
+  ```
+
+- リモートリポジトリの確認
+
+  ```shell
+  git remote -v
+  ```
+
+  ```shell
+  # e.g.
+  $ git remote -v
+  origin  git@github.com:kenkenpa198/dotfiles.git (fetch)
+  origin  git@github.com:kenkenpa198/dotfiles.git (push)
+  ```
+
+### 5.2. ⚠️Git の操作を取り消す
 
 ```shell
 # 1. git reflog で操作履歴を出力する
@@ -426,7 +453,7 @@ $ git reset --soft HEAD@{1}
 - [第6話 git reset 3種類をどこよりもわかりやすい図解で解説！【連載】マンガでわかるGit ～コマンド編～ - itstaffing エンジニアスタイル](https://www.r-staffing.co.jp/engineer/entry/20191129_1)
 - [第7話 間違えて reset しちゃった？git reflogで元どおり【連載】マンガでわかるGit ～コマンド編～ - itstaffing エンジニアスタイル](https://www.r-staffing.co.jp/engineer/entry/20191227_1)
 
-### 5.2. ⚠️コミットを統合する
+### 5.3. ⚠️コミットを統合する
 
 (1) のコミットを (2) へ統合する場合の対応手順。
 
@@ -474,7 +501,7 @@ $ gll
 
 ※ 実行しているコマンド `$ gll` は [git log のエイリアス](https://github.com/kenkenpa198/dotfiles/blob/fe695c145ec1c6b35849622cc3b26703d0ef5700/zsh/rc/alias.zsh#L100) 。
 
-### 5.3. キャッシュを削除する
+### 5.4. キャッシュを削除する
 
 [kenkenpa198/dotfiles](https://github.com/kenkenpa198/dotfiles?tab=readme-ov-file#git-%E3%81%AE%E3%82%AD%E3%83%A3%E3%83%83%E3%82%B7%E3%83%A5%E5%89%8A%E9%99%A4%E6%89%8B%E9%A0%86) にも記載しているもの。
 
