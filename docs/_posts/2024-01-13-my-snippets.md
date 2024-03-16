@@ -15,7 +15,7 @@ tags:
   - windows
   - vscode
 date: 2024-01-13
-lastmod: 2024-03-09
+lastmod: 2024-03-16
 ---
 
 自分用便利スニペット集。
