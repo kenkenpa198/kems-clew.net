@@ -15,7 +15,7 @@ tags:
   - windows
   - vscode
 date: 2024-01-13
-lastmod: 2024-03-16
+lastmod: 2024-03-17
 ---
 
 自分用便利スニペット集。
@@ -175,7 +175,23 @@ lastmod: 2024-03-16
   UBUNTU_CODENAME=jammy
   ```
 
-- neofetch コマンドで確認する
+- `lsb_release` コマンドで確認する
+
+  ```shell
+  lsb_release -a
+  ```
+
+  ```shell
+  # e.g.
+  $ lsb_release -a
+  No LSB modules are available.
+  Distributor ID: Ubuntu
+  Description:    Ubuntu 22.04.4 LTS
+  Release:        22.04
+  Codename:       jammy
+  ```
+
+- `neofetch` コマンドで確認する
 
   ```shell
   neofetch
