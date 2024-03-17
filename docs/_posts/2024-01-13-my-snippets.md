@@ -191,6 +191,9 @@ lastmod: 2024-03-17
   Codename:       jammy
   ```
 
+  - [lsb_release – ディストリビューションのバージョン情報の確認 \| Linuxコマンド.NET](https://linuxcommand.net/lsb_release/)
+  - [Windows11 + WSL で Ubuntu 環境を構築するずんだもん - YouTube](https://www.youtube.com/watch?v=odDJ3QvlF2g)
+
 - `neofetch` コマンドで確認する
 
   ```shell
