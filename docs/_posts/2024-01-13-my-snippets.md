@@ -15,7 +15,7 @@ tags:
   - windows
   - vscode
 date: 2024-01-13
-lastmod: 2024-03-17
+lastmod: 2024-04-25
 ---
 
 自分用便利スニペット集。
@@ -1126,6 +1126,8 @@ Composer version 2.6.6 2023-12-08 18:32:26
 
 ## 10. Excel
 
+- 🔄: Google スプレッドシートでも動作を確認している関数。
+
 ### 10.1. 書式設定
 
 - YYYY-MM-DD hh:mm:ss 形式 (ゼロ埋め) で表示
@@ -1136,19 +1138,31 @@ Composer version 2.6.6 2023-12-08 18:32:26
 
 ### 10.2. 関数
 
-- 縦に連番を振る
+- 🔄 縦に連番を振る
 
   ```c
   =IFERROR(MAX(INDIRECT(ADDRESS(1,COLUMN())):INDIRECT(ADDRESS(ROW()-1,COLUMN())))+1,1)
   ```
 
-- 横に連番を振る
+- 🔄 横に連番を振る
 
   ```c
   =IFERROR(MAX(INDIRECT(ADDRESS(ROW(),1)):INDIRECT(ADDRESS(ROW(),COLUMN()-1)))+1,1)
   ```
 
   - [Excel ドキュメントを書く時の定石集 - Neo's World](https://neos21.net/tech/business-communication/excel-best-practices.html)
+
+- 🔄 縦に連番を振る (空行でリセット)
+
+  ```c
+  =IFERROR(INDIRECT(ADDRESS(ROW()-1,COLUMN()))+1,1)
+  ```
+
+- 🔄 横に連番を振る (空行でリセット)
+
+  ```c
+  =IFERROR(INDIRECT(ADDRESS(ROW(),COLUMN()-1))+1,1)
+  ```
 
 - シート名を表示する
 
