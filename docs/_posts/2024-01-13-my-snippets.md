@@ -15,12 +15,12 @@ tags:
   - windows
   - vscode
 date: 2024-01-13
-lastmod: 2024-04-25
+lastmod: 2024-05-14
 ---
 
 自分用便利スニペット集。
 
-- 公私でよく使用するスニペットやコマンドをウェブから参照できるようにしたもの。
+- 公私でよく使用するスニペットやコマンド、作業手順などをウェブから参照できるようにしたもの。
 - 思いついたら適宜追加していく。
 - 参考にする際は自己責任で！
 
@@ -377,7 +377,76 @@ lastmod: 2024-04-25
   Version         : 10.0.22631
   ```
 
-### 4.2. WSL
+- systeminfo コマンドで確認する
+
+  ```powershell
+  systeminfo
+  ```
+
+  ```powershell
+  # e.g.
+  PS > systeminfo
+
+  ホスト名:               KEM-VELOX
+  OS 名:                  Microsoft Windows 11 Home
+  OS バージョン:          10.0.22631 N/A ビルド 22631
+  OS 製造元:              Microsoft Corporation
+  OS 構成:                スタンドアロン ワークステーション
+  ... (略) ... # BIOS や物理メモリ、ネットワーク情報など
+  ```
+
+### 4.2. OS のバージョン情報を表示する
+
+- レジストリから取得する
+
+  ```powershell
+  (Get-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion' -Name 'DisplayVersion').DisplayVersion
+  ```
+
+  ```powershell
+  (Get-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion' -Name 'BuildLabEx').BuildLabEx
+  ```
+
+  ```powershell
+  # e.g.
+  PS > (Get-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion' -Name 'DisplayVersion').DisplayVersion
+  23H2
+
+  PS > (Get-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion' -Name 'BuildLabEx').BuildLabEx
+  22621.1.amd64fre.ni_release.220506-1250
+  ```
+
+- systeminfo コマンドの実行結果を絞り込む
+
+  ```powershell
+  (systeminfo | ?{$_.Contains("OS")})[0,1];
+  ```
+
+  ```powershell
+  # e.g.
+  PS > (systeminfo | ?{$_.Contains("OS")})[0,1];
+  OS 名:                  Microsoft Windows 11 Home
+  OS バージョン:          10.0.22631 N/A ビルド 22631
+  ```
+
+  - [PowerShellシステム要件、バージョン情報メモ \#Windows10 - Qiita](https://qiita.com/e4rfx/items/e370ba343a3c3841b646)
+
+- cmd の ver コマンドを利用する
+
+  ```powershell
+  cmd /C ver
+  ```
+
+  ```powershell
+  # e.g.
+  PS > cmd /C ver
+
+  Microsoft Windows [Version 10.0.22631.3527]
+  ```
+
+  - [Windows のバージョンを表示する \| Operations Lab.](https://operationslab.wordpress.com/2013/03/10/windows-のバージョンを表示する/)
+
+### 4.3. WSL
 
 - WSL のバージョン情報を表示する
 
@@ -1152,13 +1221,13 @@ Composer version 2.6.6 2023-12-08 18:32:26
 
   - [Excel ドキュメントを書く時の定石集 - Neo's World](https://neos21.net/tech/business-communication/excel-best-practices.html)
 
-- 🔄 縦に連番を振る (空行でリセット)
+- 🔄 縦に連番を振る (数値以外のセルでリセット)
 
   ```c
   =IFERROR(INDIRECT(ADDRESS(ROW()-1,COLUMN()))+1,1)
   ```
 
-- 🔄 横に連番を振る (空行でリセット)
+- 🔄 横に連番を振る (数値以外のセルでリセット)
 
   ```c
   =IFERROR(INDIRECT(ADDRESS(ROW(),COLUMN()-1))+1,1)
