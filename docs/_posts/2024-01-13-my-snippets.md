@@ -645,6 +645,8 @@ Docker version 25.0.2, build 29cf629
 
 ### 6.1. Compose
 
+#### 6.1.1. build
+
 - サービスをビルドする
 
   ```shell
@@ -660,7 +662,9 @@ Docker version 25.0.2, build 29cf629
   [+] Building 62.5s (10/10) FINISHED
   ```
 
-- コンテナを起動する
+#### 6.1.2. up
+
+- サービスを起動する
 
   ```shell
   docker compose up [OPTIONS] [SERVICE...]
@@ -690,7 +694,6 @@ Docker version 25.0.2, build 29cf629
   ```shell
   # e.g. イメージをビルドしてから起動する
   # --build: Build images before starting containers.
-  $ docker compose up -d
   $ docker compose up -d --build
   [+] Building 1.5s (10/10) FINISHED                          docker:default
   => [main internal] load build definition from Dockerfile    0.0s
@@ -699,7 +702,32 @@ Docker version 25.0.2, build 29cf629
   ✔ Container discordbot-mdn-main-1  Running                 0.0s
   ```
 
-- コンテナを停止する
+#### 6.1.3. ls
+
+- サービスを一覧表示する
+
+  ```shell
+  docker compose ls [OPTIONS]
+  ```
+
+  ```shell
+  # e.g. 起動中のサービスを表示する
+  $ docker compose ls
+  NAME                STATUS              CONFIG FILES
+  wasbook-docker      running(5)          /.../wasbook-docker/docker-compose.yml
+  ```
+
+  ```shell
+  # e.g. 停止中のサービスも表示する
+  $ docker compose ls -a
+  NAME                STATUS              CONFIG FILES
+  discordbot-mdn      exited(2)           /.../discordbot-mdn/docker-compose.yml
+  wasbook-docker      running(5)          /.../wasbook-docker/docker-compose.yml
+  ```
+
+#### 6.1.4. stop
+
+- サービスを停止する
 
   ```shell
   docker compose stop [OPTIONS] [SERVICE...]
@@ -713,7 +741,9 @@ Docker version 25.0.2, build 29cf629
   ✔ Container discordbot-mdn-db-1    Stopped         0.3s
   ```
 
-- コンテナのログを表示する
+#### 6.1.5. logs
+
+- サービスのログを表示する
 
   ```shell
   docker compose logs [OPTIONS] [SERVICE...]
@@ -730,7 +760,9 @@ Docker version 25.0.2, build 29cf629
   ...
   ```
 
-- コンテナ内でアプリケーションを実行する
+#### 6.1.6. exec
+
+- サービス内でアプリケーションを実行する
 
   ```shell
   docker compose exec [OPTIONS] SERVICE COMMAND [ARGS...]
@@ -763,7 +795,9 @@ Docker version 25.0.2, build 29cf629
   postgres=#
   ```
 
-- コンテナを削除する
+#### 6.1.7. down
+
+- サービスを削除する
 
   ```shell
   docker compose down [OPTIONS] [SERVICES]
@@ -798,22 +832,65 @@ Docker version 25.0.2, build 29cf629
 
 ### 6.2. Container
 
+#### 6.2.1. ls
+
 - Docker コンテナを一覧表示する
 
   ```shell
-  docker container ls
+  docker container ls [OPTIONS]
+  ```
+
+  ```shell
+  # e.g. 起動中のコンテナを表示する
+  # docker ps と同義
+  $ docker container ls
+  CONTAINER ID   IMAGE                   COMMAND                  CREATED       STATUS         PORTS                               NAMES
+  af2574bc26e3   wasbook-docker-nginx    "/docker-entrypoint.…"   4 weeks ago   Up 2 minutes   80/tcp                              wasbook-docker-nginx-1
+  # ...
+  ```
+
+  ```shell
+  # e.g. 停止中のコンテナもすべて表示する
+  # docker ps -a と同義
+  $ docker container ls -a
+  CONTAINER ID   IMAGE                      COMMAND                  CREATED              STATUS                            PORTS                               NAMES
+  7cea32a40911   postgres:14.5-alpine3.16   "docker-entrypoint.s…"   About a minute ago   Exited (0) About a minute ago                                         discordbot-mdn-db-1
+  # ...
+  af2574bc26e3   wasbook-docker-nginx       "/docker-entrypoint.…"   4 weeks ago          Up 2 minutes                      80/tcp                              wasbook-docker-nginx-1
+  # ...
+  ```
+
+#### 6.2.2. stop
+
+- Docker コンテナを停止する
+
+  ```shell
+  docker container stop [OPTIONS] CONTAINER [CONTAINER...]
   ```
 
   ```shell
   # e.g.
-  # docker ps と同義
-  $ docker container ls
-  CONTAINER ID   IMAGE                COMMAND                  CREATED      STATUS       PORTS                              NAMES
-  4f869aa34b2e   docker-app           "docker-php-entrypoi…"   3 days ago   Up 2 hours   0.0.0.0:8000->8000/tcp, 9000/tcp   docker-app-1
-  cbcb7cd20a54   postgres:11-alpine   "docker-entrypoint.s…"   3 days ago   Up 3 hours   0.0.0.0:5432->5432/tcp             docker-database-1
+  $ docker container rm discordbot-mdn-db-1
+  discordbot-mdn-db-1
+  ```
+
+#### 6.2.2. rm
+
+- Docker コンテナを削除する
+
+  ```shell
+  docker container rm [OPTIONS] CONTAINER [CONTAINER...]
+  ```
+
+  ```shell
+  # e.g.
+  $ docker container rm discordbot-mdn-db-1
+  discordbot-mdn-db-1
   ```
 
 ### 6.3. Image
+
+#### 6.3.1. ls
 
 - Docker イメージを一覧表示する
 
@@ -830,6 +907,26 @@ Docker version 25.0.2, build 29cf629
   postgres     11-alpine   10d7fb41183a   2 months ago   232MB
   ```
 
+#### 6.3.1. rm
+
+- Docker イメージを削除する
+
+  ```shell
+  docker image rm [OPTIONS] IMAGE [IMAGE...]
+  ```
+
+  ```shell
+  # e.g.
+  # docker rmi と同義
+  $ docker image rm postgres:14.5-alpine3.16
+  Untagged: postgres:14.5-alpine3.16
+  Untagged: postgres@sha256:ac09c433f64f2d310a83e5cc24dadc13561f645199d4ec8e503824de22e14668
+  Deleted: sha256:aac01494762a1319624f6117a3d9d374540ec58095c2c9f84adb92619aec3b6e
+  # ...
+  ```
+
+#### 6.3.2. prune
+
 - `<none>` イメージを一括削除する
 
   ```shell
@@ -839,6 +936,8 @@ Docker version 25.0.2, build 29cf629
   - [docker imagesに表示される＜none＞を消す。dangling \| codechord](https://codechord.com/2019/08/docker-images-none-dangling/)
 
 ### 6.4. Volume
+
+#### 6.4.1. ls
 
 - ボリューム一覧を表示する
 
@@ -852,6 +951,8 @@ Docker version 25.0.2, build 29cf629
   DRIVER    VOLUME NAME
   local     discordbot-mdn_db-volume
   ```
+
+#### 6.4.2. rm
 
 - ボリュームを削除する
 
