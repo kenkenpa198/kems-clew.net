@@ -15,7 +15,7 @@ tags:
   - windows
   - vscode
 date: 2024-01-13
-lastmod: 2024-05-14
+lastmod: 2024-06-13
 ---
 
 自分用便利スニペット集。
@@ -284,11 +284,11 @@ lastmod: 2024-05-14
   ```shell
   # e.g.
   $ pwd
-  ... 略 .../kems-clew.net
+  /.../kems-clew.net
   $ grep -n キーワード ./docs/_posts/2024-01-13-my-snippets.md
   166:  grep -n [キーワード] [ファイル名]
   172:  $ grep -n キーワード ./2024-01-13-my-snippets.md
-  ... 略 ...
+  # ...
   ```
 
 - 指定ディレクトリ配下でヒットしたファイル名のリストを出力する
@@ -303,7 +303,7 @@ lastmod: 2024-05-14
   ./docs/_posts/2023-01-02-inbox-zero.md
   ./docs/_posts/2024-01-13-my-snippets.md
   ./docs/_site/feed.xml
-  ... 略 ...
+  # ...
   ```
 
 - 指定ディレクトリ配下でヒットしたファイル名と行のリストを出力する
@@ -318,7 +318,7 @@ lastmod: 2024-05-14
   ./docs/_posts/2023-01-02-inbox-zero.md:58:    |               | 検索キーワード          | セクション名（省略可） |
   ./docs/_posts/2023-01-02-inbox-zero.md:101:    - どうにもよくわからなかったので、自分の設定では検索キーワードとセクション名を設定するように しています。
   ./docs/_posts/2024-01-13-my-snippets.md:166:  grep -n [キーワード] [ファイル名]
-  ... 略 ...
+  # ...
   ```
 
   - [man grep (1): パターンにマッチする行を表示する](https://ja.manpages.org/grep#)
@@ -392,7 +392,8 @@ lastmod: 2024-05-14
   OS バージョン:          10.0.22631 N/A ビルド 22631
   OS 製造元:              Microsoft Corporation
   OS 構成:                スタンドアロン ワークステーション
-  ... (略) ... # BIOS や物理メモリ、ネットワーク情報など
+  # ...
+  # BIOS や物理メモリ、ネットワーク情報など
   ```
 
 ### 4.2. OS のバージョン情報を表示する
