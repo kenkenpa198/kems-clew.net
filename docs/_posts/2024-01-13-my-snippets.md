@@ -15,7 +15,7 @@ tags:
   - windows
   - vscode
 date: 2024-01-13
-lastmod: 2024-06-13
+lastmod: 2024-08-19
 ---
 
 自分用便利スニペット集。
@@ -273,7 +273,47 @@ lastmod: 2024-06-13
   - [WSL2でDockerを使用する際の権限問題を解決するシンプルな方法（docker-compose.yml使用） #Docker - Qiita](https://qiita.com/twu_go/items/a449e3006bd74fc7d10d)
   - [Linuxのユーザーとグループって何だろう？：“応用力”をつけるためのLinux再入門（10）（1/2 ページ） - ＠IT](https://atmarkit.itmedia.co.jp/ait/articles/1706/02/news014.html)
 
-### 3.5. grep
+### 3.5. curl
+
+#### 3.5.1. HTTP Requests
+
+- GET ( `GET /items` )
+
+    ```shell
+    curl -L -X GET 'http://localhost:8080/items' | jq
+    ```
+
+- GET ( `GET /items/{itemId}` )
+
+    ```shell
+    curl -L -X GET 'http://localhost:8080/items/1' | jq
+    ```
+
+- POST ( `POST /items` )
+
+    ```shell
+    curl -L -X POST 'http://localhost:8080/items' \
+    -H 'Content-Type: application/json' \
+    -d '{"itemName": "Candy", "itemCategory": "Food"}' \
+    | jq
+    ```
+
+- PUT ( `PUT /items/{itemId}` )
+
+    ```shell
+    curl -L -X PUT 'http://localhost:8080/items/1' \
+    -H 'Content-Type: application/json' \
+    -d '{"itemName": "Candy", "itemCategory": "Food"}' \
+    | jq
+    ```
+
+- DELETE ( `DELETE /items/{itemId}` )
+
+    ```shell
+    curl -L -X DELETE 'http://localhost:8080/items/1' | jq
+    ```
+
+### 3.6. grep
 
 - 指定ファイル内を検索する (行番号付き)
 
@@ -323,7 +363,7 @@ lastmod: 2024-06-13
 
   - [man grep (1): パターンにマッチする行を表示する](https://ja.manpages.org/grep#)
 
-### 3.6. seq
+### 3.7. seq
 
 - 指定範囲の数値をゼロ埋めで出力
 
@@ -337,7 +377,7 @@ lastmod: 2024-06-13
   seq -f %04g 30
   ```
 
-### 3.7. split
+### 3.8. split
 
   - CSV ファイルを 100 行単位で分割する
 
@@ -346,7 +386,7 @@ lastmod: 2024-06-13
     split -l 100 -d --additional-suffix=.csv ./filename.csv split/filename
     ```
 
-### 3.8. ssh
+### 3.9. ssh
 
 - SSH 接続
 
@@ -875,7 +915,7 @@ Docker version 25.0.2, build 29cf629
   discordbot-mdn-db-1
   ```
 
-#### 6.2.2. rm
+#### 6.2.3. rm
 
 - Docker コンテナを削除する
 
@@ -908,7 +948,7 @@ Docker version 25.0.2, build 29cf629
   postgres     11-alpine   10d7fb41183a   2 months ago   232MB
   ```
 
-#### 6.3.1. rm
+#### 6.3.2. rm
 
 - Docker イメージを削除する
 
@@ -926,7 +966,7 @@ Docker version 25.0.2, build 29cf629
   # ...
   ```
 
-#### 6.3.2. prune
+#### 6.3.3. prune
 
 - `<none>` イメージを一括削除する
 
